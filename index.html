@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>👑 الملك صقر</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 :root{
@@ -14,9 +14,6 @@
   --card:rgba(255,255,255,0.08);
   --border:rgba(255,255,255,0.18);
   --gold:#FFD700;
-  --accent2:#FF4081;
-  --accent3:#00E5FF;
-  --glow:rgba(255,215,0,0.45);
 }
 body.light{
   --bg:#f2f4f8;
@@ -25,33 +22,13 @@ body.light{
   --card:rgba(0,0,0,0.06);
   --border:rgba(0,0,0,0.15);
 }
-body.theme-cyan {
-  --gold:#00E5FF;
-  --accent2:#7C4DFF;
-  --accent3:#00FFA3;
-  --glow:rgba(0,229,255,0.45);
-}
-body.theme-crimson {
-  --gold:#FF2E63;
-  --accent2:#FF9A00;
-  --accent3:#08D9D6;
-  --glow:rgba(255,46,99,0.45);
-}
-body.theme-emerald {
-  --gold:#00FF87;
-  --accent2:#00B4DB;
-  --accent3:#FFD700;
-  --glow:rgba(0,255,135,0.45);
-}
-*{box-sizing:border-box;}
 body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
   transition:0.4s;
   text-align:center;
-  overflow-x:hidden;
 }
 .topbar{
   position:fixed;
@@ -63,22 +40,18 @@ body{
   justify-content:center;
   z-index:100;
   box-shadow:0 4px 20px rgba(0,0,0,0.6);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
 }
 .topbar-title{
   font-size:1.3rem;
   font-weight:900;
   animation:colors 6s linear infinite;
-  letter-spacing:0.5px;
 }
 @keyframes colors{
-  0%{color:#FFD700; text-shadow:0 0 12px rgba(255,215,0,0.4);}
-  25%{color:#00E5FF; text-shadow:0 0 12px rgba(0,229,255,0.4);}
-  50%{color:#FF4081; text-shadow:0 0 12px rgba(255,64,129,0.4);}
-  75%{color:#7CFF00; text-shadow:0 0 12px rgba(124,255,0,0.4);}
-  100%{color:#FFD700; text-shadow:0 0 12px rgba(255,215,0,0.4);}
+  0%{color:#FFD700}
+  25%{color:#00E5FF}
+  50%{color:#FF4081}
+  75%{color:#7CFF00}
+  100%{color:#FFD700}
 }
 .settings-toggle{
   position:absolute;
@@ -90,36 +63,29 @@ body{
   cursor:pointer;
   font-size:1.2rem;
   color:var(--gold);
-  transition:0.3s;
+  transition:0.2s;
   z-index:101;
-  box-shadow:0 0 12px rgba(255,215,0,0.15);
 }
 .settings-toggle:hover{
-  transform:scale(1.08) rotate(45deg);
+  transform:scale(1.05);
   background:rgba(255,215,0,0.2);
-  box-shadow:0 0 18px var(--gold);
 }
 .theme-toggle{
   position:absolute;
   left:70px;
-  border:1px solid var(--border);
+  border:none;
   border-radius:10px;
   padding:6px 12px;
   cursor:pointer;
   font-size:1.1rem;
   background:var(--card);
   color:var(--text);
-  transition:0.3s;
-}
-.theme-toggle:hover{
-  transform:scale(1.08);
-  border-color:var(--gold);
 }
 .message-button{
   position:fixed;
   bottom:30px;
   right:30px;
-  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  background:linear-gradient(135deg,#FFD700,#FF4081);
   width:60px;
   height:60px;
   border-radius:50%;
@@ -127,16 +93,16 @@ body{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:0 0 20px rgba(0,0,0,0.3),0 0 15px var(--glow);
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
   transition:0.3s;
   z-index:150;
   font-size:28px;
   color:#000;
-  border:2px solid rgba(255,255,255,0.4);
+  border:none;
 }
 .message-button:hover{
-  transform:scale(1.1) translateY(-3px);
-  box-shadow:0 0 30px var(--gold);
+  transform:scale(1.1);
+  box-shadow:0 0 30px #FFD700;
 }
 .modal {
   display: none;
@@ -147,87 +113,56 @@ body{
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   justify-content: center;
   align-items: center;
-  padding:15px;
 }
 .modal-content {
   background: var(--bar);
   border: 2px solid var(--gold);
   border-radius: 32px;
-  width: 95%;
-  max-width: 560px;
-  max-height: 88vh;
+  width: 90%;
+  max-width: 550px;
+  max-height: 85vh;
   overflow-y: auto;
-  padding: 26px;
+  padding: 20px;
   text-align: center;
   color: var(--text);
-  box-shadow: 0 0 55px var(--glow);
-  animation: slideDown 0.35s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 0 50px rgba(255,215,0,0.3);
+  animation: slideDown 0.3s ease;
 }
 @keyframes slideDown {
-  from{transform: translateY(-40px) scale(0.95); opacity: 0;}
-  to{transform: translateY(0) scale(1); opacity: 1;}
+  from{transform: translateY(-50px); opacity: 0;}
+  to{transform: translateY(0); opacity: 1;}
 }
 .modal-content h3 {
   color: var(--gold);
   font-size: 1.8rem;
   margin-top: 0;
-  margin-bottom:18px;
 }
 .modal-content button {
-  margin: 6px;
+  margin: 8px;
   padding: 10px 20px;
   border-radius: 40px;
   border: none;
-  background: linear-gradient(135deg, var(--gold), var(--accent2));
-  font-weight: 800;
+  background: linear-gradient(135deg, #FFD700, #FF4081);
+  font-weight: bold;
   cursor: pointer;
-  transition:0.25s;
-  color:#000;
-  font-family:inherit;
-}
-.modal-content button:hover{
-  transform:translateY(-2px) scale(1.03);
-  box-shadow:0 0 18px var(--glow);
 }
 .modal-content .close-modal {
-  background: #272732;
+  background: #333;
   color: white;
-  border:1px solid var(--border);
   margin-top: 20px;
-  width: 100%;
-  max-width: 220px;
 }
 .setting-item {
-  margin: 18px 0;
+  margin: 20px 0;
   text-align: right;
-  padding: 12px 10px;
+  padding: 8px;
   border-bottom: 1px dashed var(--gold);
-  border-radius:14px;
-  background:rgba(255,255,255,0.02);
 }
 .setting-item label {
-  font-weight: 800;
+  font-weight: bold;
   margin-left: 12px;
-  display:block;
-  margin-bottom:8px;
-  color:var(--gold);
-}
-.theme-dots{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-.color-chip {
-  padding:8px 14px !important;
-  font-size:0.85rem !important;
-  border-radius:20px !important;
-  color:#000 !important;
 }
 .bio-modal-img {
   width: 100%;
@@ -239,12 +174,11 @@ body{
   border: 2px solid var(--gold);
   background: var(--bg);
   display: block;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
 .bio-modal-text {
   text-align: center;
-  font-size: 1.15rem;
-  line-height: 1.9;
+  font-size: 1.1rem;
+  line-height: 1.8;
   margin: 20px 0;
   white-space: pre-line;
   font-family: 'Amiri', serif;
@@ -252,7 +186,7 @@ body{
 .telegram-modal-btn {
   display: inline-block;
   background: linear-gradient(135deg,#0088cc,#2a5c8a);
-  padding: 12px 26px;
+  padding: 10px 20px;
   border-radius: 60px;
   margin-top: 10px;
   text-decoration: none;
@@ -264,200 +198,65 @@ body{
   margin-left: 8px;
 }
 .telegram-modal-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 22px #0088cc;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #0088cc;
 }
 .marquee{
-  margin-top:64px;
+  margin-top:70px;
   overflow:hidden;
   white-space:nowrap;
-  background:linear-gradient(90deg,var(--gold),var(--accent2),var(--accent3));
+  background:linear-gradient(90deg,#FFD700,#FF4081,#00E5FF);
   color:#000;
   font-weight:900;
-  box-shadow:0 4px 20px rgba(0,0,0,0.35);
-  position:relative;
 }
 .marquee span{
   display:inline-block;
   padding:10px 0;
-  font-size:1.05rem;
   animation:move 15s linear infinite;
 }
 @keyframes move{
   from{transform:translateX(100%)}
   to{transform:translateX(-100%)}
 }
-.hero{
-  margin-top:38px;
-  position:relative;
-  padding:0 16px;
-}
-.profile-frame{
-  position:relative;
-  display:inline-block;
-  padding:8px;
-  border-radius:26px;
-  background:linear-gradient(135deg, var(--gold), var(--accent2), var(--accent3));
-  box-shadow:0 0 40px var(--glow);
-  animation:floatHero 5s ease-in-out infinite;
-}
-@keyframes floatHero{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-}
+.hero{margin-top:30px; position:relative;}
 .hero img{
   width:220px;
   height:220px;
-  border-radius:20px;
+  border-radius:12px;
   object-fit:cover;
-  border:3px solid var(--bg);
-  display:block;
-  transition:opacity 0.35s ease, transform 0.35s ease;
-}
-.status-badge{
-  position:absolute;
-  bottom:-10px;
-  right:50%;
-  transform:translateX(50%);
-  background:linear-gradient(135deg,#00c853,#00e676);
-  color:#000;
-  font-size:0.78rem;
-  font-weight:900;
-  padding:4px 14px;
-  border-radius:30px;
-  border:2px solid var(--bg);
-  white-space:nowrap;
-  box-shadow:0 4px 12px rgba(0,200,83,0.4);
-}
-.hero-title-wrap{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-top:22px;
+  border:4px solid var(--gold);
+  box-shadow:0 0 30px var(--gold);
 }
 .hero h1{
-  font-family:'Amiri',serif;
-  font-size:2.3rem;
-  margin:6px 0;
-  background:linear-gradient(90deg,var(--text),var(--gold));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.verified-badge{
-  color:#00E5FF;
-  font-size:1.4rem;
-  filter:drop-shadow(0 0 8px rgba(0,229,255,0.6));
-}
-.typewriter-box{
-  min-height:32px;
-  font-size:1.05rem;
-  font-weight:700;
-  color:var(--gold);
-  margin-bottom:10px;
-  letter-spacing:0.3px;
-}
-.typewriter-cursor{
-  display:inline-block;
-  width:3px;
-  background:var(--gold);
-  margin-right:4px;
-  animation:blink 0.8s infinite;
-}
-@keyframes blink{
-  0%,100%{opacity:1;}
-  50%{opacity:0;}
+  font-family:Amiri,serif;
+  font-size:2.2rem;
+  margin:10px 0;
 }
 .image-nav{
-  margin-top:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
+  margin-top:10px;
 }
 .image-nav button{
-  padding:8px 20px;
+  margin:10px;
+  padding:8px 18px;
   border:none;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  border-radius:14px;
+  background:linear-gradient(135deg,#FFD700,#FF4081);
   color:#000;
-  font-size:1.25rem;
+  font-size:1.3rem;
   cursor:pointer;
   font-weight:900;
-  transition:0.3s;
-  box-shadow:0 4px 15px rgba(0,0,0,0.3);
-}
-.image-nav button:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 20px var(--glow);
-}
-.img-dots{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  margin-top:12px;
-}
-.img-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--border);
-  cursor:pointer;
-  transition:0.3s;
-}
-.img-dot.active{
-  width:28px;
-  border-radius:10px;
-  background:var(--gold);
-  box-shadow:0 0 10px var(--gold);
-}
-.quick-actions{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:22px auto 10px;
-  padding:0 16px;
-}
-.action-pill{
-  background:var(--card);
-  border:1px solid var(--gold);
-  color:var(--text);
-  padding:10px 20px;
-  border-radius:50px;
-  font-family:inherit;
-  font-weight:800;
-  font-size:0.95rem;
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  backdrop-filter:blur(10px);
-  transition:0.3s;
-}
-.action-pill i{
-  color:var(--gold);
-}
-.action-pill:hover{
-  background:var(--gold);
-  color:#000;
-  transform:translateY(-3px);
-  box-shadow:0 0 22px var(--glow);
-}
-.action-pill:hover i{
-  color:#000;
 }
 .fancy-title{
   margin:40px auto 20px;
   display:inline-block;
   padding:14px 30px;
   border-radius:50px;
-  background:linear-gradient(135deg,var(--gold),var(--accent2),var(--accent3));
+  background:linear-gradient(135deg,#FFD700,#FF4081,#00E5FF);
   color:#000;
-  font-family:'Amiri',serif;
+  font-family:Amiri,serif;
   font-size:1.9rem;
   font-weight:900;
-  box-shadow:0 0 35px var(--glow);
+  box-shadow:0 0 35px rgba(255,215,0,0.6);
   animation:pulse 4s infinite;
 }
 @keyframes pulse{
@@ -471,68 +270,27 @@ body{
   align-items:center;
   justify-content:center;
   gap:14px;
-  opacity:0.95;
+  opacity:0.9;
 }
 .divider::before,
 .divider::after{
   content:"";
-  height:2px;
-  width:90px;
+  height:1px;
+  width:80px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 .divider span{
-  font-size:1.05rem;
+  font-size:0.95rem;
   color:var(--gold);
   font-weight:800;
-  padding:6px 18px;
-  border-radius:30px;
-  background:rgba(255,215,0,0.08);
-  border:1px solid rgba(255,215,0,0.25);
   animation:fadeZikr 4s ease-in-out infinite;
 }
 @keyframes fadeZikr{
-  0%{opacity:0.35; transform:scale(0.96);}
-  50%{opacity:1; transform:scale(1.03);}
-  100%{opacity:0.35; transform:scale(0.96);}
-}
-.search-wrap{
-  max-width:520px;
-  margin:0 auto 24px;
-  padding:0 16px;
-  position:relative;
-}
-.search-input{
-  width:100%;
-  padding:13px 45px 13px 20px;
-  border-radius:50px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  font-family:inherit;
-  font-size:0.98rem;
-  font-weight:700;
-  backdrop-filter:blur(12px);
-  outline:none;
-  transition:0.3s;
-}
-.search-input:focus{
-  border-color:var(--gold);
-  box-shadow:0 0 20px var(--glow);
-}
-.search-wrap i{
-  position:absolute;
-  right:34px;
-  top:50%;
-  transform:translateY(-50%);
-  color:var(--gold);
-  pointer-events:none;
-}
-html[dir="ltr"] .search-wrap i{
-  right:auto;
-  left:34px;
-}
-html[dir="ltr"] .search-input{
-  padding:13px 20px 13px 45px;
+  0%{opacity:0}
+  20%{opacity:1}
+  50%{opacity:1}
+  80%{opacity:0}
+  100%{opacity:0}
 }
 .links-grid{
   display:grid;
@@ -546,51 +304,22 @@ html[dir="ltr"] .search-input{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:20px;
-  padding:22px 18px;
+  padding:20px;
   text-decoration:none;
   color:var(--text);
   font-weight:800;
-  font-size:1.05rem;
   backdrop-filter:blur(14px);
-  transition:0.35s cubic-bezier(0.16,1,0.3,1);
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-.link-card::before{
-  content:"";
-  position:absolute;
-  top:0; left:-100%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent);
-  transform:skewX(-25deg);
-  transition:0.6s;
-}
-.link-card:hover::before{
-  left:130%;
-}
-.link-card i{
-  font-size:2rem;
-  margin-bottom:10px;
-  display:block;
-  color:var(--gold);
   transition:0.35s;
 }
+.link-card i{
+  font-size:1.9rem;
+  margin-bottom:10px;
+  display:block;
+}
 .link-card:hover{
-  transform:translateY(-8px) scale(1.03);
-  border-color:var(--gold);
-  box-shadow:0 10px 30px rgba(0,229,255,0.3),0 0 20px var(--glow);
+  transform:translateY(-8px) scale(1.05);
+  box-shadow:0 0 30px rgba(0,229,255,0.45);
 }
-.link-card:hover i{
-  transform:scale(1.18) rotate(-5deg);
-}
-.link-card .fa-youtube{color:#FF0000;}
-.link-card .fa-telegram{color:#29B6F6;}
-.link-card .fa-mosque{color:#00E676;}
 .section{
   max-width:1100px;
   margin:35px auto;
@@ -599,64 +328,25 @@ html[dir="ltr"] .search-input{
   border-radius:26px;
   padding:35px;
   text-align:right;
-  backdrop-filter:blur(14px);
-  box-shadow:0 10px 35px rgba(0,0,0,0.25);
-  transition:0.3s;
-}
-.section:hover{
-  border-color:rgba(255,215,0,0.35);
 }
 .section h2{
   color:var(--gold);
   text-align:center;
-  font-size:1.75rem;
-  margin-top:0;
-  margin-bottom:22px;
 }
 .notice{
-  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  background:linear-gradient(135deg,#FFD700,#FF4081);
   color:#000;
   padding:22px;
   border-radius:20px;
   font-weight:900;
   max-width:1100px;
   margin:25px auto;
-  box-shadow:0 10px 30px var(--glow);
 }
-.skills ul{
-  list-style:none;
-  padding:0;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
-}
+.skills ul{list-style:none;padding:0;}
 .skills li{
-  padding:16px 18px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid var(--border);
-  border-right:4px solid var(--gold);
-  border-radius:16px;
-  font-weight:800;
-  font-size:1.02rem;
-  transition:0.3s;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-html[dir="ltr"] .skills li{
-  border-right:1px solid var(--border);
-  border-left:4px solid var(--gold);
-}
-.skills li::after{
-  content:"⚡";
-  font-size:0.95rem;
-  opacity:0.75;
-}
-.skills li:hover{
-  transform:translateY(-4px) scale(1.02);
-  background:rgba(255,215,0,0.1);
-  border-color:var(--gold);
-  box-shadow:0 6px 20px var(--glow);
+  padding:12px 0;
+  border-bottom:1px dashed rgba(255,255,255,0.3);
+  font-weight:700;
 }
 .dev-bio {
   text-align: center;
@@ -675,14 +365,13 @@ html[dir="ltr"] .skills li{
   color: white;
   font-weight: bold;
   transition: 0.3s;
-  box-shadow:0 6px 20px rgba(0,136,204,0.35);
 }
 .dev-bio .telegram-btn i {
   margin-left: 8px;
 }
 .dev-bio .telegram-btn:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 0 25px #0088cc;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #0088cc;
 }
 .post-image{
   max-width:1100px;
@@ -691,94 +380,34 @@ html[dir="ltr"] .skills li{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:26px;
-  position:relative;
 }
 .post-image img{
   width:100%;
   height:auto;
-  max-height:550px;
-  object-fit:cover;
   border-radius:20px;
   box-shadow:0 0 40px rgba(0,0,0,0.6);
-  cursor:zoom-in;
-  transition:0.35s;
-}
-.post-image img:hover{
-  transform:scale(1.01);
-  box-shadow:0 0 45px var(--glow);
-}
-.toast-notification{
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%) translateY(100px);
-  background:linear-gradient(135deg,var(--gold),var(--accent2));
-  color:#000;
-  padding:12px 28px;
-  border-radius:50px;
-  font-weight:900;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  z-index:300;
-  opacity:0;
-  transition:0.4s cubic-bezier(0.16,1,0.3,1);
-  pointer-events:none;
-}
-.toast-notification.show{
-  transform:translateX(-50%) translateY(0);
-  opacity:1;
-}
-#lightboxModal .modal-content{
-  background:transparent;
-  border:none;
-  box-shadow:none;
-  max-width:90vw;
-  padding:0;
-}
-#lightboxImg{
-  max-width:100%;
-  max-height:82vh;
-  border-radius:20px;
-  border:3px solid var(--gold);
-  box-shadow:0 0 50px rgba(0,0,0,0.9);
 }
 footer{
   margin:30px 0;
   opacity:0.85;
-  font-weight:700;
-}
-@media (max-width: 640px) {
-  .hero h1 { font-size: 2rem; }
-  .fancy-title { font-size: 1.5rem; padding: 12px 24px; }
-  .section { padding: 24px 18px; margin: 25px 14px; }
-  .notice { margin: 20px 14px; }
-  .post-image { margin: 30px 14px; }
 }
 </style>
 </head>
 <body>
-
 <header class="topbar">
   <div class="topbar-title" id="topbarTitle">👑 الملك صقر</div>
-  <button id="settingsBtn" class="settings-toggle" title="الإعدادات"><i class="fas fa-cog"></i></button>
-  <button id="themeToggle" class="theme-toggle" title="تبديل المظهر">🌙</button>
+  <button id="settingsBtn" class="settings-toggle"><i class="fas fa-cog"></i></button>
+  <button id="themeToggle" class="theme-toggle">🌙</button>
 </header>
-
-<!-- نافذة الإعدادات -->
 <div id="settingsModal" class="modal">
   <div class="modal-content">
     <h3 id="modalTitle"><i class="fas fa-sliders-h"></i> الإعدادات</h3>
     <div class="setting-item">
       <label id="appearanceLabel"><i class="fas fa-palette"></i> المظهر:</label>
       <button id="modalThemeBtn" class="modalThemeBtnText">تبديل الوضع (داكن/فاتح)</button>
-      <div class="theme-dots">
-        <button class="color-chip" style="background:#FFD700" onclick="setAccentTheme('')">👑 ذهبي ملكي</button>
-        <button class="color-chip" style="background:#00E5FF" onclick="setAccentTheme('theme-cyan')">💎 سماوي سيبراني</button>
-        <button class="color-chip" style="background:#FF2E63" onclick="setAccentTheme('theme-crimson')">🔥 قرمزي نيون</button>
-        <button class="color-chip" style="background:#00FF87" onclick="setAccentTheme('theme-emerald')">🐉 أخضر هكر</button>
-      </div>
     </div>
     <div class="setting-item">
-      <label id="marqueeSpeedLabel"><i class="fas fa-tachometer-alt"></i> سرعة الماركي:</label>
+      <label id="marqueeSpeedLabel"><i class="fas fa-speed"></i> سرعة الماركي:</label>
       <button id="speedSlow">🐢 بطيء</button>
       <button id="speedNormal">⚡ عادي</button>
       <button id="speedFast">🚀 سريع</button>
@@ -794,8 +423,6 @@ footer{
     <button class="close-modal" id="closeModalBtn">إغلاق</button>
   </div>
 </div>
-
-<!-- نافذة نبذة المطور -->
 <div id="bioModal" class="modal">
   <div class="modal-content">
     <h3 id="bioModalTitle">📜 نبذة المطور</h3>
@@ -812,62 +439,20 @@ footer{
     <button class="close-modal" id="closeBioModalBtn">إغلاق</button>
   </div>
 </div>
-
-<!-- نافذة تكبير الصور -->
-<div id="lightboxModal" class="modal">
-  <div class="modal-content">
-    <img id="lightboxImg" src="https://files.catbox.moe/x0ioh3.jpg" alt="معاينة الصورة">
-    <br>
-    <button class="close-modal" id="closeLightboxBtn">إغلاق</button>
-  </div>
-</div>
-
-<button id="messageButton" class="message-button" title="نبذة المطور"><i class="fas fa-comment-dots"></i></button>
-
-<!-- إشعار النسخ والمشاركة -->
-<div id="toastNotification" class="toast-notification">تم النسخ بنجاح! ✨</div>
-
+<button id="messageButton" class="message-button"><i class="fas fa-comment-dots"></i></button>
 <div class="marquee" id="marquee">
   <span id="marqueeText"> صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ </span>
 </div>
-
 <section class="hero">
-  <div class="profile-frame">
-    <img id="profilePic" src="https://files.catbox.moe/seun9i.jpg" alt="الملك صقر">
-    <span class="status-badge" id="onlineBadge">🟢 متاح للتواصل والمشاريع</span>
-  </div>
-  <div class="hero-title-wrap">
-    <h1 id="heroName">الملك صقر</h1>
-    <i class="fas fa-check-circle verified-badge" title="مطور موثق"></i>
-  </div>
-  <div class="typewriter-box">
-    <span id="typewriterText"></span><span class="typewriter-cursor">&nbsp;</span>
-  </div>
+  <img id="profilePic" src="https://files.catbox.moe/seun9i.jpg">
+  <h1 id="heroName">الملك صقر</h1>
   <div class="image-nav">
-    <button id="prevBtn" title="السابق">⏪</button>
-    <button id="nextBtn" title="التالي">⏩</button>
-  </div>
-  <div class="img-dots" id="imgDots">
-    <span class="img-dot" data-index="0"></span>
-    <span class="img-dot active" data-index="1"></span>
-    <span class="img-dot" data-index="2"></span>
-  </div>
-  <div class="quick-actions">
-    <button class="action-pill" id="copyUserBtn"><i class="fas fa-copy"></i> <span id="copyUserText">نسخ معرف التلجرام (@u_x86)</span></button>
-    <button class="action-pill" id="sharePageBtn"><i class="fas fa-share-alt"></i> <span id="sharePageText">مشاركة الصفحة</span></button>
+    <button id="prevBtn">⏪</button>
+    <button id="nextBtn">⏩</button>
   </div>
 </section>
-
 <div class="fancy-title" id="fancyTitle"> المطوّر الملك صقر </div>
-
 <div class="divider"><span id="zikr1">اذكر الله</span></div>
-
-<!-- بحث سريع في الروابط -->
-<div class="search-wrap">
-  <i class="fas fa-search"></i>
-  <input type="text" id="linkSearchInput" class="search-input" placeholder="ابحث في القنوات، البوتات، أو الروابط...">
-</div>
-
 <div class="links-grid" id="linksGrid">
   <a class="link-card" href="https://youtube.com/@king_saqr_1" target="_blank"><i class="fab fa-youtube"></i><span class="linkText" data-key="youtube">قناة يوتيوب</span></a>
   <a class="link-card" href="https://t.me/+T_8QE67Pn6tkMzNk" target="_blank"><i class="fab fa-telegram"></i><span class="linkText" data-key="telegramMain">القناة الأساسية</span></a>
@@ -879,19 +464,14 @@ footer{
   <a class="link-card" href="https://t.me/KingSaqr_Bot" target="_blank"><i class="fas fa-image"></i><span class="linkText" data-key="hackBot">بوت اختراق</span></a>
   <a class="link-card" href="https://t.me/ZadAltawa" target="_blank"><i class="fas fa-mosque"></i><span class="linkText" data-key="religiousChannel">قناة دينية</span></a>
 </div>
-
 <div class="notice" id="noticeText">🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
-
 <div class="divider"><span id="zikr2">استغفر الله</span></div>
-
 <div class="section" id="whySection">
 <h2 id="whyTitle">لماذا تشترك في قناة الملك صقر؟</h2>
 <p id="whyDesc">إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.</p>
 <p><strong id="whyStrong">اشترك وابدأ رحلتك التقنية بثقة.</strong></p>
 </div>
-
 <div class="divider"><span id="zikr3">اللهم لك الحمد</span></div>
-
 <div class="section skills">
 <h2 id="skillsTitle">المهارات والخدمات</h2>
 <ul id="skillsList">
@@ -906,90 +486,39 @@ footer{
 <li>📺 شروحات يوتيوب</li>
 </ul>
 </div>
-
 <div class="section dev-bio" id="devBioSection">
 <h2 id="bioTitle">👤 نبذة عن المطور</h2>
 <p id="bioText"><strong>المطور الملك صقر</strong><br>مطور بوتات تلجرام بكل الانواع<br>ومطور مواقع الويب<br>مطور تطبيقات<br>هكر اخلاقي<br>أ/استاذ الأمن السبراني وشبكات الحاسوب</p>
 <a href="https://t.me/u_x86" target="_blank" class="telegram-btn" id="telegramAccountBtn"><i class="fab fa-telegram"></i> <span id="telegramBtnText">حسابي على تلجرام</span></a>
 </div>
-
 <div class="post-image">
-  <img id="postBannerImg" src="https://files.catbox.moe/x0ioh3.jpg" alt="منشور الملك صقر">
+  <img src="https://files.catbox.moe/x0ioh3.jpg" alt="منشور الملك صقر">
 </div>
-
 <footer id="footerText">© 2026 — جميع الحقوق محفوظة | الملك صقر 👑</footer>
-
 <script>
-// تبديل الوضع الليلي والنهاري
 const btn=document.getElementById("themeToggle");
 btn.onclick=()=>{
  document.body.classList.toggle("light");
  btn.textContent=document.body.classList.contains("light")?"☀️":"🌙";
 };
-
-// تغيير ثيم الألوان الإضافي
-function setAccentTheme(themeClass) {
-  document.body.classList.remove("theme-cyan", "theme-crimson", "theme-emerald");
-  if (themeClass) document.body.classList.add(themeClass);
-}
-
-// معرض الصور والتبديل التلقائي مع النقاط التفاعلية
 const images=[
  "https://files.catbox.moe/x0ioh3.jpg",
  "https://files.catbox.moe/seun9i.jpg",
  "https://files.catbox.moe/xpczn2.jpg"
 ];
-let currentImgIndex=1;
+let currentImgIndex=0;
 const pic=document.getElementById("profilePic");
 const nextBtn=document.getElementById("nextBtn");
 const prevBtn=document.getElementById("prevBtn");
-const dots=document.querySelectorAll(".img-dot");
-
-function updateProfileImage(index) {
-  pic.style.opacity = "0.35";
-  setTimeout(() => {
-    currentImgIndex = index;
-    pic.src = images[currentImgIndex];
-    pic.style.opacity = "1";
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle("active", idx === currentImgIndex);
-    });
-  }, 140);
-}
-
-nextBtn.onclick=()=>{
-  updateProfileImage((currentImgIndex+1)%images.length);
-  resetAutoInterval();
-};
-prevBtn.onclick=()=>{
-  updateProfileImage((currentImgIndex-1+images.length)%images.length);
-  resetAutoInterval();
-};
-dots.forEach(dot => {
-  dot.onclick = () => {
-    const idx = parseInt(dot.getAttribute("data-index"));
-    updateProfileImage(idx);
-    resetAutoInterval();
-  };
-});
-
+nextBtn.onclick=()=>{currentImgIndex=(currentImgIndex+1)%images.length;pic.src=images[currentImgIndex]; resetAutoInterval();};
+prevBtn.onclick=()=>{currentImgIndex=(currentImgIndex-1+images.length)%images.length;pic.src=images[currentImgIndex]; resetAutoInterval();};
 let autoSpeed = 4000;
 let autoEnabled = true;
-let autoPlayActive = true;
-let autoInterval = setInterval(()=>{
-  updateProfileImage((currentImgIndex+1)%images.length);
-},autoSpeed);
-
+let autoInterval = setInterval(()=>{currentImgIndex=(currentImgIndex+1)%images.length;pic.src=images[currentImgIndex];},autoSpeed);
 function resetAutoInterval(){
   clearInterval(autoInterval);
-  if(autoEnabled && autoPlayActive) {
-    autoInterval = setInterval(()=>{
-      updateProfileImage((currentImgIndex+1)%images.length);
-    },autoSpeed);
-  }
+  if(autoEnabled && autoPlayActive) autoInterval = setInterval(()=>{currentImgIndex=(currentImgIndex+1)%images.length;pic.src=images[currentImgIndex];},autoSpeed);
 }
-
-// إدارة النوافذ المنبثقة
 const modal = document.getElementById("settingsModal");
 const settingsBtn = document.getElementById("settingsBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -997,14 +526,12 @@ function openModal() { modal.style.display = "flex"; }
 function closeModal() { modal.style.display = "none"; }
 settingsBtn.onclick = openModal;
 closeModalBtn.onclick = closeModal;
-
+window.onclick = function(e) { if(e.target == modal) closeModal(); };
 const modalThemeBtn = document.getElementById("modalThemeBtn");
 modalThemeBtn.onclick = () => {
   document.body.classList.toggle("light");
   btn.textContent=document.body.classList.contains("light")?"☀️":"🌙";
 };
-
-// التحكم بسرعة شريط الماركي
 const marqueeSpan = document.querySelector("#marquee span");
 const speedSlow = document.getElementById("speedSlow");
 const speedNormal = document.getElementById("speedNormal");
@@ -1012,22 +539,19 @@ const speedFast = document.getElementById("speedFast");
 speedSlow.onclick = () => { marqueeSpan.style.animation = "move 30s linear infinite"; };
 speedNormal.onclick = () => { marqueeSpan.style.animation = "move 15s linear infinite"; };
 speedFast.onclick = () => { marqueeSpan.style.animation = "move 6s linear infinite"; };
-
-// التحكم بالتبديل التلقائي للصور
 const autoPlayToggle = document.getElementById("autoPlayToggle");
+let autoPlayActive = true;
 autoPlayToggle.onclick = () => {
   if(autoPlayActive){
     clearInterval(autoInterval);
     autoPlayToggle.textContent = currentLanguage === 'ar' ? "تفعيل التبديل التلقائي" : "Enable Auto Switch";
     autoPlayActive = false;
   } else {
-    autoPlayActive = true;
     resetAutoInterval();
     autoPlayToggle.textContent = currentLanguage === 'ar' ? "تعطيل التبديل التلقائي" : "Disable Auto Switch";
+    autoPlayActive = true;
   }
 };
-
-// نافذة نبذة المطور
 const bioModal = document.getElementById("bioModal");
 const messageButton = document.getElementById("messageButton");
 const closeBioModalBtn = document.getElementById("closeBioModalBtn");
@@ -1035,32 +559,7 @@ function openBioModal() { bioModal.style.display = "flex"; }
 function closeBioModal() { bioModal.style.display = "none"; }
 messageButton.onclick = openBioModal;
 closeBioModalBtn.onclick = closeBioModal;
-
-// نافذة تكبير الصور
-const lightboxModal = document.getElementById("lightboxModal");
-const lightboxImg = document.getElementById("lightboxImg");
-const postBannerImg = document.getElementById("postBannerImg");
-const closeLightboxBtn = document.getElementById("closeLightboxBtn");
-
-postBannerImg.onclick = () => {
-  lightboxImg.src = postBannerImg.src;
-  lightboxModal.style.display = "flex";
-};
-pic.ondblclick = () => {
-  lightboxImg.src = pic.src;
-  lightboxModal.style.display = "flex";
-};
-closeLightboxBtn.onclick = () => {
-  lightboxModal.style.display = "none";
-};
-
-window.onclick = function(e) {
-  if(e.target == bioModal) closeBioModal();
-  if(e.target == modal) closeModal();
-  if(e.target == lightboxModal) lightboxModal.style.display = "none";
-};
-
-// الترجمات
+window.onclick = function(e) { if(e.target == bioModal) closeBioModal(); if(e.target == modal) closeModal(); };
 const translations = {
   ar: {
     topbarTitle: "👑 الملك صقر",
@@ -1101,19 +600,7 @@ const translations = {
     footer: "© 2026 — جميع الحقوق محفوظة | الملك صقر 👑",
     bioModalTitle: "📜 نبذة المطور",
     bioModalText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
-    bioTelegramText: "حسابي على تلجرام",
-    onlineBadge: "🟢 متاح للتواصل والمشاريع",
-    copyUserText: "نسخ معرف التلجرام (@u_x86)",
-    sharePageText: "مشاركة الصفحة",
-    searchPlaceholder: "ابحث في القنوات، البوتات، أو الروابط...",
-    roles: [
-      "أستاذ الأمن السيبراني وشبكات الحاسوب 🛡️",
-      "مطور بوتات تلجرام ومواقع ويب احترافية 🌐",
-      "خبير اختراق أخلاقي وحماية الأنظمة 🕵️‍♂️",
-      "صانع محتوى تقني وشروحات برمجية 🎥",
-      "مطور تطبيقات احترافية 📱",
-      "باحث أمني ومتخصص في Kali Linux 🐉"
-    ]
+    bioTelegramText: "حسابي على تلجرام"
   },
   en: {
     topbarTitle: "👑 King Saqr",
@@ -1154,19 +641,7 @@ const translations = {
     footer: "© 2026 — All rights reserved | King Saqr 👑",
     bioModalTitle: "📜 Developer Bio",
     bioModalText: "Developer King Saqr\nTelegram bots developer (all types)\nWeb developer\nApp developer\nEthical hacker\nProf. of Cybersecurity & Computer Networks",
-    bioTelegramText: "My Telegram",
-    onlineBadge: "🟢 Available for Projects",
-    copyUserText: "Copy Telegram ID (@u_x86)",
-    sharePageText: "Share Portfolio",
-    searchPlaceholder: "Search channels, bots, or links...",
-    roles: [
-      "Prof. of Cybersecurity & Networks 🛡️",
-      "Full-Stack Web & Telegram Bot Developer 🌐",
-      "Ethical Hacker & Security Researcher 🕵️‍♂️",
-      "Tech Content Creator & Educator 🎥",
-      "Professional App Developer 📱",
-      "Kali Linux & Security Researcher 🐉"
-    ]
+    bioTelegramText: "My Telegram"
   }
 };
 let currentLanguage = 'ar';
@@ -1176,7 +651,7 @@ function updateLanguage(lang) {
   document.getElementById("modalTitle").innerHTML = `<i class="fas fa-sliders-h"></i> ${t.modalTitle}`;
   document.getElementById("appearanceLabel").innerHTML = `<i class="fas fa-palette"></i> ${t.appearanceLabel}`;
   document.querySelector(".modalThemeBtnText").innerText = t.modalThemeBtnText;
-  document.getElementById("marqueeSpeedLabel").innerHTML = `<i class="fas fa-tachometer-alt"></i> ${t.marqueeSpeedLabel}`;
+  document.getElementById("marqueeSpeedLabel").innerHTML = `<i class="fas fa-speed"></i> ${t.marqueeSpeedLabel}`;
   document.getElementById("autoImageLabel").innerHTML = `<i class="fas fa-image"></i> ${t.autoImageLabel}`;
   document.getElementById("languageLabel").innerHTML = `<i class="fas fa-language"></i> ${t.languageLabel}`;
   document.getElementById("langToggleBtn").innerText = t.langBtn;
@@ -1207,99 +682,15 @@ function updateLanguage(lang) {
   document.getElementById("bioModalTitle").innerHTML = t.bioModalTitle;
   document.getElementById("bioModalText").innerHTML = t.bioModalText.replace(/\n/g,"<br>");
   document.getElementById("bioTelegramLink").innerHTML = `<i class="fab fa-telegram"></i> ${t.bioTelegramText}`;
-  document.getElementById("onlineBadge").innerText = t.onlineBadge;
-  document.getElementById("copyUserText").innerText = t.copyUserText;
-  document.getElementById("sharePageText").innerText = t.sharePageText;
-  document.getElementById("linkSearchInput").placeholder = t.searchPlaceholder;
   if(autoPlayActive) autoPlayToggle.textContent = t.autoToggleOn;
   else autoPlayToggle.textContent = t.autoToggleOff;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.dir = lang === 'ar' ? 'rtl' : 'ltr';
 }
-
 document.getElementById("langToggleBtn").onclick = () => {
   currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
   updateLanguage(currentLanguage);
 };
 updateLanguage('ar');
-
-// تأثير الكتابة الآلية (Typewriter) تحت اسم الملك صقر
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typewriterEl = document.getElementById("typewriterText");
-
-function typeWriterLoop() {
-  const roles = translations[currentLanguage].roles;
-  const currentRole = roles[roleIndex % roles.length];
-  if (!isDeleting) {
-    typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
-    charIndex++;
-    if (charIndex === currentRole.length) {
-      isDeleting = true;
-      setTimeout(typeWriterLoop, 2200);
-      return;
-    }
-  } else {
-    typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
-    charIndex--;
-    if (charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
-  }
-  setTimeout(typeWriterLoop, isDeleting ? 35 : 70);
-}
-typeWriterLoop();
-
-// البحث الفوري في بطاقات الروابط
-const linkSearchInput = document.getElementById("linkSearchInput");
-linkSearchInput.addEventListener("input", (e) => {
-  const query = e.target.value.toLowerCase().trim();
-  const cards = document.querySelectorAll("#linksGrid .link-card");
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(query) ? "flex" : "none";
-  });
-});
-
-// إشعار النسخ والمشاركة
-const toastEl = document.getElementById("toastNotification");
-function showToast(msg) {
-  toastEl.textContent = msg;
-  toastEl.classList.add("show");
-  setTimeout(() => {
-    toastEl.classList.remove("show");
-  }, 2800);
-}
-
-function copyTextFallback(text) {
-  const tempInput = document.createElement("textarea");
-  tempInput.value = text;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  document.execCommand("copy");
-  document.body.removeChild(tempInput);
-}
-
-document.getElementById("copyUserBtn").onclick = () => {
-  copyTextFallback("@u_x86");
-  showToast(currentLanguage === 'ar' ? "✅ تم نسخ معرف التلجرام: @u_x86" : "✅ Copied Telegram ID: @u_x86");
-};
-
-document.getElementById("sharePageBtn").onclick = async () => {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "👑 الملك صقر | المطور وأستاذ الأمن السيبراني",
-        url: window.location.href
-      });
-    } catch (err) {}
-  } else {
-    copyTextFallback(window.location.href);
-    showToast(currentLanguage === 'ar' ? "🔗 تم نسخ رابط الصفحة للمشاركة!" : "🔗 Page link copied to clipboard!");
-  }
-};
 </script>
 </body>
 </html>
