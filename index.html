@@ -698,115 +698,78 @@ body.light .about-list li{
 }
 .services-title {
   color: var(--gold);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   margin-bottom: 24px;
   text-align: center;
   font-family: 'Amiri', serif;
 }
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
 }
 .service-card {
-  background: linear-gradient(180deg, #1e0f0f 0%, #0d0505 100%);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-radius: 24px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
   padding: 24px;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  transition: 0.3s;
-  overflow: hidden;
-}
-body.light .service-card {
-  background: linear-gradient(180deg, #fff 0%, #f0f0f0 100%);
-  border: 1px solid rgba(0,0,0,0.1);
-}
-.service-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #ff1744, #ff8a00);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  transition: 0.35s;
 }
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 28px var(--gold);
 }
 .service-header {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  position: relative;
-  margin-bottom: 16px;
-  margin-top: 10px;
-}
-.service-icon-box {
-  position: absolute;
-  left: 0;
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  border: 2px solid var(--gold);
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  color: var(--gold);
-  font-size: 1.6rem;
+  margin-bottom: 14px;
 }
 .service-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 900;
-  color: #FFA500;
+  color: var(--gold);
   margin: 0;
-  padding: 0 60px;
 }
 .service-dashed {
   width: 100%;
-  border-bottom: 2px dashed rgba(255, 215, 0, 0.5);
-  margin: 16px 0 20px;
+  border-bottom: 1.5px dashed var(--gold);
+  margin-bottom: 16px;
+  opacity: 0.5;
 }
 .service-desc {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   line-height: 1.7;
-  min-height: 60px;
+  flex-grow: 1;
+  min-height: 52px;
 }
 .service-btn {
-  background: linear-gradient(135deg, #ff1744, #d50000);
-  color: #fff;
+  background: linear-gradient(135deg, var(--gold), var(--accent2));
+  color: #000;
   border: none;
-  padding: 10px 36px;
-  border-radius: 30px;
-  font-size: 1.1rem;
+  padding: 10px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
   font-weight: 900;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(255, 23, 68, 0.4);
   transition: 0.3s;
-  margin-bottom: 14px;
-  display: inline-block;
+  box-shadow: var(--shadow);
 }
 .service-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 23, 68, 0.6);
-}
-.service-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 600;
-  line-height: 1.5;
+  box-shadow: 0 0 20px var(--gold);
 }
 .articles-grid{
   display:grid;
@@ -1216,8 +1179,6 @@ footer{
   </ul>
 </div>
 
-<div class="services-wrapper" id="servicesWrapper"></div>
-
 <div class="section" id="whySection">
   <h2 id="whyTitle">لماذا تشترك في قناة الملك صقر؟</h2>
   <p id="whyDesc">إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.</p>
@@ -1245,6 +1206,8 @@ footer{
     <li>شروحات يوتيوب</li>
   </ul>
 </div>
+
+<div class="services-wrapper" id="servicesWrapper"></div>
 
 <div class="section dev-bio" id="devBioSection">
   <h2 id="bioTitle">نبذة عن المطور</h2>
@@ -1409,42 +1372,32 @@ const translations = {
       "شروحات متنوعة",
       "محاربة قضايا الابتزاز"
     ],
-    servicesTitle: "خدماتنا وأسعارنا",
+    servicesTitle: "خدماتنا",
+    servicesBtn: "طلب",
     services: [
       {
         title: "أرقام وهمية",
-        desc: "وهمية واتساب - تلجرام بجودة عالية",
-        btn: "1$ لكل رقم",
-        sub: "أرقام جديدة وعالية الجودة",
-        icon: "fas fa-file-alt"
+        desc: "وهمية واتساب - تلجرام بجودة عالية"
       },
       {
         title: "تمويل قنوات",
-        desc: "زيادة أعضاء حقيقية للقنوات<br>نظام الاشتراك الإجباري عبر بوت خاص",
-        btn: "أسعار خاصة",
-        sub: "ضمان دخول 500 عضو أو أكثر في الساعة",
-        icon: "fas fa-users"
+        desc: "زيادة أعضاء حقيقية للقنوات ونظام الاشتراك الإجباري عبر بوت خاص"
       },
       {
-        title: "إعلانات",
-        desc: "إعلانات في قناة فسنجون 2.5M متابع",
-        btn: "6$ لكل إعلان",
-        sub: "اعلانات بقناة فسنجون للقنوات والجروبات ضمان دخول 500 عضو او اكثر في اعلان وصول لاكبر جمهور",
-        icon: "fas fa-bullhorn"
+        title: "نشر إعلانات في قنوات",
+        desc: "إعلانات في القنوات للوصول إلى أكبر جمهور"
       },
       {
         title: "نجوم تلجرام",
-        desc: "إهداء نجوم رسمي بضمان",
-        btn: "2$ لكل 100 نجمة",
-        sub: "تعزيز حسابك بثقة",
-        icon: "fas fa-star"
+        desc: "إهداء نجوم رسمي بضمان لتعزيز حسابك بثقة"
       },
       {
         title: "تصميم مواقع",
-        desc: "تصميم وعمل مواقع بكافة أنواعها",
-        btn: "حسب الطلب",
-        sub: "بجميع الأشكال والمقاسات",
-        icon: "fas fa-globe"
+        desc: "تصميم وعمل مواقع بكافة أنواعها وبجميع الأشكال والمقاسات"
+      },
+      {
+        title: "دورات الأمن السيبراني",
+        desc: "دورات شاملة في الأمن السيبراني، التوعية، الهكر، والذكاء الاصطناعي"
       }
     ],
     whyTitle: "لماذا تشترك في قناة الملك صقر؟",
@@ -1539,42 +1492,32 @@ const translations = {
       "Various Tutorials & Guides",
       "Combating Blackmail & Cyber Extortion Issues"
     ],
-    servicesTitle: "Our Services & Prices",
+    servicesTitle: "Our Services",
+    servicesBtn: "Order",
     services: [
       {
         title: "Fake Numbers",
-        desc: "WhatsApp - Telegram high quality",
-        btn: "$1 per number",
-        sub: "New and high quality numbers",
-        icon: "fas fa-file-alt"
+        desc: "WhatsApp - Telegram high quality"
       },
       {
         title: "Channel Funding",
-        desc: "Real members for channels<br>Mandatory subscription system via a custom bot",
-        btn: "Special Prices",
-        sub: "Guaranteed 500 members or more per hour",
-        icon: "fas fa-users"
+        desc: "Real members for channels and mandatory subscription system via a custom bot"
       },
       {
-        title: "Advertisements",
-        desc: "Ads in Fesngon channel 2.5M followers",
-        btn: "$6 per ad",
-        sub: "Ads in Fesngon channel for channels and groups, guaranteed 500 members or more in an ad reaching the largest audience",
-        icon: "fas fa-bullhorn"
+        title: "Advertising in Channels",
+        desc: "Ads in channels to reach the largest audience"
       },
       {
         title: "Telegram Stars",
-        desc: "Official stars gift with guarantee",
-        btn: "$2 per 100 stars",
-        sub: "Boost your account with confidence",
-        icon: "fas fa-star"
+        desc: "Official stars gift with guarantee to boost your account with confidence"
       },
       {
         title: "Website Design",
-        desc: "Design and build websites of all types",
-        btn: "Custom Quote",
-        sub: "All shapes and sizes",
-        icon: "fas fa-globe"
+        desc: "Design and build websites of all types and all shapes and sizes"
+      },
+      {
+        title: "Cybersecurity Courses",
+        desc: "Comprehensive courses in cybersecurity, awareness, hacking, and artificial intelligence"
       }
     ],
     whyTitle: "Why Subscribe to King Saqr's Channel?",
@@ -1671,13 +1614,11 @@ function renderServices(lang) {
     html += `
       <div class="service-card searchable-item">
         <div class="service-header">
-          <div class="service-icon-box"><i class="${s.icon}"></i></div>
           <h3 class="service-title">${s.title}</h3>
         </div>
         <div class="service-dashed"></div>
         <p class="service-desc">${s.desc}</p>
-        <a href="https://t.me/u_x86" target="_blank" class="service-btn">${s.btn}</a>
-        <div class="service-sub">${s.sub}</div>
+        <a href="https://t.me/u_x86" target="_blank" class="service-btn">${t.servicesBtn}</a>
       </div>
     `;
   });
