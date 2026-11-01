@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>👑 الملك صقر</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
+<title>الملك صقر</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@600;800;900&family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>
 :root{
@@ -21,7 +21,6 @@
   --shadow:0 8px 30px rgba(0,0,0,0.55);
 }
 
-/* ضبط الوضع النهاري بشكل احترافي وواضح جداً */
 body.light{
   --bg:#eef2f7;
   --text:#0f172a;
@@ -36,7 +35,6 @@ body.light{
   --shadow:0 8px 25px rgba(15, 23, 42, 0.1);
 }
 
-/* ثيمات الألوان (أخضر هكر، سماوي سيبراني، نيون) */
 body.theme-hacker{
   --gold:#00FF66;
   --accent2:#00B84C;
@@ -82,7 +80,22 @@ body{
   overflow-x:hidden;
 }
 
-/* الخلفية السيبرانية المتحركة */
+/* English typography overrides (Cinzel display + Poppins body) */
+html[lang="en"] body{
+  font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+html[lang="en"] .hero h1,
+html[lang="en"] .section h2,
+html[lang="en"] .about-card h2,
+html[lang="en"] .fancy-title,
+html[lang="en"] .dev-bio h2,
+html[lang="en"] .topbar-title,
+html[lang="en"] #dynamicRoleText,
+html[lang="en"] .music-player .track-name{
+  font-family:'Cinzel', serif;
+  letter-spacing:0.12em;
+}
+
 #cyberCanvas{
   position:fixed;
   top:0;
@@ -97,7 +110,6 @@ body.light #cyberCanvas{
   opacity:0.28;
 }
 
-/* الشريط العلوي الموحد مع جميع الأزرار المدمجة */
 .topbar{
   position:fixed;
   top:0; left:0; right:0;
@@ -139,7 +151,6 @@ body.light .topbar-title{
   text-shadow:0 1px 2px rgba(0,0,0,0.15);
 }
 
-/* أزرار الشريط العلوي */
 .top-icon-btn{
   background:var(--card);
   border:1.5px solid var(--gold);
@@ -171,7 +182,6 @@ body.light .topbar-title{
   color:#000 !important;
 }
 
-/* زر القلوب في الشريط العلوي */
 .top-heart-btn{
   background:linear-gradient(135deg, #ff1744, #ff4081);
   color:#fff !important;
@@ -223,6 +233,8 @@ body.light .topbar-title{
   font-size:1.7rem;
   pointer-events:none;
   z-index:9999;
+  color:#ff1744;
+  filter:drop-shadow(0 0 10px rgba(255,23,68,0.6));
   animation:flyUpHeart 1.3s ease-out forwards;
 }
 @keyframes flyUpHeart{
@@ -230,7 +242,6 @@ body.light .topbar-title{
   100%{transform:translateY(-130px) scale(1.6); opacity:0;}
 }
 
-/* زر الرسالة العائم */
 .message-button{
   position:fixed;
   bottom:26px;
@@ -255,7 +266,6 @@ body.light .topbar-title{
   box-shadow:0 0 30px var(--gold);
 }
 
-/* النوافذ المنبثقة */
 .modal {
   display: none;
   position: fixed;
@@ -343,6 +353,9 @@ body.light .topbar-title{
   white-space: pre-line;
   font-family: 'Amiri', serif;
 }
+html[lang="en"] .bio-modal-text{
+  font-family: 'Poppins', system-ui, sans-serif;
+}
 .telegram-modal-btn {
   display: inline-block;
   background: linear-gradient(135deg,#0088cc,#2a5c8a);
@@ -362,7 +375,6 @@ body.light .topbar-title{
   box-shadow: 0 0 20px #0088cc;
 }
 
-/* شريط الماركي المتحرك */
 .marquee{
   margin-top:68px;
   overflow:hidden;
@@ -388,7 +400,6 @@ body.light .topbar-title{
   to{transform:translateX(-100%)}
 }
 
-/* قسم الهيرو والإطار المربع المتوهج */
 .hero{
   margin-top:32px;
   position:relative;
@@ -421,7 +432,6 @@ body.light .topbar-title{
   border:3px solid var(--bg);
   display:block;
 }
-/* شارة متاح للتواصل مضبوطة بدقة داخل أسفل المربع */
 .square-status-badge{
   position:absolute;
   bottom:12px;
@@ -446,8 +456,27 @@ body.light .topbar-title{
   font-size:2.35rem;
   margin:14px 0 6px;
   color:var(--text);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
 }
-/* النص المتحرك المتبدل تحت اسم الملك صقر */
+.hero h1 .check{
+  display:inline-block;
+  width:24px;
+  height:24px;
+  background:var(--gold);
+  border-radius:50%;
+  color:#000;
+  font-size:14px;
+  line-height:24px;
+  text-align:center;
+  box-shadow:0 0 14px var(--gold);
+  font-family:system-ui, sans-serif;
+  font-weight:900;
+}
+
 .dynamic-subtitle-wrap{
   min-height:38px;
   display:flex;
@@ -488,7 +517,6 @@ body.light .topbar-title{
   transform:scale(1.07);
 }
 
-/* أزرار نسخ يوزر المطور ومشاركة الصفحة */
 .hero-quick-actions{
   display:flex;
   justify-content:center;
@@ -524,7 +552,6 @@ body.light .topbar-title{
   color:#000;
 }
 
-/* شريط البحث الفوري عن قناة أو بوت أو مقالة */
 .search-container{
   max-width:680px;
   margin:22px auto 10px;
@@ -570,7 +597,6 @@ body.light .topbar-title{
   display:none;
 }
 
-/* الفواصل والأذكار المتبدلة بالتصميم المتوهج */
 .divider{
   margin:38px auto;
   display:flex;
@@ -604,7 +630,6 @@ body.light .topbar-title{
   100%{opacity:0; transform:scale(0.92);}
 }
 
-/* شبكة الروابط */
 .links-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -637,7 +662,6 @@ body.light .topbar-title{
   box-shadow:0 0 28px var(--gold);
 }
 
-/* الأقسام العامة */
 .section{
   max-width:1100px;
   margin:35px auto;
@@ -684,7 +708,6 @@ body.light .skills li{
   background:rgba(15, 23, 42, 0.04);
 }
 
-/* قسم نبذة الملك صقر (المضاف حديثاً) */
 .about-list{
   list-style:none;
   padding:0;
@@ -710,7 +733,6 @@ body.light .about-list li{
   background:rgba(15, 23, 42, 0.04);
 }
 
-/* قسم مقالات الملك صقر */
 .articles-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
@@ -771,7 +793,6 @@ body.light .about-list li{
   color:#000;
 }
 
-/* قسم نبذة المطور مع الخلفية المؤطرة وزر التلجرام */
 .dev-bio {
   text-align: center !important;
   position: relative;
@@ -829,7 +850,6 @@ body.light .about-list li{
   box-shadow:0 0 35px rgba(0,0,0,0.45);
 }
 
-/* ===== مشغل الموسيقى الحقيقي (Vinyl Player) ===== */
 .music-player{
   width:100%;
   max-width:600px;
@@ -876,7 +896,7 @@ body.light .about-list li{
   100%{transform:rotate(360deg);}
 }
 .vinyl-btn .play-icon{
-  font-size:20px;
+  font-size:18px;
   color:var(--text);
   z-index:2;
   margin-inline-start:2px;
@@ -960,7 +980,6 @@ audio#audioPlayer{
   display:none;
 }
 
-/* إشعار التوست الأنيق بدلاً من alert */
 .toast-notification{
   position:fixed;
   bottom:30px;
@@ -992,28 +1011,25 @@ footer{
 </head>
 <body>
 
-<!-- الخلفية السيبرانية المتحركة -->
 <canvas id="cyberCanvas"></canvas>
 
-<!-- الشريط العلوي الموحد: كل الأزرار بالأعلى بجانب الملك صقر -->
 <header class="topbar">
   <div class="topbar-group">
     <button id="settingsBtn" class="top-icon-btn" title="الإعدادات"><i class="fas fa-cog"></i></button>
-    <button id="themeToggle" class="top-icon-btn" title="الوضع الليلي / النهاري">🌙</button>
-    <button id="topLangBtn" class="top-icon-btn" title="تبديل اللغة">🇸🇦 EN</button>
+    <button id="themeToggle" class="top-icon-btn" title="الوضع الليلي / النهاري"><i class="fas fa-moon"></i></button>
+    <button id="topLangBtn" class="top-icon-btn" title="تبديل اللغة">EN</button>
     <button id="topColorBtn" class="top-icon-btn" title="تغيير لون الثيم"><i class="fas fa-palette"></i></button>
     <button id="autoColorCycleBtn" class="top-icon-btn active-btn" title="التبديل التلقائي للألوان"><i class="fas fa-sync-alt fa-spin"></i></button>
   </div>
 
-  <div class="topbar-title" id="topbarTitle">👑 الملك صقر</div>
+  <div class="topbar-title" id="topbarTitle">الملك صقر</div>
 
   <div class="topbar-group">
     <button id="musicToggleBtn" class="top-icon-btn" title="تشغيل الموسيقى"><i class="fas fa-music"></i></button>
-    <button id="heartLikeBtn" class="top-heart-btn" title="تفاعل القلوب">❤️ <span id="heartCount">158</span></button>
+    <button id="heartLikeBtn" class="top-heart-btn" title="تفاعل القلوب"><i class="fas fa-heart"></i> <span id="heartCount">158</span></button>
   </div>
 </header>
 
-<!-- نافذة الإعدادات الأصلية بالكامل -->
 <div id="settingsModal" class="modal">
   <div class="modal-content">
     <h3 id="modalTitle"><i class="fas fa-sliders-h"></i> الإعدادات</h3>
@@ -1023,9 +1039,9 @@ footer{
     </div>
     <div class="setting-item">
       <label id="marqueeSpeedLabel"><i class="fas fa-tachometer-alt"></i> سرعة الماركي:</label>
-      <button id="speedSlow">🐢 بطيء</button>
-      <button id="speedNormal">⚡ عادي</button>
-      <button id="speedFast">🚀 سريع</button>
+      <button id="speedSlow">بطيء</button>
+      <button id="speedNormal">عادي</button>
+      <button id="speedFast">سريع</button>
     </div>
     <div class="setting-item">
       <label id="autoImageLabel"><i class="fas fa-image"></i> تلقائي تبديل الصور:</label>
@@ -1033,16 +1049,15 @@ footer{
     </div>
     <div class="setting-item">
       <label id="languageLabel"><i class="fas fa-language"></i> اللغة:</label>
-      <button id="langToggleBtn">🇸🇦 العربية / English</button>
+      <button id="langToggleBtn">العربية / English</button>
     </div>
     <button class="close-modal" id="closeModalBtn">إغلاق</button>
   </div>
 </div>
 
-<!-- نافذة نبذة المطور الأصلية بالكامل -->
 <div id="bioModal" class="modal">
   <div class="modal-content">
-    <h3 id="bioModalTitle">📜 نبذة المطور</h3>
+    <h3 id="bioModalTitle">نبذة المطور</h3>
     <img id="bioModalImg" class="bio-modal-img" src="https://files.catbox.moe/x0ioh3.jpg" alt="نبذة المطور">
     <div class="bio-modal-text" id="bioModalText">
       المطور الملك صقر<br>
@@ -1058,7 +1073,6 @@ footer{
   </div>
 </div>
 
-<!-- نافذة قراءة المقالات -->
 <div id="articleModal" class="modal">
   <div class="modal-content">
     <h3 id="articleModalTitle">عنوان المقالة</h3>
@@ -1067,33 +1081,28 @@ footer{
   </div>
 </div>
 
-<!-- زر الرسالة العائم -->
 <button id="messageButton" class="message-button"><i class="fas fa-comment-dots"></i></button>
 
-<!-- شريط الماركي -->
 <div class="marquee" id="marquee">
   <span id="marqueeText"> صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ </span>
 </div>
 
-<!-- قسم الصورة المربعة مع الإطار المتوهج والشارة المضبوطة والنص المتحرك -->
 <section class="hero">
   <div class="hero-square-frame">
     <img id="profilePic" src="https://files.catbox.moe/seun9i.jpg" alt="الملك صقر">
-    <div class="square-status-badge" id="squareStatusBadge">🟢 متاح للتواصل والمشاريع</div>
+    <div class="square-status-badge" id="squareStatusBadge">متاح للتواصل والمشاريع</div>
   </div>
-  <h1 id="heroName">الملك صقر</h1>
+  <h1 id="heroName">الملك صقر <span class="check">✓</span></h1>
 
-  <!-- النص المتحرك تحت اسم الملك صقر -->
   <div class="dynamic-subtitle-wrap">
-    <span id="dynamicRoleText">مطور بوتات تلجرام بكل الأنواع 🤖</span>
+    <span id="dynamicRoleText">مطور بوتات تلجرام بكل الأنواع</span>
   </div>
 
   <div class="image-nav">
-    <button id="prevBtn">⏪</button>
-    <button id="nextBtn">⏩</button>
+    <button id="prevBtn"><i class="fas fa-backward"></i></button>
+    <button id="nextBtn"><i class="fas fa-forward"></i></button>
   </div>
 
-  <!-- أزرار نسخ يوزر المطور ومشاركة الصفحة -->
   <div class="hero-quick-actions">
     <button id="copyUserBtn" class="action-pill-btn">
       <i class="fas fa-copy"></i> <span id="copyUserText">نسخ يوزر المطور (@u_x86)</span>
@@ -1104,7 +1113,6 @@ footer{
   </div>
 </section>
 
-<!-- شريط البحث الفوري عن قناة أو بوت أو مقالة -->
 <div class="search-container">
   <div class="search-box">
     <i class="fas fa-search"></i>
@@ -1115,7 +1123,6 @@ footer{
 
 <div class="divider"><span id="zikr1">اذكر الله</span></div>
 
-<!-- شبكة الروابط الأصلية بالكامل -->
 <div class="links-grid" id="linksGrid">
   <a class="link-card searchable-item" href="https://youtube.com/@king_saqr_1" target="_blank"><i class="fab fa-youtube"></i><span class="linkText" data-key="youtube">قناة يوتيوب</span></a>
   <a class="link-card searchable-item" href="https://t.me/+T_8QE67Pn6tkMzNk" target="_blank"><i class="fab fa-telegram"></i><span class="linkText" data-key="telegramMain">القناة الأساسية</span></a>
@@ -1128,23 +1135,22 @@ footer{
   <a class="link-card searchable-item" href="https://t.me/ZadAltawa" target="_blank"><i class="fas fa-mosque"></i><span class="linkText" data-key="religiousChannel">قناة دينية</span></a>
 </div>
 
-<div class="notice" id="noticeText">🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
+<div class="notice" id="noticeText">ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
 
 <div class="divider"><span id="zikr2">استغفر الله</span></div>
 
-<!-- قسم النبذة (المضاف حديثاً) -->
 <div class="section" id="aboutSection">
   <h2 id="aboutTitle">نبذة</h2>
   <ul class="about-list" id="aboutList">
-    <li>• الملك صقر | عالم البرمجة والأمن السيبراني</li>
-    <li>• حماية وتأمين الحسابات من الاختراق والتهديدات</li>
-    <li>• برمجة وتطوير | مواقع وتطبيقات</li>
-    <li>• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع</li>
-    <li>• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة</li>
-    <li>• تهكير ألعاب</li>
-    <li>• تحديثات واتساب الملك صقر</li>
-    <li>• شروحات متنوعة</li>
-    <li>• محاربة قضايا الابتزاز</li>
+    <li>الملك صقر | عالم البرمجة والأمن السيبراني</li>
+    <li>حماية وتأمين الحسابات من الاختراق والتهديدات</li>
+    <li>برمجة وتطوير | مواقع وتطبيقات</li>
+    <li>صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع</li>
+    <li>تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة</li>
+    <li>تهكير ألعاب</li>
+    <li>تحديثات واتساب الملك صقر</li>
+    <li>شروحات متنوعة</li>
+    <li>محاربة قضايا الابتزاز</li>
   </ul>
 </div>
 
@@ -1154,9 +1160,8 @@ footer{
   <p><strong id="whyStrong">اشترك وابدأ رحلتك التقنية بثقة.</strong></p>
 </div>
 
-<!-- قسم مقالات الملك صقر الجديد -->
 <div class="section" id="articlesSection">
-  <h2 id="articlesMainTitle">📚 مقالات وشروحات الملك صقر</h2>
+  <h2 id="articlesMainTitle">مقالات وشروحات الملك صقر</h2>
   <div class="articles-grid" id="articlesGrid"></div>
 </div>
 
@@ -1165,33 +1170,32 @@ footer{
 <div class="section skills">
   <h2 id="skillsTitle">المهارات والخدمات</h2>
   <ul id="skillsList">
-    <li>🔐 الأمن السيبراني</li>
-    <li>🕵️‍♂️ الاختراق الأخلاقي</li>
-    <li>🌐 تطوير مواقع</li>
-    <li>📱 تطوير تطبيقات</li>
-    <li>🤖 برمجة بوتات</li>
-    <li>💻 Termux</li>
-    <li>🐉 Kali Linux</li>
-    <li>🎥 صناعة محتوى تقني</li>
-    <li>📺 شروحات يوتيوب</li>
+    <li>الأمن السيبراني</li>
+    <li>الاختراق الأخلاقي</li>
+    <li>تطوير مواقع</li>
+    <li>تطوير تطبيقات</li>
+    <li>برمجة بوتات</li>
+    <li>Termux</li>
+    <li>Kali Linux</li>
+    <li>صناعة محتوى تقني</li>
+    <li>شروحات يوتيوب</li>
   </ul>
 </div>
 
 <div class="section dev-bio" id="devBioSection">
-  <h2 id="bioTitle">👤 نبذة عن المطور</h2>
+  <h2 id="bioTitle">نبذة عن المطور</h2>
   <p id="bioText"><strong>المطور الملك صقر</strong><br>مطور بوتات تلجرام بكل الانواع<br>ومطور مواقع الويب<br>مطور تطبيقات<br>هكر اخلاقي<br>أ/استاذ الأمن السبراني وشبكات الحاسوب</p>
   <a href="https://t.me/u_x86" target="_blank" class="telegram-btn" id="telegramAccountBtn"><i class="fab fa-telegram"></i> <span id="telegramBtnText">حسابي على تلجرام</span></a>
 </div>
 
-<!-- ===== مشغل الموسيقى الحقيقي (المضاف حديثاً) ===== -->
 <div class="music-player">
   <audio id="audioPlayer" src="https://files.catbox.moe/gyx20d.mp3" preload="metadata"></audio>
   <div class="vinyl-btn" id="playBtn" title="تشغيل / إيقاف الموسيقى">
     <div class="vinyl-ring"></div>
-    <span class="play-icon" id="playIcon">▶</span>
+    <span class="play-icon" id="playIcon"><i class="fas fa-play"></i></span>
   </div>
   <div class="player-info">
-    <div class="track-name"><span class="music-icon">♪</span> <span id="trackName">الملك صقر</span></div>
+    <div class="track-name"><span class="music-icon"><i class="fas fa-music"></i></span> <span id="trackName">الملك صقر</span></div>
     <div class="eq paused" id="eqBars"><span></span><span></span><span></span><span></span></div>
     <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
     <div class="time-labels"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
@@ -1202,13 +1206,11 @@ footer{
   <img src="https://files.catbox.moe/x0ioh3.jpg" alt="منشور الملك صقر">
 </div>
 
-<footer id="footerText">© 2026 — جميع الحقوق محفوظة | الملك صقر 👑</footer>
+<footer id="footerText">© 2026 — جميع الحقوق محفوظة | الملك صقر</footer>
 
-<!-- إشعار التوست -->
 <div id="toastBox" class="toast-notification">تم النسخ بنجاح!</div>
 
 <script>
-/* إشعار التوست الأنيق */
 const toastBox = document.getElementById("toastBox");
 let toastTimer = null;
 function showToast(msg) {
@@ -1220,18 +1222,16 @@ function showToast(msg) {
   }, 2600);
 }
 
-/* تبديل الوضع الليلي والنهاري */
 const btn = document.getElementById("themeToggle");
 const modalThemeBtn = document.getElementById("modalThemeBtn");
 function toggleLightDark() {
   document.body.classList.toggle("light");
   const isLight = document.body.classList.contains("light");
-  btn.textContent = isLight ? "☀️" : "🌙";
+  btn.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 }
 btn.onclick = toggleLightDark;
 modalThemeBtn.onclick = toggleLightDark;
 
-/* تبديل الصور التلقائي واليدوي */
 const images = [
   "https://files.catbox.moe/x0ioh3.jpg",
   "https://files.catbox.moe/seun9i.jpg",
@@ -1269,7 +1269,6 @@ function resetAutoInterval() {
   }
 }
 
-/* نوافذ الإعدادات ونبذة المطور والمقالات */
 const modal = document.getElementById("settingsModal");
 const settingsBtn = document.getElementById("settingsBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -1296,31 +1295,28 @@ window.onclick = function(e) {
   if (e.target == articleModal) articleModal.style.display = "none";
 };
 
-/* سرعة الماركي */
 const marqueeSpan = document.querySelector("#marquee span");
 document.getElementById("speedSlow").onclick = () => { marqueeSpan.style.animation = "move 30s linear infinite"; };
 document.getElementById("speedNormal").onclick = () => { marqueeSpan.style.animation = "move 15s linear infinite"; };
 document.getElementById("speedFast").onclick = () => { marqueeSpan.style.animation = "move 6s linear infinite"; };
 
-/* التحكم بالتبديل التلقائي للصور */
 const autoPlayToggle = document.getElementById("autoPlayToggle");
 autoPlayToggle.onclick = () => {
   if (autoPlayActive) {
     clearInterval(autoInterval);
-    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تفعيل التبديل التلقائي" : "⚜️ Enable Auto Switch ⚜️";
+    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تفعيل التبديل التلقائي" : "Enable Auto Switch";
     autoPlayActive = false;
   } else {
     resetAutoInterval();
-    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تعطيل التبديل التلقائي" : "⚜️ Disable Auto Switch ⚜️";
+    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تعطيل التبديل التلقائي" : "Disable Auto Switch";
     autoPlayActive = true;
   }
 };
 
-/* الترجمات والزخرفة الاحترافية للغتين العربية والإنجليزية + المقالات + النبذة */
 const translations = {
   ar: {
-    topbarTitle: "👑 الملك صقر",
-    topLangBtnText: "🇸🇦 EN",
+    topbarTitle: "الملك صقر",
+    topLangBtnText: "EN",
     modalTitle: "الإعدادات",
     appearanceLabel: "المظهر:",
     modalThemeBtnText: "تبديل الوضع (داكن/فاتح)",
@@ -1329,11 +1325,11 @@ const translations = {
     autoToggleOn: "تعطيل التبديل التلقائي",
     autoToggleOff: "تفعيل التبديل التلقائي",
     languageLabel: "اللغة:",
-    langBtn: "🇸🇦 العربية / English",
+    langBtn: "العربية / English",
     closeModal: "إغلاق",
     marqueeText: " صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ ",
     heroName: "الملك صقر",
-    squareStatus: "🟢 متاح للتواصل والمشاريع",
+    squareStatus: "متاح للتواصل والمشاريع",
     copyUserText: "نسخ يوزر المطور (@u_x86)",
     sharePageText: "مشاركة الصفحة",
     searchPlaceholder: "ابحث عن قناة، بوت، أو مقالة للملك صقر...",
@@ -1349,176 +1345,166 @@ const translations = {
     idBot: "ID Bot",
     hackBot: "بوت اختراق",
     religiousChannel: "قناة دينية",
-    notice: "🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
+    notice: "ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
     aboutTitle: "نبذة",
     aboutList: [
-      "• الملك صقر | عالم البرمجة والأمن السيبراني",
-      "• حماية وتأمين الحسابات من الاختراق والتهديدات",
-      "• برمجة وتطوير | مواقع وتطبيقات",
-      "• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع",
-      "• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة",
-      "• تهكير ألعاب",
-      "• تحديثات واتساب الملك صقر",
-      "• شروحات متنوعة",
-      "• محاربة قضايا الابتزاز"
+      "الملك صقر | عالم البرمجة والأمن السيبراني",
+      "حماية وتأمين الحسابات من الاختراق والتهديدات",
+      "برمجة وتطوير | مواقع وتطبيقات",
+      "صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع",
+      "تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة",
+      "تهكير ألعاب",
+      "تحديثات واتساب الملك صقر",
+      "شروحات متنوعة",
+      "محاربة قضايا الابتزاز"
     ],
     whyTitle: "لماذا تشترك في قناة الملك صقر؟",
     whyDesc: "إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.",
     whyStrong: "اشترك وابدأ رحلتك التقنية بثقة.",
-    articlesMainTitle: "📚 مقالات وشروحات الملك صقر",
-    readMoreBtn: "📖 قراءة المقال كاملًا",
+    articlesMainTitle: "مقالات وشروحات الملك صقر",
+    readMoreBtn: "قراءة المقال كاملًا",
     articles: [
       {
-        badge: "🔐 الأمن السيبراني",
+        badge: "الأمن السيبراني",
         title: "دليلك الشامل لحماية حساباتك من الاختراق والاستهداف",
         summary: "تعرّف على أهم قواعد الأمان الرقمي، التحقق بخطوتين، وكشف الروابط الوهمية والهندسة الاجتماعية بأسلوب الملك صقر.",
         body: "في عالم التقنية الحديث، تعتبر الهندسة الاجتماعية والروابط المزيفة من أكثر الوسائل استخداماً لاختراق الحسابات.\n\n1. فعّل المصادقة الثنائية (2FA) في تلجرام وجميع حساباتك.\n2. لا تقم أبداً بمشاركة كود التفعيل أو ملفات الجلسة مع أي جهة.\n3. استخدم بوتات الفحص الموثوقة وتابع قناة شروحات الملك صقر لتتعلم كشف الثغرات وحماية بياناتك باحتراف."
       },
       {
-        badge: "🤖 برمجة البوتات",
+        badge: "برمجة البوتات",
         title: "احتراف تطوير وبرمجة بوتات التلجرام المتقدمة",
         summary: "كيف يقوم الملك صقر ببناء بوتات تلجرام ذكية وسريعة لإدارة القنوات، الحماية، والخدمات التلقائية المتكاملة.",
         body: "تطوير بوتات تلجرام يفتح لك آفاقاً واسعة لأتمتة المهام وإدارة المجتمعات الكبرى.\n\n• نعتمد على لغات قوية مثل Python ومكتبات حديثة مثل Telethon و Pyrogram و Aiogram.\n• يتم ربط البوتات بقواعد بيانات سريعة لضمان استجابة فورية على مدار الساعة.\n• يمكنك طلب برمجة بوتك الخاص مباشرة عبر التواصل مع المطور الملك صقر (@u_x86)."
       },
       {
-        badge: "🐉 Kali & Termux",
+        badge: "Kali & Termux",
         title: "أساسيات الاختراق الأخلاقي وفحص الشبكات عبر Termux و Kali",
         summary: "مقدمة عملية لطلاب الأمن السيبراني حول أدوات الفحص الأخلاقي واختبار الاختراق من الهاتف والكمبيوتر.",
         body: "الاختراق الأخلاقي (Ethical Hacking) هو خط الدفاع الأول لحماية الأنظمة والشبكات من الهجمات السيبرانية.\n\n• عبر بيئة Kali Linux وتطبيق Termux على أندرويد، يمكنك تعلم أوامر الشبكات وفحص المنافذ واكتشاف نقاط الضعف.\n• جميع الشروحات العملية متوفرة خطوة بخطوة في قناة الملك صقر التعليمية."
       },
       {
-        badge: "🌐 تطوير الويب",
+        badge: "تطوير الويب",
         title: "تصميم مواقع وتطبيقات عصرية بهوية ملكية وسيبرانية",
         summary: "أسرار بناء واجهات المستخدم التفاعلية السريعة المتجاوبة مع جميع الشاشات بأحدث تقنيات الويب.",
         body: "الموقع الإلكتروني الاحترافي هو واجهتك الرقمية أمام العالم.\n\n• نحرص في تصاميم الملك صقر على الدمج بين الفخامة البصرية والسرعة العالية.\n• دعم كامل للغتين العربية والإنجليزية، والوضع الليلي والنهاري، مع حماية متقدمة للواجهات."
       }
     ],
     skillsTitle: "المهارات والخدمات",
-    skillsList: ["🔐 الأمن السيبراني","🕵️‍♂️ الاختراق الأخلاقي","🌐 تطوير مواقع","📱 تطوير تطبيقات","🤖 برمجة بوتات","💻 Termux","🐉 Kali Linux","🎥 صناعة محتوى تقني","📺 شروحات يوتيوب"],
-    bioTitle: "👤 نبذة عن المطور",
+    skillsList: ["الأمن السيبراني","الاختراق الأخلاقي","تطوير مواقع","تطوير تطبيقات","برمجة بوتات","Termux","Kali Linux","صناعة محتوى تقني","شروحات يوتيوب"],
+    bioTitle: "نبذة عن المطور",
     bioText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
     telegramBtn: "حسابي على تلجرام",
-    footer: "© 2026 — جميع الحقوق محفوظة | الملك صقر 👑",
-    bioModalTitle: "📜 نبذة المطور",
+    footer: "© 2026 — جميع الحقوق محفوظة | الملك صقر",
+    bioModalTitle: "نبذة المطور",
     bioModalText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
     bioTelegramText: "حسابي على تلجرام",
     trackName: "الملك صقر",
     rolesList: [
-      "مطور بوتات تلجرام بكل الأنواع 🤖",
-      "مطور مواقع الويب وتطبيقات محترف 🌐",
-      "هكر أخلاقي وخبير أمن سيبراني 🕵️‍♂️",
-      "أ/ أستاذ الأمن السيبراني وشبكات الحاسوب 💻"
+      "مطور بوتات تلجرام بكل الأنواع",
+      "مطور مواقع الويب وتطبيقات محترف",
+      "هكر أخلاقي وخبير أمن سيبراني",
+      "أ/ أستاذ الأمن السيبراني وشبكات الحاسوب"
     ],
     zikrPool: ["اذكر الله", "أستغفر الله", "الحمد لله", "الله أكبر", "سبحان الله وبحمده", "لا إله إلا الله"]
   },
   en: {
-    topbarTitle: "⚜️ 👑 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 ⚜️",
-    topLangBtnText: "🇬🇧 AR",
-    modalTitle: "⚜️ Settings & Controls ⚜️",
-    appearanceLabel: "❖ Appearance Mode:",
-    modalThemeBtnText: "⚜️ Toggle (Dark / Light) ⚜️",
-    marqueeSpeedLabel: "❖ Marquee Speed:",
-    autoImageLabel: "❖ Auto Image Switch:",
-    autoToggleOn: "⚜️ Disable Auto Switch ⚜️",
-    autoToggleOff: "⚜️ Enable Auto Switch ⚜️",
-    languageLabel: "❖ Language:",
-    langBtn: "🇬🇧 English ❖ العربية 🇸🇦",
-    closeModal: "✖ Close",
-    marqueeText: " ⚜️ Blessings upon Prophet Muhammad ﷺ ❖ Peace be upon Prophet Muhammad ﷺ ⚜️ ",
-    heroName: "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 👑 ⚜️",
-    squareStatus: "🟢 Available for Contact & Projects",
-    copyUserText: "⚜️ Copy Dev ID (@u_x86) ⚜️",
-    sharePageText: "⚜️ Share Page ⚜️",
-    searchPlaceholder: "🔍 Search channels, bots, or King Saqr articles...",
-    zikr1: "⚜️ Remember Allah ⚜️",
-    zikr2: "⚜️ Astaghfirullah ⚜️",
-    zikr3: "⚜️ Alhamdulillah ⚜️",
-    youtube: "❖ YouTube Channel",
-    telegramMain: "❖ Main Channel",
-    telegramTutorials: "❖ Tutorials Channel",
-    website: "❖ Developer Website",
-    backup: "❖ Backup Channel",
-    devContact: "❖ Dev Contact",
-    idBot: "❖ ID Bot",
-    hackBot: "❖ Hacking Bot",
-    religiousChannel: "❖ Religious Channel",
-    notice: "🔔 ⚜️ Subscribe to our YouTube channel and activate the bell to follow the latest in Cybersecurity, Ethical Hacking, and Modern Tech Development. ⚜️",
-    aboutTitle: "⚜️ About ⚜️",
+    topbarTitle: "King Saqr",
+    topLangBtnText: "AR",
+    modalTitle: "Settings",
+    appearanceLabel: "Appearance:",
+    modalThemeBtnText: "Toggle (Dark / Light)",
+    marqueeSpeedLabel: "Marquee Speed:",
+    autoImageLabel: "Auto Image Switch:",
+    autoToggleOn: "Disable Auto Switch",
+    autoToggleOff: "Enable Auto Switch",
+    languageLabel: "Language:",
+    langBtn: "English / العربية",
+    closeModal: "Close",
+    marqueeText: " Blessings upon Prophet Muhammad ﷺ  Blessings upon Prophet Muhammad ﷺ ",
+    heroName: "King Saqr",
+    squareStatus: "Available for Contact & Projects",
+    copyUserText: "Copy Dev ID (@u_x86)",
+    sharePageText: "Share Page",
+    searchPlaceholder: "Search channels, bots, or King Saqr articles...",
+    zikr1: "Remember Allah",
+    zikr2: "Astaghfirullah",
+    zikr3: "Alhamdulillah",
+    youtube: "YouTube Channel",
+    telegramMain: "Main Channel",
+    telegramTutorials: "Tutorials Channel",
+    website: "Developer Website",
+    backup: "Backup Channel",
+    devContact: "Dev Contact",
+    idBot: "ID Bot",
+    hackBot: "Hacking Bot",
+    religiousChannel: "Religious Channel",
+    notice: "Subscribe to our YouTube channel and activate the bell to follow the latest in Cybersecurity, Ethical Hacking, and Modern Tech Development.",
+    aboutTitle: "About",
     aboutList: [
-      "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 | The World of Programming & Cybersecurity ⚜️",
-      "❖ Protection & Security of Accounts Against Hacking and Threats",
-      "❖ Programming & Development | Websites & Applications",
-      "❖ Professional Bot Creator | Telegram & WhatsApp (All Types)",
-      "❖ Python Tools Development | Custom Scripts & Tools",
-      "❖ Game Hacking",
-      "❖ King Saqr WhatsApp Updates",
-      "❖ Various Tutorials & Guides",
-      "❖ Combating Blackmail & Cyber Extortion Issues"
+      "King Saqr | The World of Programming & Cybersecurity",
+      "Protection & Security of Accounts Against Hacking and Threats",
+      "Programming & Development | Websites & Applications",
+      "Professional Bot Creator | Telegram & WhatsApp (All Types)",
+      "Python Tools Development | Custom Scripts & Tools",
+      "Game Hacking",
+      "King Saqr WhatsApp Updates",
+      "Various Tutorials & Guides",
+      "Combating Blackmail & Cyber Extortion Issues"
     ],
-    whyTitle: "⚜️ Why Subscribe to King Saqr's Channel? ⚜️",
-    whyDesc: "❖ If you aspire to master technology professionally, understand digital security awareness, and enter the world of Cybersecurity & Ethical Hacking in a clear, practical way — this royal channel is crafted specifically for you.",
-    whyStrong: "⚜️ Subscribe now and begin your tech journey with confidence. ⚜️",
-    articlesMainTitle: "📚 ⚜️ King Saqr Articles & Insights ⚜️",
-    readMoreBtn: "📖 Read Full Article ⚜️",
+    whyTitle: "Why Subscribe to King Saqr's Channel?",
+    whyDesc: "If you aspire to master technology professionally, understand digital security awareness, and enter the world of Cybersecurity & Ethical Hacking in a clear, practical way — this royal channel is crafted specifically for you.",
+    whyStrong: "Subscribe now and begin your tech journey with confidence.",
+    articlesMainTitle: "King Saqr Articles & Insights",
+    readMoreBtn: "Read Full Article",
     articles: [
       {
-        badge: "🔐 Cybersecurity",
-        title: "⚜️ Ultimate Guide to Protecting Your Accounts from Hacking",
+        badge: "Cybersecurity",
+        title: "Ultimate Guide to Protecting Your Accounts from Hacking",
         summary: "Learn essential digital security rules, Two-Factor Authentication (2FA), and how to detect phishing links and social engineering.",
         body: "In today's digital landscape, social engineering and phishing links are the most common methods used to compromise accounts.\n\n1. Always enable Two-Factor Authentication (2FA) on Telegram and all your platforms.\n2. Never share verification codes or session files with anyone.\n3. Follow King Saqr's Tutorials Channel to learn advanced vulnerability detection and defensive security."
       },
       {
-        badge: "🤖 Bot Development",
-        title: "⚜️ Mastering Advanced Telegram Bots Architecture",
+        badge: "Bot Development",
+        title: "Mastering Advanced Telegram Bots Architecture",
         summary: "How King Saqr engineers high-speed, intelligent Telegram bots for channel protection, automation, and custom services.",
         body: "Telegram Bot Development opens limitless possibilities for task automation and managing large digital communities.\n\n• Built with robust frameworks like Python (Telethon, Pyrogram, Aiogram) and fast databases.\n• Engineered for 24/7 uptime, security, and instant response.\n• Contact Developer King Saqr (@u_x86) to order your custom bot."
       },
       {
-        badge: "🐉 Kali & Termux",
-        title: "⚜️ Ethical Hacking & Network Auditing with Termux & Kali",
+        badge: "Kali & Termux",
+        title: "Ethical Hacking & Network Auditing with Termux & Kali",
         summary: "A practical foundation for cybersecurity students on ethical penetration testing tools on mobile and desktop.",
         body: "Ethical Hacking is the first line of defense in securing computer networks against cyber threats.\n\n• Using Kali Linux and Termux on Android, you can master networking commands, port scanning, and security auditing.\n• Step-by-step practical tutorials are available on King Saqr's official channels."
       },
       {
-        badge: "🌐 Web & App Dev",
-        title: "⚜️ Crafting Royal & Cybernetic Web Applications",
+        badge: "Web & App Dev",
+        title: "Crafting Royal & Cybernetic Web Applications",
         summary: "Secrets of building responsive, interactive, high-performance user interfaces with modern web technologies.",
         body: "A professional website is your royal digital identity to the world.\n\n• King Saqr's designs combine visual luxury, interactive particle graphics, and blazing speed.\n• Full bilingual support, adaptive Dark/Light themes, and clean architecture."
       }
     ],
-    skillsTitle: "⚜️ Skills & Professional Services ⚜️",
-    skillsList: [
-      "🔐 ❖ Cybersecurity Defense",
-      "🕵️‍♂️ ❖ Ethical Hacking & Auditing",
-      "🌐 ❖ Full-Stack Web Development",
-      "📱 ❖ Mobile App Development",
-      "🤖 ❖ Advanced Telegram Bots",
-      "💻 ❖ Termux Mastery",
-      "🐉 ❖ Kali Linux Systems",
-      "🎥 ❖ Tech Content Creation",
-      "📺 ❖ YouTube Educational Tutorials"
-    ],
-    bioTitle: "👤 ⚜️ About the Developer ⚜️",
-    bioText: "⚜️ Developer King Saqr ⚜️\n❖ Telegram Bots Developer (All Types)\n❖ Professional Web Developer\n❖ Mobile Application Developer\n❖ Certified Ethical Hacker\n❖ Prof. of Cybersecurity & Computer Networks",
-    telegramBtn: "⚜️ My Official Telegram ⚜️",
-    footer: "© 2026 — All Rights Reserved ❖ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 👑",
-    bioModalTitle: "📜 ⚜️ Developer Bio ⚜️",
-    bioModalText: "⚜️ Developer King Saqr ⚜️\n❖ Telegram Bots Developer (All Types)\n❖ Professional Web Developer\n❖ Mobile Application Developer\n❖ Ethical Hacker\n❖ Prof. of Cybersecurity & Computer Networks",
-    bioTelegramText: "⚜️ My Official Telegram ⚜️",
-    trackName: "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 ⚜️",
+    skillsTitle: "Skills & Professional Services",
+    skillsList: ["Cybersecurity","Ethical Hacking","Web Development","App Development","Bot Programming","Termux","Kali Linux","Tech Content Creation","YouTube Tutorials"],
+    bioTitle: "About the Developer",
+    bioText: "Developer King Saqr\nTelegram bots developer (all types)\nWeb developer\nApp developer\nEthical hacker\nProf. of Cybersecurity & Computer Networks",
+    telegramBtn: "My Official Telegram",
+    footer: "© 2026 — All Rights Reserved | King Saqr",
+    bioModalTitle: "Developer Bio",
+    bioModalText: "Developer King Saqr\nTelegram bots developer (all types)\nWeb developer\nApp developer\nEthical hacker\nProf. of Cybersecurity & Computer Networks",
+    bioTelegramText: "My Official Telegram",
+    trackName: "King Saqr",
     rolesList: [
-      "⚜️ Telegram Bots Developer (All Types) 🤖 ⚜️",
-      "⚜️ Professional Web & App Developer 🌐 ⚜️",
-      "⚜️ Ethical Hacker & Cybersecurity Expert 🕵️‍♂️ ⚜️",
-      "⚜️ Prof. of Cybersecurity & Computer Networks 💻 ⚜️"
+      "Telegram Bots Developer (All Types)",
+      "Professional Web & App Developer",
+      "Ethical Hacker & Cybersecurity Expert",
+      "Prof. of Cybersecurity & Computer Networks"
     ],
     zikrPool: [
-      "⚜️ Remember Allah ⚜️",
-      "⚜️ Astaghfirullah ⚜️",
-      "⚜️ Alhamdulillah ⚜️",
-      "⚜️ Allahu Akbar ⚜️",
-      "⚜️ SubhanAllahi wa bihamdihi ⚜️",
-      "⚜️ La ilaha illallah ⚜️"
+      "Remember Allah",
+      "Astaghfirullah",
+      "Alhamdulillah",
+      "Allahu Akbar",
+      "SubhanAllahi wa bihamdihi",
+      "La ilaha illallah"
     ]
   }
 };
@@ -1567,7 +1553,7 @@ function updateLanguage(lang) {
   document.getElementById("closeBioModalBtn").innerText = t.closeModal;
   document.getElementById("closeArticleModalBtn").innerText = t.closeModal;
   document.getElementById("marqueeText").innerText = t.marqueeText;
-  document.getElementById("heroName").innerText = t.heroName;
+  document.getElementById("heroName").innerHTML = t.heroName + ' <span class="check">\u2713</span>';
   document.getElementById("squareStatusBadge").innerText = t.squareStatus;
   document.getElementById("copyUserText").innerText = t.copyUserText;
   document.getElementById("sharePageText").innerText = t.sharePageText;
@@ -1586,7 +1572,6 @@ function updateLanguage(lang) {
 
   document.getElementById("noticeText").innerText = t.notice;
 
-  /* قسم النبذة الجديد */
   document.getElementById("aboutTitle").innerText = t.aboutTitle;
   const aboutListEl = document.getElementById("aboutList");
   aboutListEl.innerHTML = "";
@@ -1621,7 +1606,6 @@ function updateLanguage(lang) {
   document.getElementById("bioModalText").innerHTML = t.bioModalText.replace(/\n/g,"<br>");
   document.getElementById("bioTelegramLink").innerHTML = `<i class="fab fa-telegram"></i> ${t.bioTelegramText}`;
 
-  /* اسم المقطع في مشغل الموسيقى */
   document.getElementById("trackName").innerText = t.trackName;
 
   if (autoPlayActive) autoPlayToggle.textContent = t.autoToggleOn;
@@ -1631,14 +1615,13 @@ function updateLanguage(lang) {
 function toggleLanguage() {
   currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
   updateLanguage(currentLanguage);
-  showToast(currentLanguage === 'ar' ? "🇸🇦 تم التبديل إلى اللغة العربية" : "⚜️ Switched to Decorated English 🇬🇧");
+  showToast(currentLanguage === 'ar' ? "تم التبديل إلى اللغة العربية" : "Switched to English");
 }
 
 document.getElementById("langToggleBtn").onclick = toggleLanguage;
 document.getElementById("topLangBtn").onclick = toggleLanguage;
 updateLanguage('ar');
 
-/* النص المتحرك المتبدل تحت اسم الملك صقر */
 let currentRoleIdx = 0;
 const dynamicRoleEl = document.getElementById("dynamicRoleText");
 setInterval(() => {
@@ -1653,7 +1636,6 @@ setInterval(() => {
   }, 350);
 }, 3200);
 
-/* تبديل الأذكار التلقائي بالتصميم الجديد */
 let zikrStep = 0;
 setInterval(() => {
   const pool = translations[currentLanguage].zikrPool;
@@ -1663,10 +1645,9 @@ setInterval(() => {
   document.getElementById("zikr3").innerText = pool[(zikrStep + 2) % pool.length];
 }, 4000);
 
-/* أزرار الشريط العلوي لتغيير الألوان والتبديل التلقائي للألوان */
 const themeOrder = ['gold', 'hacker', 'cyber', 'neon'];
-const themeNamesAr = { gold: '👑 الذهبي الملكي', hacker: '🐉 أخضر هكر', cyber: '💎 سماوي سيبراني', neon: '🔥 نيون' };
-const themeNamesEn = { gold: '👑 Royal Gold', hacker: '🐉 Hacker Green', cyber: '💎 Cyber Cyan', neon: '🔥 Neon Crimson' };
+const themeNamesAr = { gold: 'الذهبي الملكي', hacker: 'أخضر هكر', cyber: 'سماوي سيبراني', neon: 'نيون' };
+const themeNamesEn = { gold: 'Royal Gold', hacker: 'Hacker Green', cyber: 'Cyber Cyan', neon: 'Neon Crimson' };
 let currentThemeIndex = 0;
 let autoColorCycleActive = true;
 
@@ -1681,7 +1662,7 @@ document.getElementById("topColorBtn").onclick = () => {
   currentThemeIndex = (currentThemeIndex + 1) % themeOrder.length;
   const chosen = themeOrder[currentThemeIndex];
   applyColorTheme(chosen);
-  showToast(currentLanguage === 'ar' ? `🎨 المظهر: ${themeNamesAr[chosen]}` : `🎨 Theme: ${themeNamesEn[chosen]}`);
+  showToast(currentLanguage === 'ar' ? `المظهر: ${themeNamesAr[chosen]}` : `Theme: ${themeNamesEn[chosen]}`);
 };
 
 const autoColorCycleBtn = document.getElementById("autoColorCycleBtn");
@@ -1698,14 +1679,13 @@ autoColorCycleBtn.onclick = () => {
   const icon = autoColorCycleBtn.querySelector("i");
   if (autoColorCycleActive) {
     icon.classList.add("fa-spin");
-    showToast(currentLanguage === 'ar' ? "🔄 التبديل التلقائي للألوان: مفعل" : "🔄 Auto Color Cycle: ON");
+    showToast(currentLanguage === 'ar' ? "التبديل التلقائي للألوان: مفعل" : "Auto Color Cycle: ON");
   } else {
     icon.classList.remove("fa-spin");
-    showToast(currentLanguage === 'ar' ? "⏸️ التبديل التلقائي للألوان: متوقف" : "⏸️ Auto Color Cycle: OFF");
+    showToast(currentLanguage === 'ar' ? "التبديل التلقائي للألوان: متوقف" : "Auto Color Cycle: OFF");
   }
 };
 
-/* زر القلوب التفاعلي في الشريط العلوي */
 let heartsTotal = 158;
 const heartLikeBtn = document.getElementById("heartLikeBtn");
 const heartCountEl = document.getElementById("heartCount");
@@ -1714,8 +1694,7 @@ heartLikeBtn.onclick = () => {
   heartCountEl.innerText = heartsTotal;
   const heart = document.createElement("span");
   heart.className = "flying-heart";
-  const emojis = ["❤️", "👑", "🔥", "💚", "✨"];
-  heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  heart.innerHTML = '<i class="fas fa-heart"></i>';
   const rect = heartLikeBtn.getBoundingClientRect();
   heart.style.left = (rect.left + rect.width / 2 + (Math.random() * 30 - 15)) + "px";
   heart.style.top = (rect.bottom) + "px";
@@ -1723,9 +1702,6 @@ heartLikeBtn.onclick = () => {
   setTimeout(() => heart.remove(), 1300);
 };
 
-/* ============================================================
-   مشغل الموسيقى الحقيقي (Vinyl Player)
-   ============================================================ */
 const audio = document.getElementById('audioPlayer');
 const playBtn = document.getElementById('playBtn');
 const playIcon = document.getElementById('playIcon');
@@ -1739,12 +1715,12 @@ let isPlaying = false;
 
 function updatePlayUI() {
   if (isPlaying) {
-    playIcon.textContent = '⏸';
+    playIcon.innerHTML = '<i class="fas fa-pause"></i>';
     playBtn.classList.add('playing');
     eqBars.classList.remove('paused');
     musicToggleBtn.classList.add('active-btn');
   } else {
-    playIcon.textContent = '▶';
+    playIcon.innerHTML = '<i class="fas fa-play"></i>';
     playBtn.classList.remove('playing');
     eqBars.classList.add('paused');
     musicToggleBtn.classList.remove('active-btn');
@@ -1756,17 +1732,17 @@ function toggleMusic() {
     audio.play().then(() => {
       isPlaying = true;
       updatePlayUI();
-      showToast(currentLanguage === 'ar' ? "🎵 تم تشغيل الموسيقى" : "🎵 Music Playing");
+      showToast(currentLanguage === 'ar' ? "تم تشغيل الموسيقى" : "Music Playing");
     }).catch(() => {
       isPlaying = false;
       updatePlayUI();
-      showToast(currentLanguage === 'ar' ? "⚠️ تعذر تشغيل الموسيقى" : "⚠️ Could not play music");
+      showToast(currentLanguage === 'ar' ? "تعذر تشغيل الموسيقى" : "Could not play music");
     });
   } else {
     audio.pause();
     isPlaying = false;
     updatePlayUI();
-    showToast(currentLanguage === 'ar' ? "🔇 تم إيقاف الموسيقى" : "🔇 Music Stopped");
+    showToast(currentLanguage === 'ar' ? "تم إيقاف الموسيقى" : "Music Stopped");
   }
 }
 
@@ -1814,7 +1790,6 @@ function formatTime(sec) {
   return m + ':' + (s < 10 ? '0' : '') + s;
 }
 
-/* نسخ يوزر المطور ومشاركة الصفحة */
 function copyTextFallback(text) {
   const ta = document.createElement("textarea");
   ta.value = text;
@@ -1826,12 +1801,12 @@ function copyTextFallback(text) {
 
 document.getElementById("copyUserBtn").onclick = () => {
   copyTextFallback("@u_x86");
-  showToast(currentLanguage === 'ar' ? "✅ تم نسخ معرف المطور: @u_x86" : "✅ Copied Developer Username: @u_x86");
+  showToast(currentLanguage === 'ar' ? "تم نسخ معرف المطور: @u_x86" : "Copied Developer Username: @u_x86");
 };
 
 document.getElementById("sharePageBtn").onclick = async () => {
   const shareData = {
-    title: "👑 الملك صقر | King Saqr",
+    title: currentLanguage === 'ar' ? "الملك صقر" : "King Saqr",
     text: currentLanguage === 'ar' ? "الموقع الرسمي للمطور الملك صقر - الأمن السيبراني وتطوير البوتات والمواقع" : "Official Website of Developer King Saqr",
     url: window.location.href
   };
@@ -1839,11 +1814,10 @@ document.getElementById("sharePageBtn").onclick = async () => {
     try { await navigator.share(shareData); } catch (e) {}
   } else {
     copyTextFallback(window.location.href);
-    showToast(currentLanguage === 'ar' ? "🔗 تم نسخ رابط الصفحة للمشاركة!" : "🔗 Page Link Copied to Share!");
+    showToast(currentLanguage === 'ar' ? "تم نسخ رابط الصفحة للمشاركة!" : "Page Link Copied to Share!");
   }
 };
 
-/* البحث الفوري عن قناة أو بوت أو مقالة */
 const siteSearchInput = document.getElementById("siteSearchInput");
 const clearSearchBtn = document.getElementById("clearSearchBtn");
 
@@ -1862,7 +1836,6 @@ clearSearchBtn.onclick = () => {
   filterContent();
 };
 
-/* الخلفية السيبرانية المتحركة */
 const canvas = document.getElementById("cyberCanvas");
 const ctx = canvas.getContext("2d");
 let particles = [];
