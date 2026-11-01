@@ -20,7 +20,6 @@
   --accent3:#00E5FF;
   --shadow:0 8px 30px rgba(0,0,0,0.55);
 }
-
 body.light{
   --bg:#eef2f7;
   --text:#0f172a;
@@ -34,7 +33,6 @@ body.light{
   --accent3:#0284c7;
   --shadow:0 8px 25px rgba(15, 23, 42, 0.1);
 }
-
 body.theme-hacker{
   --gold:#00FF66;
   --accent2:#00B84C;
@@ -65,11 +63,9 @@ body.light.theme-neon{
   --accent2:#ea580c;
   --accent3:#0284c7;
 }
-
 *{
   box-sizing:border-box;
 }
-
 body{
   margin:0;
   background:var(--bg);
@@ -79,8 +75,6 @@ body{
   text-align:center;
   overflow-x:hidden;
 }
-
-/* English typography overrides (Cinzel display + Poppins body) */
 html[lang="en"] body{
   font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
@@ -95,7 +89,6 @@ html[lang="en"] .music-player .track-name{
   font-family:'Cinzel', serif;
   letter-spacing:0.12em;
 }
-
 #cyberCanvas{
   position:fixed;
   top:0;
@@ -109,7 +102,6 @@ html[lang="en"] .music-player .track-name{
 body.light #cyberCanvas{
   opacity:0.28;
 }
-
 .topbar{
   position:fixed;
   top:0; left:0; right:0;
@@ -125,14 +117,12 @@ body.light #cyberCanvas{
   box-shadow:var(--shadow);
   border-bottom:2px solid var(--gold);
 }
-
 .topbar-group{
   display:flex;
   align-items:center;
   gap:6px;
   flex-wrap:nowrap;
 }
-
 .topbar-title{
   font-size:1.25rem;
   font-weight:900;
@@ -150,7 +140,6 @@ body.light #cyberCanvas{
 body.light .topbar-title{
   text-shadow:0 1px 2px rgba(0,0,0,0.15);
 }
-
 .top-icon-btn{
   background:var(--card);
   border:1.5px solid var(--gold);
@@ -181,7 +170,6 @@ body.light .topbar-title{
 .top-icon-btn:hover i, .top-icon-btn.active-btn i{
   color:#000 !important;
 }
-
 .top-heart-btn{
   background:linear-gradient(135deg, #ff1744, #ff4081);
   color:#fff !important;
@@ -202,7 +190,6 @@ body.light .topbar-title{
   transform:scale(1.08);
   box-shadow:0 0 22px #ff1744;
 }
-
 @media (max-width: 640px){
   .topbar{
     flex-wrap:wrap;
@@ -227,7 +214,6 @@ body.light .topbar-title{
     font-size:0.85rem;
   }
 }
-
 .flying-heart{
   position:fixed;
   font-size:1.7rem;
@@ -241,7 +227,6 @@ body.light .topbar-title{
   0%{transform:translateY(0) scale(0.8); opacity:1;}
   100%{transform:translateY(-130px) scale(1.6); opacity:0;}
 }
-
 .message-button{
   position:fixed;
   bottom:26px;
@@ -265,7 +250,6 @@ body.light .topbar-title{
   transform:scale(1.1);
   box-shadow:0 0 30px var(--gold);
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -374,7 +358,6 @@ html[lang="en"] .bio-modal-text{
   transform: scale(1.04);
   box-shadow: 0 0 20px #0088cc;
 }
-
 .marquee{
   margin-top:68px;
   overflow:hidden;
@@ -399,7 +382,6 @@ html[lang="en"] .bio-modal-text{
   from{transform:translateX(100%)}
   to{transform:translateX(-100%)}
 }
-
 .hero{
   margin-top:32px;
   position:relative;
@@ -476,7 +458,6 @@ html[lang="en"] .bio-modal-text{
   font-family:system-ui, sans-serif;
   font-weight:900;
 }
-
 .dynamic-subtitle-wrap{
   min-height:38px;
   display:flex;
@@ -496,30 +477,10 @@ html[lang="en"] .bio-modal-text{
   box-shadow:var(--shadow);
   transition:opacity 0.35s ease, transform 0.35s ease;
 }
-
-.image-nav{
-  margin-top:8px;
-}
-.image-nav button{
-  margin:6px 8px;
-  padding:8px 18px;
-  border:none;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--gold),var(--accent2));
-  color:#000;
-  font-size:1.2rem;
-  cursor:pointer;
-  font-weight:900;
-  box-shadow:var(--shadow);
-  transition:0.25s;
-}
-.image-nav button:hover{
-  transform:scale(1.07);
-}
-
 .hero-quick-actions{
   display:flex;
   justify-content:center;
+  align-items:center;
   flex-wrap:wrap;
   gap:12px;
   margin:16px auto 10px;
@@ -530,12 +491,13 @@ html[lang="en"] .bio-modal-text{
   color:var(--text);
   border:1.5px solid var(--gold);
   border-radius:50px;
-  padding:9px 20px;
-  font-size:0.95rem;
+  padding:11px 28px;
+  font-size:0.98rem;
   font-weight:800;
   cursor:pointer;
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:8px;
   box-shadow:var(--shadow);
   transition:0.3s;
@@ -551,7 +513,6 @@ html[lang="en"] .bio-modal-text{
 .action-pill-btn:hover i{
   color:#000;
 }
-
 .search-container{
   max-width:680px;
   margin:22px auto 10px;
@@ -596,7 +557,6 @@ html[lang="en"] .bio-modal-text{
   font-size:1rem;
   display:none;
 }
-
 .divider{
   margin:38px auto;
   display:flex;
@@ -629,7 +589,6 @@ html[lang="en"] .bio-modal-text{
   75%{opacity:1; transform:scale(1.03);}
   100%{opacity:0; transform:scale(0.92);}
 }
-
 .links-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -661,7 +620,6 @@ html[lang="en"] .bio-modal-text{
   border-color:var(--gold);
   box-shadow:0 0 28px var(--gold);
 }
-
 .section{
   max-width:1100px;
   margin:35px auto;
@@ -707,7 +665,6 @@ html[lang="en"] .bio-modal-text{
 body.light .skills li{
   background:rgba(15, 23, 42, 0.04);
 }
-
 .about-list{
   list-style:none;
   padding:0;
@@ -732,7 +689,6 @@ body.light .skills li{
 body.light .about-list li{
   background:rgba(15, 23, 42, 0.04);
 }
-
 .articles-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
@@ -792,7 +748,6 @@ body.light .about-list li{
   background:var(--gold);
   color:#000;
 }
-
 .dev-bio {
   text-align: center !important;
   position: relative;
@@ -833,7 +788,6 @@ body.light .about-list li{
   transform: scale(1.05);
   box-shadow: 0 0 25px #0088cc;
 }
-
 .post-image{
   max-width:1100px;
   margin:40px auto 20px;
@@ -849,7 +803,6 @@ body.light .about-list li{
   border-radius:20px;
   box-shadow:0 0 35px rgba(0,0,0,0.45);
 }
-
 .music-player{
   width:100%;
   max-width:600px;
@@ -979,7 +932,6 @@ body.light .progress-bar{
 audio#audioPlayer{
   display:none;
 }
-
 .toast-notification{
   position:fixed;
   bottom:30px;
@@ -1001,7 +953,6 @@ audio#audioPlayer{
   transform:translateX(-50%) translateY(0);
   opacity:1;
 }
-
 footer{
   margin:35px 0;
   font-weight:800;
@@ -1098,15 +1049,7 @@ footer{
     <span id="dynamicRoleText">مطور بوتات تلجرام بكل الأنواع</span>
   </div>
 
-  <div class="image-nav">
-    <button id="prevBtn"><i class="fas fa-backward"></i></button>
-    <button id="nextBtn"><i class="fas fa-forward"></i></button>
-  </div>
-
   <div class="hero-quick-actions">
-    <button id="copyUserBtn" class="action-pill-btn">
-      <i class="fas fa-copy"></i> <span id="copyUserText">نسخ يوزر المطور (@u_x86)</span>
-    </button>
     <button id="sharePageBtn" class="action-pill-btn">
       <i class="fas fa-share-alt"></i> <span id="sharePageText">مشاركة الصفحة</span>
     </button>
@@ -1135,7 +1078,7 @@ footer{
   <a class="link-card searchable-item" href="https://t.me/ZadAltawa" target="_blank"><i class="fas fa-mosque"></i><span class="linkText" data-key="religiousChannel">قناة دينية</span></a>
 </div>
 
-<div class="notice" id="noticeText">ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
+<div class="notice" id="noticeText">🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
 
 <div class="divider"><span id="zikr2">استغفر الله</span></div>
 
@@ -1239,18 +1182,6 @@ const images = [
 ];
 let currentImgIndex = 0;
 const pic = document.getElementById("profilePic");
-const nextBtn = document.getElementById("nextBtn");
-const prevBtn = document.getElementById("prevBtn");
-nextBtn.onclick = () => {
-  currentImgIndex = (currentImgIndex + 1) % images.length;
-  pic.src = images[currentImgIndex];
-  resetAutoInterval();
-};
-prevBtn.onclick = () => {
-  currentImgIndex = (currentImgIndex - 1 + images.length) % images.length;
-  pic.src = images[currentImgIndex];
-  resetAutoInterval();
-};
 let autoSpeed = 4000;
 let autoEnabled = true;
 let autoPlayActive = true;
@@ -1330,7 +1261,6 @@ const translations = {
     marqueeText: " صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ ",
     heroName: "الملك صقر",
     squareStatus: "متاح للتواصل والمشاريع",
-    copyUserText: "نسخ يوزر المطور (@u_x86)",
     sharePageText: "مشاركة الصفحة",
     searchPlaceholder: "ابحث عن قناة، بوت، أو مقالة للملك صقر...",
     zikr1: "اذكر الله",
@@ -1345,7 +1275,7 @@ const translations = {
     idBot: "ID Bot",
     hackBot: "بوت اختراق",
     religiousChannel: "قناة دينية",
-    notice: "ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
+    notice: "🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
     aboutTitle: "نبذة",
     aboutList: [
       "الملك صقر | عالم البرمجة والأمن السيبراني",
@@ -1423,7 +1353,6 @@ const translations = {
     marqueeText: " Blessings upon Prophet Muhammad ﷺ  Blessings upon Prophet Muhammad ﷺ ",
     heroName: "King Saqr",
     squareStatus: "Available for Contact & Projects",
-    copyUserText: "Copy Dev ID (@u_x86)",
     sharePageText: "Share Page",
     searchPlaceholder: "Search channels, bots, or King Saqr articles...",
     zikr1: "Remember Allah",
@@ -1438,7 +1367,7 @@ const translations = {
     idBot: "ID Bot",
     hackBot: "Hacking Bot",
     religiousChannel: "Religious Channel",
-    notice: "Subscribe to our YouTube channel and activate the bell to follow the latest in Cybersecurity, Ethical Hacking, and Modern Tech Development.",
+    notice: "🔔 Subscribe to our YouTube channel and activate the bell to follow the latest in Cybersecurity, Ethical Hacking, and Modern Tech Development.",
     aboutTitle: "About",
     aboutList: [
       "King Saqr | The World of Programming & Cybersecurity",
@@ -1555,7 +1484,6 @@ function updateLanguage(lang) {
   document.getElementById("marqueeText").innerText = t.marqueeText;
   document.getElementById("heroName").innerHTML = t.heroName + ' <span class="check">\u2713</span>';
   document.getElementById("squareStatusBadge").innerText = t.squareStatus;
-  document.getElementById("copyUserText").innerText = t.copyUserText;
   document.getElementById("sharePageText").innerText = t.sharePageText;
   document.getElementById("siteSearchInput").placeholder = t.searchPlaceholder;
   document.getElementById("dynamicRoleText").innerText = t.rolesList[0];
@@ -1798,11 +1726,6 @@ function copyTextFallback(text) {
   try { document.execCommand("copy"); } catch (e) {}
   document.body.removeChild(ta);
 }
-
-document.getElementById("copyUserBtn").onclick = () => {
-  copyTextFallback("@u_x86");
-  showToast(currentLanguage === 'ar' ? "تم نسخ معرف المطور: @u_x86" : "Copied Developer Username: @u_x86");
-};
 
 document.getElementById("sharePageBtn").onclick = async () => {
   const shareData = {
