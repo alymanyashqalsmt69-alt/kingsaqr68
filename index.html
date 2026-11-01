@@ -1,1528 +1,1920 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الملك صقر</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <style>
-    /* ===== تصميم الأول (ديڤل) ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    :root {
-      --blood: #dc143c;
-      --blood-soft: rgba(220, 20, 60, 0.5);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --text-primary: #f0ece6;
-      --text-muted: #a0968a;
-      --font-display: 'Cinzel', serif;
-      --font-body: 'Poppins', sans-serif;
-      --bg-body: #0a0505;
-    }
-    body.light {
-      --bg-body: #f2f4f8;
-      --text-primary: #111;
-      --text-muted: #555;
-      --glass-bg: rgba(0, 0, 0, 0.04);
-      --glass-border: rgba(0, 0, 0, 0.12);
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-body);
-      color: var(--text-primary);
-      min-height: 100dvh;
-      overflow-x: hidden;
-      transition: background 0.4s, color 0.4s;
-    }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg-body); }
-    ::-webkit-scrollbar-thumb { background: var(--blood); border-radius: 10px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👑 الملك صقر</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+:root{
+  --bg:#0b0b10;
+  --text:#ffffff;
+  --text-muted:#cbd5e1;
+  --bar:rgba(17, 24, 39, 0.94);
+  --card:rgba(255,255,255,0.08);
+  --card-solid:#161f33;
+  --border:rgba(255,255,255,0.18);
+  --gold:#FFD700;
+  --accent2:#FF4081;
+  --accent3:#00E5FF;
+  --shadow:0 8px 30px rgba(0,0,0,0.55);
+}
 
-    .bg-cosmos {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, #1a0a0a 0%, #0a0505 80%);
-      z-index: 0;
-      transition: background 0.4s;
-    }
-    body.light .bg-cosmos {
-      background: radial-gradient(ellipse at 50% 30%, #e8e8f0 0%, #d0d0d8 80%);
-    }
-    .stars {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background-image:
-        radial-gradient(2px 2px at 10% 20%, #fff, transparent),
-        radial-gradient(2px 2px at 30% 70%, #fff, transparent),
-        radial-gradient(1px 1px at 50% 10%, #fff, transparent),
-        radial-gradient(2px 2px at 70% 40%, #fff, transparent),
-        radial-gradient(1px 1px at 90% 80%, #fff, transparent),
-        radial-gradient(1px 1px at 15% 90%, #fff, transparent),
-        radial-gradient(1px 1px at 60% 60%, #fff, transparent),
-        radial-gradient(1px 1px at 85% 15%, #fff, transparent),
-        radial-gradient(2px 2px at 40% 30%, #fff, transparent),
-        radial-gradient(1px 1px at 5% 50%, #fff, transparent);
-      background-size: 200% 200%;
-      animation: twinkle 8s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-    @keyframes twinkle {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
+/* ضبط الوضع النهاري بشكل احترافي وواضح جداً */
+body.light{
+  --bg:#eef2f7;
+  --text:#0f172a;
+  --text-muted:#334155;
+  --bar:rgba(255, 255, 255, 0.96);
+  --card:rgba(255, 255, 255, 0.92);
+  --card-solid:#ffffff;
+  --border:rgba(15, 23, 42, 0.16);
+  --gold:#d97706;
+  --accent2:#e11d48;
+  --accent3:#0284c7;
+  --shadow:0 8px 25px rgba(15, 23, 42, 0.1);
+}
 
-    .blood-drop {
-      position: fixed;
-      top: -5vh;
-      width: 2px;
-      height: 3px;
-      background: var(--blood);
-      border-radius: 50%;
-      z-index: 0;
-      animation: bloodFall linear infinite;
-      pointer-events: none;
-      will-change: transform, opacity;
-      box-shadow: 0 0 3px var(--blood-soft);
-      opacity: 0.6;
-    }
-    @keyframes bloodFall {
-      0% { transform: translateY(0); opacity: 0.7; }
-      100% { transform: translateY(110vh); opacity: 0; }
-    }
+/* ثيمات الألوان (أخضر هكر، سماوي سيبراني، نيون) */
+body.theme-hacker{
+  --gold:#00FF66;
+  --accent2:#00B84C;
+  --accent3:#7CFF00;
+}
+body.light.theme-hacker{
+  --gold:#059669;
+  --accent2:#10b981;
+  --accent3:#047857;
+}
+body.theme-cyber{
+  --gold:#00E5FF;
+  --accent2:#7C4DFF;
+  --accent3:#00FFA3;
+}
+body.light.theme-cyber{
+  --gold:#0284c7;
+  --accent2:#6d28d9;
+  --accent3:#0d9488;
+}
+body.theme-neon{
+  --gold:#FF2E93;
+  --accent2:#FF8A00;
+  --accent3:#00E5FF;
+}
+body.light.theme-neon{
+  --gold:#db2777;
+  --accent2:#ea580c;
+  --accent3:#0284c7;
+}
 
-    #top {
-      position: relative;
-      min-height: 100dvh;
-      overflow: hidden;
-      z-index: 1;
-    }
-    main {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 100px 20px 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-    }
+*{
+  box-sizing:border-box;
+}
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 40;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
-      background: rgba(10, 5, 5, 0.7);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: background 0.4s, border-color 0.4s;
-    }
-    body.light header {
-      background: rgba(240, 240, 245, 0.8);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .icon-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--glass-border);
-      background: var(--glass-bg);
-      backdrop-filter: blur(8px);
-      color: var(--text-primary);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: border-color 0.3s, color 0.3s;
-      font-size: 16px;
-    }
-    .icon-btn:hover {
-      border-color: var(--blood-soft);
-    }
-    .lang-btn {
-      background: var(--glass-bg);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 40px;
-      padding: 4px 14px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--text-primary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      text-transform: uppercase;
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .lang-btn:hover {
-      border-color: var(--blood-soft);
-    }
-    .like-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(220,20,60,0.4);
-      border-radius: 40px;
-      padding: 4px 12px 4px 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
-    }
-    body.light .like-btn {
-      background: rgba(200,200,200,0.4);
-    }
-    .like-btn:hover {
-      border-color: var(--blood);
-      box-shadow: 0 0 20px var(--blood-soft);
-    }
-    .like-btn .heart {
-      color: var(--blood);
-      filter: drop-shadow(0 0 6px var(--blood));
-      font-size: 16px;
-    }
-    .devil-badge {
-      background: rgba(220,20,60,0.2);
-      border: 1px solid rgba(220,20,60,0.4);
-      border-radius: 40px;
-      padding: 4px 14px;
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--blood);
-    }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Cairo', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  transition:background 0.4s, color 0.4s;
+  text-align:center;
+  overflow-x:hidden;
+}
 
-    .avatar-ring {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      padding: 6px;
-      background: linear-gradient(135deg, var(--blood), #8b0000);
-      box-shadow: 0 0 40px var(--blood-soft), inset 0 0 20px rgba(220,20,60,0.3);
-      animation: float 5s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-    }
-    .avatar-ring .inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #000;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-    .avatar-ring .inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .avatar-ring .inner .gloss {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15), transparent 60%);
-      pointer-events: none;
-    }
+/* الخلفية السيبرانية المتحركة */
+#cyberCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.55;
+}
+body.light #cyberCanvas{
+  opacity:0.28;
+}
 
-    .image-nav {
-      margin-top: 12px;
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-    }
-    .image-nav button {
-      background: var(--glass-bg);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 40px;
-      padding: 6px 18px;
-      font-size: 1.1rem;
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 700;
-    }
-    .image-nav button:hover {
-      border-color: var(--blood-soft);
-      box-shadow: 0 0 16px var(--blood-soft);
-    }
+/* الشريط العلوي الموحد مع جميع الأزرار المدمجة */
+.topbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  min-height:66px;
+  padding:6px 12px;
+  background:var(--bar);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  z-index:100;
+  box-shadow:var(--shadow);
+  border-bottom:2px solid var(--gold);
+}
 
-    .title-group { text-align: center; margin-top: 6px; }
-    .title-group h1 {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .title-group .check {
-      display: inline-block;
-      width: 28px;
-      height: 28px;
-      background: var(--blood);
-      border-radius: 50%;
-      color: #0a0505;
-      font-size: 16px;
-      line-height: 28px;
-      text-align: center;
-      box-shadow: 0 0 16px var(--blood-soft);
-    }
-    .divider-line {
-      width: 60px;
-      height: 2px;
-      background: var(--blood);
-      margin: 12px auto;
-      box-shadow: 0 0 12px var(--blood);
-    }
-    .sub-text {
-      max-width: 400px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      color: rgba(240,236,230,0.9);
-      text-shadow: 0 0 20px rgba(220,20,60,0.2);
-    }
-    body.light .sub-text { color: #333; }
+.topbar-group{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:nowrap;
+}
 
-    .contact-card {
-      width: 100%;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      transition: background 0.4s, border-color 0.4s;
-    }
-    .contact-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .contact-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid rgba(220,20,60,0.5);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .contact-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .contact-info .name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      line-height: 1.2;
-    }
-    .contact-info .verified {
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .contact-btn {
-      background: rgba(220,20,60,0.15);
-      border: 1px solid rgba(220,20,60,0.3);
-      border-radius: 40px;
-      padding: 8px 18px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--blood);
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-    .contact-btn:hover {
-      background: rgba(220,20,60,0.25);
-      box-shadow: 0 0 20px var(--blood-soft);
-    }
+.topbar-title{
+  font-size:1.25rem;
+  font-weight:900;
+  white-space:nowrap;
+  animation:colors 6s linear infinite;
+  margin:0 4px;
+}
+@keyframes colors{
+  0%{color:#FFD700}
+  25%{color:#00E5FF}
+  50%{color:#FF4081}
+  75%{color:#7CFF00}
+  100%{color:#FFD700}
+}
+body.light .topbar-title{
+  text-shadow:0 1px 2px rgba(0,0,0,0.15);
+}
 
-    .scroll-indicator {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      font-size: 9px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-    .scroll-indicator .chevron {
-      font-size: 20px;
-      color: var(--blood);
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
+/* أزرار الشريط العلوي */
+.top-icon-btn{
+  background:var(--card);
+  border:1.5px solid var(--gold);
+  border-radius:12px;
+  height:38px;
+  min-width:38px;
+  padding:0 10px;
+  cursor:pointer;
+  font-size:1rem;
+  font-weight:800;
+  color:var(--text);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  transition:0.25s;
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+.top-icon-btn i{
+  color:var(--gold);
+}
+.top-icon-btn:hover, .top-icon-btn.active-btn{
+  transform:translateY(-2px) scale(1.04);
+  background:var(--gold);
+  color:#000 !important;
+  box-shadow:0 0 15px var(--gold);
+}
+.top-icon-btn:hover i, .top-icon-btn.active-btn i{
+  color:#000 !important;
+}
 
-    .about-card {
-      width: 100%;
-      padding: 28px 20px;
-      text-align: center;
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 28px;
-      transition: background 0.4s;
-    }
-    .about-card h2 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      letter-spacing: 0.2em;
-    }
-    .about-card .divider {
-      width: 40px;
-      height: 2px;
-      background: var(--blood);
-      margin: 8px auto 14px;
-      box-shadow: 0 0 12px var(--blood);
-    }
-    .about-card p {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      color: rgba(240,236,230,0.9);
-      line-height: 1.8;
-    }
-    .about-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 12px 0 0;
-      text-align: right;
-    }
-    .about-card ul li {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--text-primary);
-      padding: 6px 0;
-      border-bottom: 1px dashed var(--glass-border);
-      line-height: 1.8;
-    }
-    body.light .about-card p, body.light .about-card ul li { color: #222; }
+/* زر القلوب في الشريط العلوي */
+.top-heart-btn{
+  background:linear-gradient(135deg, #ff1744, #ff4081);
+  color:#fff !important;
+  border:1.5px solid #fff;
+  border-radius:20px;
+  height:38px;
+  padding:0 12px;
+  cursor:pointer;
+  font-size:0.92rem;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  box-shadow:0 0 14px rgba(255,23,68,0.5);
+  transition:0.25s;
+}
+.top-heart-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 22px #ff1744;
+}
 
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-      width: 100%;
-    }
-    .link-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 20px;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: 800;
-      transition: 0.35s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .link-card i {
-      font-size: 1.9rem;
-      color: var(--blood);
-    }
-    .link-card:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 0 30px var(--blood-soft);
-      border-color: var(--blood-soft);
-    }
+@media (max-width: 640px){
+  .topbar{
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:8px 6px;
+  }
+  .topbar-title{
+    order:-1;
+    width:100%;
+    font-size:1.15rem;
+    margin-bottom:4px;
+  }
+  .top-icon-btn{
+    height:34px;
+    min-width:34px;
+    padding:0 8px;
+    font-size:0.9rem;
+  }
+  .top-heart-btn{
+    height:34px;
+    padding:0 10px;
+    font-size:0.85rem;
+  }
+}
 
-    .notice {
-      width: 100%;
-      background: linear-gradient(135deg, var(--blood), #8b0000);
-      color: #fff;
-      padding: 18px 20px;
-      border-radius: 28px;
-      font-weight: 700;
-      text-align: center;
-      font-size: 0.9rem;
-      box-shadow: 0 0 30px var(--blood-soft);
-    }
+.flying-heart{
+  position:fixed;
+  font-size:1.7rem;
+  pointer-events:none;
+  z-index:9999;
+  animation:flyUpHeart 1.3s ease-out forwards;
+}
+@keyframes flyUpHeart{
+  0%{transform:translateY(0) scale(0.8); opacity:1;}
+  100%{transform:translateY(-130px) scale(1.6); opacity:0;}
+}
 
-    .divider {
-      width: 100%;
-      margin: 25px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      opacity: 0.9;
-    }
-    .divider::before,
-    .divider::after {
-      content: "";
-      height: 1px;
-      flex: 1;
-      background: linear-gradient(90deg, transparent, var(--blood), transparent);
-    }
-    .divider span {
-      font-size: 0.95rem;
-      color: var(--blood);
-      font-weight: 800;
-      animation: fadeZikr 4s ease-in-out infinite;
-      white-space: nowrap;
-      padding: 0 10px;
-    }
-    @keyframes fadeZikr {
-      0% { opacity: 0; }
-      20% { opacity: 1; }
-      50% { opacity: 1; }
-      80% { opacity: 0; }
-      100% { opacity: 0; }
-    }
-    .divider:nth-of-type(1) span { animation-delay: 0s; }
-    .divider:nth-of-type(2) span { animation-delay: 1.5s; }
-    .divider:nth-of-type(3) span { animation-delay: 3s; }
+/* زر الرسالة العائم */
+.message-button{
+  position:fixed;
+  bottom:26px;
+  right:26px;
+  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(0,0,0,0.4);
+  transition:0.3s;
+  z-index:150;
+  font-size:26px;
+  color:#000;
+  border:2px solid #fff;
+}
+.message-button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 30px var(--gold);
+}
 
-    .fancy-title {
-      display: inline-block;
-      padding: 14px 30px;
-      border-radius: 50px;
-      background: linear-gradient(135deg, var(--blood), #8b0000);
-      color: #fff;
-      font-family: 'Amiri', serif;
-      font-size: 1.9rem;
-      font-weight: 900;
-      box-shadow: 0 0 35px var(--blood-soft);
-      animation: pulse 4s infinite;
-      text-align: center;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+/* النوافذ المنبثقة */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.82);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+}
+.modal-content {
+  background: var(--card-solid);
+  border: 2px solid var(--gold);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: 24px;
+  text-align: center;
+  color: var(--text);
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  from{transform: translateY(-40px); opacity: 0;}
+  to{transform: translateY(0); opacity: 1;}
+}
+.modal-content h3 {
+  color: var(--gold);
+  font-size: 1.65rem;
+  margin-top: 0;
+}
+.modal-content button {
+  margin: 6px;
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), var(--accent2));
+  color: #000;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.modal-content button:hover{
+  transform: scale(1.04);
+}
+.modal-content .close-modal {
+  background: #334155;
+  color: white;
+  margin-top: 18px;
+}
+.setting-item {
+  margin: 18px 0;
+  text-align: inherit;
+  padding: 10px;
+  border-bottom: 1px dashed var(--gold);
+}
+.setting-item label {
+  font-weight: 900;
+  margin: 0 8px;
+  display: block;
+  margin-bottom: 8px;
+}
+.bio-modal-img {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: 20px;
+  margin: 15px 0;
+  border: 2px solid var(--gold);
+  background: var(--bg);
+  display: block;
+}
+.bio-modal-text {
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  margin: 18px 0;
+  white-space: pre-line;
+  font-family: 'Amiri', serif;
+}
+.telegram-modal-btn {
+  display: inline-block;
+  background: linear-gradient(135deg,#0088cc,#2a5c8a);
+  padding: 11px 24px;
+  border-radius: 60px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.telegram-modal-btn i {
+  margin: 0 6px;
+}
+.telegram-modal-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 20px #0088cc;
+}
 
-    .section {
-      width: 100%;
-      padding: 28px 20px;
-      text-align: center;
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 28px;
-      transition: background 0.4s;
-    }
-    .section h2 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 0.15em;
-      color: var(--blood);
-      margin-bottom: 12px;
-    }
-    .section p {
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--text-primary);
-    }
-    body.light .section p { color: #222; }
-    .section ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 20px;
-      margin-top: 12px;
-    }
-    .section ul li {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--text-primary);
-      background: var(--glass-bg);
-      padding: 4px 12px;
-      border-radius: 40px;
-      border: 1px solid var(--glass-border);
-    }
-    body.light .section ul li { color: #222; }
-    .telegram-btn {
-      display: inline-block;
-      background: linear-gradient(135deg,#0088cc,#2a5c8a);
-      padding: 10px 24px;
-      border-radius: 60px;
-      margin-top: 16px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .telegram-btn i { margin-left: 8px; }
-    .telegram-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px #0088cc;
-    }
+/* شريط الماركي المتحرك */
+.marquee{
+  margin-top:68px;
+  overflow:hidden;
+  white-space:nowrap;
+  background:linear-gradient(90deg,var(--gold),var(--accent2),var(--accent3));
+  color:#000;
+  font-weight:900;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+@media (max-width: 640px){
+  .marquee{
+    margin-top:96px;
+  }
+}
+.marquee span{
+  display:inline-block;
+  padding:10px 0;
+  font-size:1.02rem;
+  animation:move 15s linear infinite;
+}
+@keyframes move{
+  from{transform:translateX(100%)}
+  to{transform:translateX(-100%)}
+}
 
-    .post-image {
-      width: 100%;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    }
-    .post-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+/* قسم الهيرو والإطار المربع المتوهج */
+.hero{
+  margin-top:32px;
+  position:relative;
+  padding:0 16px;
+}
+.hero-square-frame{
+  position:relative;
+  display:inline-block;
+  padding:6px;
+  border-radius:20px;
+  background:linear-gradient(135deg, var(--gold), var(--accent2), var(--accent3), var(--gold));
+  background-size:300% 300%;
+  box-shadow:0 0 35px var(--gold);
+  animation:gradientBorder 5s ease infinite, frameFloat 4s ease-in-out infinite;
+}
+@keyframes gradientBorder{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+@keyframes frameFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+.hero img{
+  width:220px;
+  height:220px;
+  border-radius:14px;
+  object-fit:cover;
+  border:3px solid var(--bg);
+  display:block;
+}
+/* شارة متاح للتواصل مضبوطة بدقة داخل أسفل المربع */
+.square-status-badge{
+  position:absolute;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:88%;
+  background:rgba(11, 11, 16, 0.9);
+  border:1.5px solid var(--gold);
+  color:#00FF66;
+  font-size:0.8rem;
+  font-weight:900;
+  padding:5px 8px;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.85);
+  backdrop-filter:blur(6px);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.hero h1{
+  font-family:'Amiri', serif;
+  font-size:2.35rem;
+  margin:14px 0 6px;
+  color:var(--text);
+}
+/* النص المتحرك المتبدل تحت اسم الملك صقر */
+.dynamic-subtitle-wrap{
+  min-height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:8px;
+}
+#dynamicRoleText{
+  font-family:'Amiri', serif;
+  font-size:1.22rem;
+  font-weight:900;
+  color:var(--gold);
+  padding:5px 20px;
+  border-radius:30px;
+  background:var(--card);
+  border:1.5px solid var(--gold);
+  box-shadow:var(--shadow);
+  transition:opacity 0.35s ease, transform 0.35s ease;
+}
 
-    .marquee-container {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      background: rgba(220,20,60,0.15);
-      border: 1px solid rgba(220,20,60,0.2);
-      border-radius: 40px;
-      padding: 6px 0;
-      margin: -10px 0 0;
-      backdrop-filter: blur(4px);
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-    }
-    .marquee-container span {
-      display: inline-block;
-      padding: 0 20px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--text-primary);
-      animation: marqueeMove 15s linear infinite;
-    }
-    @keyframes marqueeMove {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
-    body.light .marquee-container span { color: #111; }
+.image-nav{
+  margin-top:8px;
+}
+.image-nav button{
+  margin:6px 8px;
+  padding:8px 18px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  color:#000;
+  font-size:1.2rem;
+  cursor:pointer;
+  font-weight:900;
+  box-shadow:var(--shadow);
+  transition:0.25s;
+}
+.image-nav button:hover{
+  transform:scale(1.07);
+}
 
-    /* ===== MUSIC PLAYER الحقيقي (مع عنصر الصوت) ===== */
-    .music-player {
-      width: 100%;
-      padding: 16px 20px;
-      background: rgba(220,20,60,0.08);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(220,20,60,0.2);
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .vinyl-btn {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.6);
-      border: 2px solid rgba(220,20,60,0.3);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      position: relative;
-      transition: border-color 0.3s;
-    }
-    .vinyl-btn:hover { border-color: var(--blood); }
-    .vinyl-btn .vinyl-ring {
-      position: absolute;
-      inset: 4px;
-      border-radius: 50%;
-      border: 1px dashed rgba(220,20,60,0.2);
-      animation: spin 8s linear infinite paused;
-    }
-    .vinyl-btn.playing .vinyl-ring { animation-play-state: running; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .vinyl-btn .play-icon {
-      font-size: 20px;
-      color: var(--text-primary);
-      z-index: 2;
-      margin-left: 2px;
-    }
-    .player-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .player-info .track-name {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(240,236,230,0.9);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .player-info .track-name .music-icon { color: var(--blood); }
-    .player-info .eq {
-      display: flex;
-      align-items: flex-end;
-      gap: 2px;
-      height: 20px;
-    }
-    .player-info .eq span {
-      display: block;
-      width: 3px;
-      background: var(--blood);
-      border-radius: 2px;
-      animation: eqBounce 0.8s ease-in-out infinite alternate;
-      transform-origin: bottom;
-    }
-    .player-info .eq.paused span { animation-play-state: paused; height: 6px !important; }
-    .player-info .eq span:nth-child(1) { height: 8px; animation-delay: 0s; }
-    .player-info .eq span:nth-child(2) { height: 14px; animation-delay: 0.2s; }
-    .player-info .eq span:nth-child(3) { height: 10px; animation-delay: 0.4s; }
-    .player-info .eq span:nth-child(4) { height: 16px; animation-delay: 0.1s; }
-    @keyframes eqBounce {
-      0% { transform: scaleY(0.4); }
-      100% { transform: scaleY(1); }
-    }
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      margin: 6px 0 4px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .progress-bar .fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--blood-soft), var(--blood));
-      border-radius: 4px;
-      box-shadow: 0 0 12px var(--blood);
-      transition: width 0.1s linear;
-    }
-    .time-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
-      font-variant-numeric: tabular-nums;
-      color: var(--text-muted);
-    }
-    /* عنصر الصوت مخفي */
-    audio#audioPlayer {
-      display: none;
-    }
+/* أزرار نسخ يوزر المطور ومشاركة الصفحة */
+.hero-quick-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:16px auto 10px;
+  max-width:600px;
+}
+.action-pill-btn{
+  background:var(--card);
+  color:var(--text);
+  border:1.5px solid var(--gold);
+  border-radius:50px;
+  padding:9px 20px;
+  font-size:0.95rem;
+  font-weight:800;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:var(--shadow);
+  transition:0.3s;
+}
+.action-pill-btn i{
+  color:var(--gold);
+}
+.action-pill-btn:hover{
+  background:var(--gold);
+  color:#000;
+  transform:translateY(-3px);
+}
+.action-pill-btn:hover i{
+  color:#000;
+}
 
-    footer {
-      margin-top: 10px;
-      font-size: 9px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-align: center;
-    }
+/* شريط البحث الفوري عن قناة أو بوت أو مقالة */
+.search-container{
+  max-width:680px;
+  margin:22px auto 10px;
+  padding:0 16px;
+}
+.search-box{
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:var(--card);
+  border:2px solid var(--gold);
+  border-radius:50px;
+  padding:6px 18px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(12px);
+}
+.search-box i{
+  color:var(--gold);
+  font-size:1.15rem;
+  margin:0 8px;
+}
+.search-box input{
+  width:100%;
+  border:none;
+  background:transparent;
+  color:var(--text);
+  font-family:inherit;
+  font-size:1rem;
+  font-weight:700;
+  padding:8px 4px;
+  outline:none;
+}
+.search-box input::placeholder{
+  color:var(--text-muted);
+  opacity:0.85;
+}
+.clear-search-btn{
+  background:transparent;
+  border:none;
+  color:var(--text-muted);
+  cursor:pointer;
+  font-size:1rem;
+  display:none;
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 200;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 2px solid var(--glass-border);
-      border-radius: 32px;
-      width: 90%;
-      max-width: 550px;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 24px;
-      text-align: center;
-      color: var(--text-primary);
-      box-shadow: 0 0 50px rgba(220,20,60,0.2);
-      animation: slideDown 0.3s ease;
-      transition: background 0.4s;
-    }
-    body.light .modal-content {
-      background: rgba(240,240,245,0.9);
-      border-color: rgba(0,0,0,0.15);
-      color: #111;
-    }
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .modal-content h3 {
-      color: var(--blood);
-      font-size: 1.6rem;
-      margin-top: 0;
-      font-family: var(--font-display);
-    }
-    .modal-content button {
-      margin: 6px;
-      padding: 10px 20px;
-      border-radius: 40px;
-      border: 1px solid var(--glass-border);
-      background: var(--glass-bg);
-      backdrop-filter: blur(4px);
-      color: var(--text-primary);
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .modal-content button:hover {
-      border-color: var(--blood-soft);
-      box-shadow: 0 0 20px var(--blood-soft);
-    }
-    .modal-content .close-modal {
-      background: rgba(220,20,60,0.2);
-      border-color: rgba(220,20,60,0.3);
-      color: var(--blood);
-      margin-top: 20px;
-    }
-    .setting-item {
-      margin: 20px 0;
-      text-align: right;
-      padding: 8px 0;
-      border-bottom: 1px dashed var(--glass-border);
-    }
-    .setting-item label {
-      font-weight: bold;
-      margin-left: 12px;
-      display: inline-block;
-    }
+/* الفواصل والأذكار المتبدلة بالتصميم المتوهج */
+.divider{
+  margin:38px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  opacity:0.95;
+}
+.divider::before,
+.divider::after{
+  content:"";
+  height:2px;
+  width:90px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.divider span{
+  font-size:1.05rem;
+  color:var(--gold);
+  font-weight:900;
+  padding:7px 22px;
+  border-radius:30px;
+  background:var(--card);
+  border:1.5px solid var(--gold);
+  box-shadow:var(--shadow);
+  animation:fadeZikr 4s ease-in-out infinite;
+}
+@keyframes fadeZikr{
+  0%{opacity:0; transform:scale(0.92);}
+  20%{opacity:1; transform:scale(1);}
+  75%{opacity:1; transform:scale(1.03);}
+  100%{opacity:0; transform:scale(0.92);}
+}
 
-    .bio-modal-img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      border-radius: 20px;
-      margin: 15px 0;
-      border: 2px solid var(--blood);
-      background: var(--bg-body);
-      display: block;
-    }
-    .bio-modal-text {
-      text-align: center;
-      font-size: 1rem;
-      line-height: 1.8;
-      margin: 20px 0;
-      white-space: pre-line;
-      font-family: 'Amiri', serif;
-      color: var(--text-primary);
-    }
-    body.light .bio-modal-text { color: #111; }
-    .telegram-modal-btn {
-      display: inline-block;
-      background: linear-gradient(135deg,#0088cc,#2a5c8a);
-      padding: 10px 20px;
-      border-radius: 60px;
-      margin-top: 10px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .telegram-modal-btn i { margin-left: 8px; }
-    .telegram-modal-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 20px #0088cc;
-    }
+/* شبكة الروابط */
+.links-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 16px;
+}
+.link-card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:22px 16px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:800;
+  backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  transition:0.35s;
+}
+.link-card i{
+  font-size:2rem;
+  margin-bottom:10px;
+  display:block;
+  color:var(--gold);
+}
+.link-card:hover{
+  transform:translateY(-8px) scale(1.04);
+  border-color:var(--gold);
+  box-shadow:0 0 28px var(--gold);
+}
 
-    @media (min-width: 640px) {
-      .avatar-ring { width: 240px; height: 240px; }
-      .title-group h1 { font-size: 3.5rem; }
-      main { padding-top: 120px; }
-      header { padding: 16px 28px; }
-    }
-    @media (max-width: 480px) {
-      .contact-card { flex-wrap: wrap; justify-content: center; }
-      .contact-btn { width: 100%; justify-content: center; }
-      .title-group h1 { font-size: 2.2rem; }
-      .link-card { padding: 16px; }
-      .links-grid { grid-template-columns: 1fr; }
-      .music-player { flex-wrap: wrap; justify-content: center; }
-      .vinyl-btn { width: 48px; height: 48px; }
-    }
-  </style>
+/* الأقسام العامة */
+.section{
+  max-width:1100px;
+  margin:35px auto;
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:26px;
+  padding:32px 24px;
+  text-align:start;
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow);
+}
+.section h2{
+  color:var(--gold);
+  text-align:center;
+  margin-top:0;
+  font-size:1.7rem;
+}
+.notice{
+  background:linear-gradient(135deg,var(--gold),var(--accent2));
+  color:#000;
+  padding:22px;
+  border-radius:20px;
+  font-weight:900;
+  max-width:1100px;
+  margin:25px auto;
+  box-shadow:var(--shadow);
+}
+.skills ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:10px 24px;
+}
+.skills li{
+  padding:12px 14px;
+  border-bottom:1px dashed var(--gold);
+  font-weight:800;
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+}
+body.light .skills li{
+  background:rgba(15, 23, 42, 0.04);
+}
+
+/* قسم نبذة الملك صقر (المضاف حديثاً) */
+.about-list{
+  list-style:none;
+  padding:0;
+  margin:16px 0 0;
+  text-align:start;
+}
+.about-list li{
+  padding:12px 16px;
+  margin-bottom:10px;
+  font-weight:800;
+  background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  border-inline-start:4px solid var(--gold);
+  line-height:1.75;
+  box-shadow:0 2px 8px rgba(0,0,0,0.12);
+  transition:0.25s;
+}
+.about-list li:hover{
+  background:rgba(255,255,255,0.06);
+  transform:translateX(4px);
+}
+body.light .about-list li{
+  background:rgba(15, 23, 42, 0.04);
+}
+
+/* قسم مقالات الملك صقر */
+.articles-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.article-card{
+  background:var(--bg);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  text-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:0.3s;
+  box-shadow:var(--shadow);
+}
+.article-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--gold);
+}
+.article-badge{
+  display:inline-block;
+  align-self:flex-start;
+  background:linear-gradient(135deg, var(--gold), var(--accent2));
+  color:#000;
+  font-size:0.78rem;
+  font-weight:900;
+  padding:4px 12px;
+  border-radius:20px;
+  margin-bottom:10px;
+}
+.article-card h3{
+  margin:6px 0 10px;
+  color:var(--gold);
+  font-size:1.2rem;
+}
+.article-card p{
+  color:var(--text-muted);
+  font-size:0.95rem;
+  line-height:1.7;
+  margin:0 0 16px;
+}
+.read-article-btn{
+  align-self:flex-start;
+  background:transparent;
+  color:var(--gold);
+  border:1.5px solid var(--gold);
+  border-radius:30px;
+  padding:7px 18px;
+  font-weight:800;
+  cursor:pointer;
+  transition:0.25s;
+}
+.read-article-btn:hover{
+  background:var(--gold);
+  color:#000;
+}
+
+/* قسم نبذة المطور مع الخلفية المؤطرة وزر التلجرام */
+.dev-bio {
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 35px rgba(255,215,0,0.25);
+  background: linear-gradient(rgba(11,11,16,0.82), rgba(11,11,16,0.88)), url('https://files.catbox.moe/x0ioh3.jpg') center/cover no-repeat !important;
+  color: #fff !important;
+}
+.dev-bio h2{
+  color: #FFD700 !important;
+}
+.dev-bio p {
+  line-height: 1.9;
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 2;
+  color: #ffffff !important;
+}
+.dev-bio .telegram-btn {
+  display: inline-block;
+  background: linear-gradient(135deg,#0088cc,#2a5c8a);
+  padding: 12px 26px;
+  border-radius: 60px;
+  margin-top: 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+  border: 2px solid var(--gold);
+  position: relative;
+  z-index: 2;
+}
+.dev-bio .telegram-btn i {
+  margin: 0 6px;
+}
+.dev-bio .telegram-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0088cc;
+}
+
+.post-image{
+  max-width:1100px;
+  margin:40px auto 20px;
+  padding:20px;
+  background:var(--card);
+  border:2px solid var(--gold);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+}
+.post-image img{
+  width:100%;
+  height:auto;
+  border-radius:20px;
+  box-shadow:0 0 35px rgba(0,0,0,0.45);
+}
+
+/* ===== مشغل الموسيقى الحقيقي (Vinyl Player) ===== */
+.music-player{
+  width:100%;
+  max-width:600px;
+  margin:24px auto 8px;
+  padding:16px 20px;
+  background:rgba(255,215,0,0.08);
+  backdrop-filter:blur(12px);
+  border:1.5px solid var(--gold);
+  border-radius:28px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  box-shadow:var(--shadow);
+}
+.vinyl-btn{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:rgba(0,0,0,0.6);
+  border:2px solid rgba(255,215,0,0.4);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  flex-shrink:0;
+  position:relative;
+  transition:border-color 0.3s, transform 0.2s;
+}
+.vinyl-btn:hover{
+  border-color:var(--gold);
+  transform:scale(1.05);
+}
+.vinyl-btn .vinyl-ring{
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  border:1px dashed rgba(255,215,0,0.3);
+  animation:spin 8s linear infinite paused;
+}
+.vinyl-btn.playing .vinyl-ring{
+  animation-play-state:running;
+}
+@keyframes spin{
+  100%{transform:rotate(360deg);}
+}
+.vinyl-btn .play-icon{
+  font-size:20px;
+  color:var(--text);
+  z-index:2;
+  margin-inline-start:2px;
+}
+.player-info{
+  flex:1;
+  min-width:0;
+  text-align:start;
+}
+.player-info .track-name{
+  font-size:0.8rem;
+  font-weight:800;
+  letter-spacing:0.08em;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+.player-info .track-name .music-icon{
+  color:var(--gold);
+  font-size:1rem;
+}
+.player-info .eq{
+  display:flex;
+  align-items:flex-end;
+  gap:2px;
+  height:20px;
+  margin-bottom:6px;
+}
+.player-info .eq span{
+  display:block;
+  width:3px;
+  background:var(--gold);
+  border-radius:2px;
+  animation:eqBounce 0.8s ease-in-out infinite alternate;
+  transform-origin:bottom;
+}
+.player-info .eq.paused span{
+  animation-play-state:paused;
+  height:6px !important;
+}
+.player-info .eq span:nth-child(1){height:8px; animation-delay:0s;}
+.player-info .eq span:nth-child(2){height:14px; animation-delay:0.2s;}
+.player-info .eq span:nth-child(3){height:10px; animation-delay:0.4s;}
+.player-info .eq span:nth-child(4){height:16px; animation-delay:0.1s;}
+@keyframes eqBounce{
+  0%{transform:scaleY(0.4);}
+  100%{transform:scaleY(1);}
+}
+.progress-bar{
+  width:100%;
+  height:4px;
+  background:rgba(255,255,255,0.1);
+  border-radius:4px;
+  margin:6px 0 4px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+body.light .progress-bar{
+  background:rgba(15,23,42,0.12);
+}
+.progress-bar .fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg, var(--gold), var(--accent2));
+  border-radius:4px;
+  box-shadow:0 0 12px var(--gold);
+  transition:width 0.1s linear;
+}
+.time-labels{
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  font-variant-numeric:tabular-nums;
+  color:var(--text-muted);
+  font-weight:800;
+}
+audio#audioPlayer{
+  display:none;
+}
+
+/* إشعار التوست الأنيق بدلاً من alert */
+.toast-notification{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:var(--card-solid);
+  color:var(--text);
+  border:2px solid var(--gold);
+  padding:12px 26px;
+  border-radius:50px;
+  font-weight:900;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  z-index:9999;
+  opacity:0;
+  transition:0.35s ease;
+  pointer-events:none;
+}
+.toast-notification.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+
+footer{
+  margin:35px 0;
+  font-weight:800;
+  opacity:0.9;
+}
+</style>
 </head>
 <body>
-  <div class="bg-cosmos"></div>
-  <div class="stars"></div>
 
-  <div id="top">
-    <header>
-      <div class="header-left">
-        <button class="icon-btn" id="settingsBtn" aria-label="الإعدادات">☰</button>
-        <button class="icon-btn" id="themeToggle" aria-label="السمة">☀</button>
-        <button class="lang-btn" id="langToggle">🇸🇦 AR</button>
-        <button class="like-btn" id="likeBtn">
-          <span class="heart">♥</span>
-          <span id="likeCount">8</span>
-        </button>
-      </div>
-      <span class="devil-badge">الملك صقر</span>
-    </header>
+<!-- الخلفية السيبرانية المتحركة -->
+<canvas id="cyberCanvas"></canvas>
 
-    <div class="marquee-container" style="margin-top:80px;">
-      <span id="marqueeText"> صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ </span>
-    </div>
-
-    <main>
-      <div class="avatar-ring">
-        <div class="inner">
-          <img id="profilePic" src="https://files.catbox.moe/seun9i.jpg" alt="الملك صقر" />
-          <div class="gloss"></div>
-        </div>
-      </div>
-      <div class="image-nav">
-        <button id="prevBtn">⏪</button>
-        <button id="nextBtn">⏩</button>
-      </div>
-
-      <div class="title-group">
-        <h1 id="heroName">الملك صقر <span class="check">✓</span></h1>
-        <div class="divider-line"></div>
-        <p class="sub-text" id="subText">المطور الملك صقر • أستاذ الأمن السيبراني</p>
-      </div>
-
-      <div class="contact-card">
-        <div class="contact-left">
-          <div class="contact-avatar"><img src="https://files.catbox.moe/seun9i.jpg" alt="الملك صقر" /></div>
-          <div class="contact-info">
-            <div class="name" id="contactName">الملك صقر</div>
-            <div class="verified" id="verifiedText">موثّق</div>
-          </div>
-        </div>
-        <a href="https://t.me/u_x86" target="_blank" class="contact-btn" id="contactBtn">
-          <span>✉</span> <span id="contactLabel">تواصل</span>
-        </a>
-      </div>
-
-      <div class="scroll-indicator">
-        <span id="scrollText">مرر لأسفل</span>
-        <span class="chevron">⌄</span>
-      </div>
-
-      <!-- ===== ABOUT مع النص الجديد ===== -->
-      <section class="about-card" id="aboutCard">
-        <h2 id="aboutTitle">نبذة</h2>
-        <div class="divider"></div>
-        <ul id="aboutList">
-          <li>• الملك صقر | عالم البرمجة والأمن السيبراني</li>
-          <li>• حماية وتأمين الحسابات من الاختراق والتهديدات</li>
-          <li>• برمجة وتطوير | مواقع وتطبيقات</li>
-          <li>• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع</li>
-          <li>• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة</li>
-          <li>• تهكير ألعاب</li>
-          <li>• تحديثات واتساب الملك صقر</li>
-          <li>• شروحات متنوعة</li>
-          <li>• محاربة قضايا الابتزاز</li>
-        </ul>
-      </section>
-
-      <div class="fancy-title" id="fancyTitle"> المطوّر الملك صقر </div>
-
-      <div class="divider"><span id="zikr1">اذكر الله</span></div>
-
-      <div class="links-grid" id="linksGrid"></div>
-
-      <div class="notice" id="noticeText">🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
-
-      <div class="divider"><span id="zikr2">استغفر الله</span></div>
-
-      <div class="section" id="whySection">
-        <h2 id="whyTitle">لماذا تشترك في قناة الملك صقر؟</h2>
-        <p id="whyDesc">إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.</p>
-        <p><strong id="whyStrong">اشترك وابدأ رحلتك التقنية بثقة.</strong></p>
-      </div>
-
-      <div class="divider"><span id="zikr3">اللهم لك الحمد</span></div>
-
-      <div class="section" id="skillsSection">
-        <h2 id="skillsTitle">المهارات والخدمات</h2>
-        <ul id="skillsList"></ul>
-      </div>
-
-      <div class="section" id="devBioSection">
-        <h2 id="bioTitle">👤 نبذة عن المطور</h2>
-        <p id="bioText"><strong>المطور الملك صقر</strong><br>مطور بوتات تلجرام بكل الانواع<br>ومطور مواقع الويب<br>مطور تطبيقات<br>هكر اخلاقي<br>أ/استاذ الأمن السبراني وشبكات الحاسوب</p>
-        <a href="https://t.me/u_x86" target="_blank" class="telegram-btn" id="telegramAccountBtn"><i class="fab fa-telegram"></i> <span id="telegramBtnText">حسابي على تلجرام</span></a>
-      </div>
-
-      <!-- ===== MUSIC PLAYER الحقيقي ===== -->
-      <div class="music-player">
-        <!-- عنصر الصوت المخفي -->
-        <audio id="audioPlayer" src="https://files.catbox.moe/gyx20d.mp3" preload="metadata"></audio>
-        <div class="vinyl-btn" id="playBtn">
-          <div class="vinyl-ring"></div>
-          <span class="play-icon" id="playIcon">▶</span>
-        </div>
-        <div class="player-info">
-          <div class="track-name"><span class="music-icon">♪</span> <span id="trackName">الملك صقر</span></div>
-          <div class="eq paused" id="eqBars"><span></span><span></span><span></span><span></span></div>
-          <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
-          <div class="time-labels"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
-        </div>
-      </div>
-
-      <div class="post-image">
-        <img src="https://files.catbox.moe/x0ioh3.jpg" alt="منشور الملك صقر">
-      </div>
-
-      <footer id="footerText">© 2026 — جميع الحقوق محفوظة | الملك صقر 👑</footer>
-    </main>
+<!-- الشريط العلوي الموحد: كل الأزرار بالأعلى بجانب الملك صقر -->
+<header class="topbar">
+  <div class="topbar-group">
+    <button id="settingsBtn" class="top-icon-btn" title="الإعدادات"><i class="fas fa-cog"></i></button>
+    <button id="themeToggle" class="top-icon-btn" title="الوضع الليلي / النهاري">🌙</button>
+    <button id="topLangBtn" class="top-icon-btn" title="تبديل اللغة">🇸🇦 EN</button>
+    <button id="topColorBtn" class="top-icon-btn" title="تغيير لون الثيم"><i class="fas fa-palette"></i></button>
+    <button id="autoColorCycleBtn" class="top-icon-btn active-btn" title="التبديل التلقائي للألوان"><i class="fas fa-sync-alt fa-spin"></i></button>
   </div>
 
-  <div id="settingsModal" class="modal">
-    <div class="modal-content">
-      <h3 id="modalTitle"><i class="fas fa-sliders-h"></i> الإعدادات</h3>
-      <div class="setting-item">
-        <label id="appearanceLabel"><i class="fas fa-palette"></i> المظهر:</label>
-        <button id="modalThemeBtn">تبديل الوضع (داكن/فاتح)</button>
-      </div>
-      <div class="setting-item">
-        <label id="marqueeSpeedLabel"><i class="fas fa-speed"></i> سرعة الماركي:</label>
-        <button id="speedSlow">🐢 بطيء</button>
-        <button id="speedNormal">⚡ عادي</button>
-        <button id="speedFast">🚀 سريع</button>
-      </div>
-      <div class="setting-item">
-        <label id="autoImageLabel"><i class="fas fa-image"></i> تلقائي تبديل الصور:</label>
-        <button id="autoPlayToggle">تعطيل التبديل التلقائي</button>
-      </div>
-      <div class="setting-item">
-        <label id="languageLabel"><i class="fas fa-language"></i> اللغة:</label>
-        <button id="langToggleBtn">🇸🇦 العربية / English</button>
-      </div>
-      <button class="close-modal" id="closeModalBtn">إغلاق</button>
+  <div class="topbar-title" id="topbarTitle">👑 الملك صقر</div>
+
+  <div class="topbar-group">
+    <button id="musicToggleBtn" class="top-icon-btn" title="تشغيل الموسيقى"><i class="fas fa-music"></i></button>
+    <button id="heartLikeBtn" class="top-heart-btn" title="تفاعل القلوب">❤️ <span id="heartCount">158</span></button>
+  </div>
+</header>
+
+<!-- نافذة الإعدادات الأصلية بالكامل -->
+<div id="settingsModal" class="modal">
+  <div class="modal-content">
+    <h3 id="modalTitle"><i class="fas fa-sliders-h"></i> الإعدادات</h3>
+    <div class="setting-item">
+      <label id="appearanceLabel"><i class="fas fa-palette"></i> المظهر:</label>
+      <button id="modalThemeBtn" class="modalThemeBtnText">تبديل الوضع (داكن/فاتح)</button>
     </div>
+    <div class="setting-item">
+      <label id="marqueeSpeedLabel"><i class="fas fa-tachometer-alt"></i> سرعة الماركي:</label>
+      <button id="speedSlow">🐢 بطيء</button>
+      <button id="speedNormal">⚡ عادي</button>
+      <button id="speedFast">🚀 سريع</button>
+    </div>
+    <div class="setting-item">
+      <label id="autoImageLabel"><i class="fas fa-image"></i> تلقائي تبديل الصور:</label>
+      <button id="autoPlayToggle" class="autoToggleText">تعطيل التبديل التلقائي</button>
+    </div>
+    <div class="setting-item">
+      <label id="languageLabel"><i class="fas fa-language"></i> اللغة:</label>
+      <button id="langToggleBtn">🇸🇦 العربية / English</button>
+    </div>
+    <button class="close-modal" id="closeModalBtn">إغلاق</button>
+  </div>
+</div>
+
+<!-- نافذة نبذة المطور الأصلية بالكامل -->
+<div id="bioModal" class="modal">
+  <div class="modal-content">
+    <h3 id="bioModalTitle">📜 نبذة المطور</h3>
+    <img id="bioModalImg" class="bio-modal-img" src="https://files.catbox.moe/x0ioh3.jpg" alt="نبذة المطور">
+    <div class="bio-modal-text" id="bioModalText">
+      المطور الملك صقر<br>
+      مطور بوتات تلجرام بكل الانواع<br>
+      ومطور مواقع الويب<br>
+      مطور تطبيقات<br>
+      هكر اخلاقي<br>
+      أ/استاذ الأمن السبراني وشبكات الحاسوب
+    </div>
+    <a id="bioTelegramLink" href="https://t.me/u_x86" target="_blank" class="telegram-modal-btn"><i class="fab fa-telegram"></i> حسابي على تلجرام</a>
+    <br>
+    <button class="close-modal" id="closeBioModalBtn">إغلاق</button>
+  </div>
+</div>
+
+<!-- نافذة قراءة المقالات -->
+<div id="articleModal" class="modal">
+  <div class="modal-content">
+    <h3 id="articleModalTitle">عنوان المقالة</h3>
+    <div class="bio-modal-text" id="articleModalBody" style="text-align:start; font-family:inherit; font-size:1.05rem;"></div>
+    <button class="close-modal" id="closeArticleModalBtn">إغلاق</button>
+  </div>
+</div>
+
+<!-- زر الرسالة العائم -->
+<button id="messageButton" class="message-button"><i class="fas fa-comment-dots"></i></button>
+
+<!-- شريط الماركي -->
+<div class="marquee" id="marquee">
+  <span id="marqueeText"> صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ </span>
+</div>
+
+<!-- قسم الصورة المربعة مع الإطار المتوهج والشارة المضبوطة والنص المتحرك -->
+<section class="hero">
+  <div class="hero-square-frame">
+    <img id="profilePic" src="https://files.catbox.moe/seun9i.jpg" alt="الملك صقر">
+    <div class="square-status-badge" id="squareStatusBadge">🟢 متاح للتواصل والمشاريع</div>
+  </div>
+  <h1 id="heroName">الملك صقر</h1>
+
+  <!-- النص المتحرك تحت اسم الملك صقر -->
+  <div class="dynamic-subtitle-wrap">
+    <span id="dynamicRoleText">مطور بوتات تلجرام بكل الأنواع 🤖</span>
   </div>
 
-  <div id="bioModal" class="modal">
-    <div class="modal-content">
-      <h3 id="bioModalTitle">📜 نبذة المطور</h3>
-      <img id="bioModalImg" class="bio-modal-img" src="https://files.catbox.moe/x0ioh3.jpg" alt="نبذة المطور">
-      <div class="bio-modal-text" id="bioModalText">
-        المطور الملك صقر<br>
-        مطور بوتات تلجرام بكل الانواع<br>
-        ومطور مواقع الويب<br>
-        مطور تطبيقات<br>
-        هكر اخلاقي<br>
-        أ/استاذ الأمن السبراني وشبكات الحاسوب
-      </div>
-      <a id="bioTelegramLink" href="https://t.me/u_x86" target="_blank" class="telegram-modal-btn"><i class="fab fa-telegram"></i> حسابي على تلجرام</a>
-      <button class="close-modal" id="closeBioModalBtn">إغلاق</button>
-    </div>
+  <div class="image-nav">
+    <button id="prevBtn">⏪</button>
+    <button id="nextBtn">⏩</button>
   </div>
 
-  <button id="messageButton" class="icon-btn" style="position:fixed; bottom:30px; right:30px; z-index:150; width:60px; height:60px; border-radius:50%; background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); font-size:26px; color:var(--blood); cursor:pointer; transition:0.3s; box-shadow:0 0 30px var(--blood-soft);">
-    <i class="fas fa-comment-dots"></i>
-  </button>
+  <!-- أزرار نسخ يوزر المطور ومشاركة الصفحة -->
+  <div class="hero-quick-actions">
+    <button id="copyUserBtn" class="action-pill-btn">
+      <i class="fas fa-copy"></i> <span id="copyUserText">نسخ يوزر المطور (@u_x86)</span>
+    </button>
+    <button id="sharePageBtn" class="action-pill-btn">
+      <i class="fas fa-share-alt"></i> <span id="sharePageText">مشاركة الصفحة</span>
+    </button>
+  </div>
+</section>
 
-  <script>
-    // ============================================================
-    // 1. البيانات والترجمات
-    // ============================================================
-    const images = [
-      "https://files.catbox.moe/x0ioh3.jpg",
-      "https://files.catbox.moe/seun9i.jpg",
-      "https://files.catbox.moe/xpczn2.jpg"
-    ];
-    let currentImgIndex = 0;
-    const profilePic = document.getElementById('profilePic');
+<!-- شريط البحث الفوري عن قناة أو بوت أو مقالة -->
+<div class="search-container">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" id="siteSearchInput" placeholder="ابحث عن قناة، بوت، أو مقالة للملك صقر...">
+    <button id="clearSearchBtn" class="clear-search-btn"><i class="fas fa-times"></i></button>
+  </div>
+</div>
 
-    const translations = {
-      ar: {
-        marqueeText: " صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ ",
-        heroName: "الملك صقر",
-        subText: "المطور الملك صقر • أستاذ الأمن السيبراني",
-        contactName: "الملك صقر",
-        verified: "موثّق",
-        contactLabel: "تواصل",
-        scrollText: "مرر لأسفل",
-        aboutTitle: "نبذة",
-        aboutList: [
-          "• الملك صقر | عالم البرمجة والأمن السيبراني",
-          "• حماية وتأمين الحسابات من الاختراق والتهديدات",
-          "• برمجة وتطوير | مواقع وتطبيقات",
-          "• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع",
-          "• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة",
-          "• تهكير ألعاب",
-          "• تحديثات واتساب الملك صقر",
-          "• شروحات متنوعة",
-          "• محاربة قضايا الابتزاز"
-        ],
-        fancyTitle: " المطوّر الملك صقر ",
-        zikr1: "اذكر الله",
-        zikr2: "استغفر الله",
-        zikr3: "اللهم لك الحمد",
-        modalTitle: "الإعدادات",
-        appearanceLabel: "المظهر:",
-        modalThemeBtnText: "تبديل الوضع (داكن/فاتح)",
-        marqueeSpeedLabel: "سرعة الماركي:",
-        autoImageLabel: "تلقائي تبديل الصور:",
-        autoToggleOn: "تعطيل التبديل التلقائي",
-        autoToggleOff: "تفعيل التبديل التلقائي",
-        languageLabel: "اللغة:",
-        langBtn: "🇸🇦 العربية / English",
-        closeModal: "إغلاق",
-        bioModalTitle: "📜 نبذة المطور",
-        bioModalText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
-        bioTelegramText: "حسابي على تلجرام",
-        footer: "© 2026 — جميع الحقوق محفوظة | الملك صقر 👑",
-        links: [
-          { icon: "fab fa-youtube", text: "قناة يوتيوب", href: "https://youtube.com/@king_saqr_1" },
-          { icon: "fab fa-telegram-plane", text: "القناة الأساسية", href: "https://t.me/+T_8QE67Pn6tkMzNk" },
-          { icon: "fas fa-video", text: "قناة الشروحات", href: "https://t.me/King_Saqr_1" },
-          { icon: "fas fa-globe", text: "موقع المطور", href: "https://kingsaqrsami.blogspot.com" },
-          { icon: "fas fa-shield-alt", text: "قناة احتياطية", href: "https://t.me/o3_6p" },
-          { icon: "fas fa-user", text: "معرف المطور", href: "https://t.me/u_x86" },
-          { icon: "fas fa-id-card", text: "ID Bot", href: "https://t.me/id_ho_9wbot" },
-          { icon: "fas fa-image", text: "بوت اختراق", href: "https://t.me/KingSaqr_Bot" },
-          { icon: "fas fa-mosque", text: "قناة دينية", href: "https://t.me/ZadAltawa" }
-        ],
-        whyTitle: "لماذا تشترك في قناة الملك صقر؟",
-        whyDesc: "إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.",
-        whyStrong: "اشترك وابدأ رحلتك التقنية بثقة.",
-        skillsTitle: "المهارات والخدمات",
-        skillsList: ["🔐 الأمن السيبراني","🕵️‍♂️ الاختراق الأخلاقي","🌐 تطوير مواقع","📱 تطوير تطبيقات","🤖 برمجة بوتات","💻 Termux","🐉 Kali Linux","🎥 صناعة محتوى تقني","📺 شروحات يوتيوب"],
-        bioTitle: "👤 نبذة عن المطور",
-        bioText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
-        telegramBtn: "حسابي على تلجرام",
-        notice: "🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
-        trackName: "الملك صقر"
-      },
-      en: {
-        marqueeText: " Blessings upon Prophet Muhammad ﷺ  Blessings upon Prophet Muhammad ﷺ ",
-        heroName: "King Saqr",
-        subText: "Developer King Saqr • Cybersecurity Professor",
-        contactName: "King Saqr",
-        verified: "Verified",
-        contactLabel: "Contact",
-        scrollText: "SCROLL DOWN",
-        aboutTitle: "About",
-        aboutList: [
-          "• King Saqr | Programming & Cybersecurity World",
-          "• Account protection and security against threats",
-          "• Programming & Development | Websites & Apps",
-          "• Professional bot maker | Telegram & WhatsApp all types",
-          "• Python tools development | Custom scripts & tools",
-          "• Game hacking",
-          "• King Saqr WhatsApp updates",
-          "• Various tutorials",
-          "• Combating blackmail issues"
-        ],
-        fancyTitle: " Developer King Saqr ",
-        zikr1: "Remember Allah",
-        zikr2: "Seek Forgiveness",
-        zikr3: "Praise be to Allah",
-        modalTitle: "Settings",
-        appearanceLabel: "Appearance:",
-        modalThemeBtnText: "Toggle (Dark/Light)",
-        marqueeSpeedLabel: "Marquee Speed:",
-        autoImageLabel: "Auto Image Switch:",
-        autoToggleOn: "Disable Auto Switch",
-        autoToggleOff: "Enable Auto Switch",
-        languageLabel: "Language:",
-        langBtn: "🇬🇧 English / العربية",
-        closeModal: "Close",
-        bioModalTitle: "📜 Developer Bio",
-        bioModalText: "Developer King Saqr\nTelegram bots developer (all types)\nWeb developer\nApp developer\nEthical hacker\nProf. of Cybersecurity & Computer Networks",
-        bioTelegramText: "My Telegram",
-        footer: "© 2026 — All rights reserved | King Saqr 👑",
-        links: [
-          { icon: "fab fa-youtube", text: "YouTube Channel", href: "https://youtube.com/@king_saqr_1" },
-          { icon: "fab fa-telegram-plane", text: "Main Channel", href: "https://t.me/+T_8QE67Pn6tkMzNk" },
-          { icon: "fas fa-video", text: "Tutorials Channel", href: "https://t.me/King_Saqr_1" },
-          { icon: "fas fa-globe", text: "Developer Website", href: "https://kingsaqrsami.blogspot.com" },
-          { icon: "fas fa-shield-alt", text: "Backup Channel", href: "https://t.me/o3_6p" },
-          { icon: "fas fa-user", text: "Dev Contact", href: "https://t.me/u_x86" },
-          { icon: "fas fa-id-card", text: "ID Bot", href: "https://t.me/id_ho_9wbot" },
-          { icon: "fas fa-image", text: "Hacking Bot", href: "https://t.me/KingSaqr_Bot" },
-          { icon: "fas fa-mosque", text: "Religious Channel", href: "https://t.me/ZadAltawa" }
-        ],
-        whyTitle: "Why subscribe to King Saqr's Channel?",
-        whyDesc: "If you aspire to learn technology professionally, understand digital awareness, and enter the world of cybersecurity and ethical hacking in a clear and practical way — this channel is designed for you.",
-        whyStrong: "Subscribe and start your tech journey with confidence.",
-        skillsTitle: "Skills & Services",
-        skillsList: ["🔐 Cybersecurity","🕵️‍♂️ Ethical Hacking","🌐 Web Development","📱 App Development","🤖 Bot Programming","💻 Termux","🐉 Kali Linux","🎥 Tech Content Creation","📺 YouTube Tutorials"],
-        bioTitle: "👤 About the Developer",
-        bioText: "Developer King Saqr\nTelegram bots developer (all types)\nWeb developer\nApp developer\nEthical hacker\nProf. of Cybersecurity & Computer Networks",
-        telegramBtn: "My Telegram",
-        notice: "🔔 Subscribe to YouTube and hit the bell to follow everything new in cybersecurity, technology, and development.",
-        trackName: "King Saqr"
-      }
-    };
+<div class="divider"><span id="zikr1">اذكر الله</span></div>
 
-    let currentLanguage = 'ar';
-    let currentTheme = 'dark';
+<!-- شبكة الروابط الأصلية بالكامل -->
+<div class="links-grid" id="linksGrid">
+  <a class="link-card searchable-item" href="https://youtube.com/@king_saqr_1" target="_blank"><i class="fab fa-youtube"></i><span class="linkText" data-key="youtube">قناة يوتيوب</span></a>
+  <a class="link-card searchable-item" href="https://t.me/+T_8QE67Pn6tkMzNk" target="_blank"><i class="fab fa-telegram"></i><span class="linkText" data-key="telegramMain">القناة الأساسية</span></a>
+  <a class="link-card searchable-item" href="https://t.me/King_Saqr_1" target="_blank"><i class="fas fa-video"></i><span class="linkText" data-key="telegramTutorials">قناة الشروحات</span></a>
+  <a class="link-card searchable-item" href="https://kingsaqrsami.blogspot.com" target="_blank"><i class="fas fa-globe"></i><span class="linkText" data-key="website">موقع المطور</span></a>
+  <a class="link-card searchable-item" href="https://t.me/o3_6p" target="_blank"><i class="fas fa-shield-alt"></i><span class="linkText" data-key="backup">قناة احتياطية</span></a>
+  <a class="link-card searchable-item" href="https://t.me/u_x86" target="_blank"><i class="fas fa-user"></i><span class="linkText" data-key="devContact">معرف المطور</span></a>
+  <a class="link-card searchable-item" href="https://t.me/id_ho_9wbot" target="_blank"><i class="fas fa-id-card"></i><span class="linkText" data-key="idBot">ID Bot</span></a>
+  <a class="link-card searchable-item" href="https://t.me/KingSaqr_Bot" target="_blank"><i class="fas fa-image"></i><span class="linkText" data-key="hackBot">بوت اختراق</span></a>
+  <a class="link-card searchable-item" href="https://t.me/ZadAltawa" target="_blank"><i class="fas fa-mosque"></i><span class="linkText" data-key="religiousChannel">قناة دينية</span></a>
+</div>
 
-    function updateLanguage(lang) {
-      const t = translations[lang];
-      if (!t) return;
-      document.getElementById('marqueeText').textContent = t.marqueeText;
-      document.getElementById('heroName').innerHTML = t.heroName + ' <span class="check">✓</span>';
-      document.getElementById('subText').textContent = t.subText;
-      document.getElementById('contactName').textContent = t.contactName;
-      document.getElementById('verifiedText').textContent = t.verified;
-      document.getElementById('contactLabel').textContent = t.contactLabel;
-      document.getElementById('scrollText').textContent = t.scrollText;
-      document.getElementById('aboutTitle').textContent = t.aboutTitle;
-      // تحديث قائمة النبذة
-      const aboutList = document.getElementById('aboutList');
-      aboutList.innerHTML = '';
-      t.aboutList.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        aboutList.appendChild(li);
-      });
-      document.getElementById('fancyTitle').textContent = t.fancyTitle;
-      document.getElementById('zikr1').textContent = t.zikr1;
-      document.getElementById('zikr2').textContent = t.zikr2;
-      document.getElementById('zikr3').textContent = t.zikr3;
-      document.getElementById('modalTitle').innerHTML = `<i class="fas fa-sliders-h"></i> ${t.modalTitle}`;
-      document.getElementById('appearanceLabel').innerHTML = `<i class="fas fa-palette"></i> ${t.appearanceLabel}`;
-      document.querySelector('#modalThemeBtn').textContent = t.modalThemeBtnText;
-      document.getElementById('marqueeSpeedLabel').innerHTML = `<i class="fas fa-speed"></i> ${t.marqueeSpeedLabel}`;
-      document.getElementById('autoImageLabel').innerHTML = `<i class="fas fa-image"></i> ${t.autoImageLabel}`;
-      document.getElementById('languageLabel').innerHTML = `<i class="fas fa-language"></i> ${t.languageLabel}`;
-      document.getElementById('langToggleBtn').textContent = t.langBtn;
-      document.getElementById('closeModalBtn').textContent = t.closeModal;
-      document.getElementById('bioModalTitle').textContent = t.bioModalTitle;
-      document.getElementById('bioModalText').innerHTML = t.bioModalText.replace(/\n/g, '<br>');
-      document.getElementById('bioTelegramLink').innerHTML = `<i class="fab fa-telegram"></i> ${t.bioTelegramText}`;
-      document.getElementById('footerText').textContent = t.footer;
-      document.getElementById('whyTitle').textContent = t.whyTitle;
-      document.getElementById('whyDesc').textContent = t.whyDesc;
-      document.getElementById('whyStrong').textContent = t.whyStrong;
-      document.getElementById('skillsTitle').textContent = t.skillsTitle;
-      document.getElementById('noticeText').textContent = t.notice;
-      document.getElementById('bioTitle').textContent = t.bioTitle;
-      document.getElementById('bioText').innerHTML = t.bioText.replace(/\n/g, '<br>');
-      document.getElementById('telegramBtnText').textContent = t.telegramBtn;
-      document.getElementById('trackName').textContent = t.trackName;
+<div class="notice" id="noticeText">🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.</div>
 
-      const skillsUl = document.getElementById('skillsList');
-      skillsUl.innerHTML = '';
-      t.skillsList.forEach(skill => {
-        const li = document.createElement('li');
-        li.textContent = skill;
-        skillsUl.appendChild(li);
-      });
+<div class="divider"><span id="zikr2">استغفر الله</span></div>
 
-      const linksGrid = document.getElementById('linksGrid');
-      linksGrid.innerHTML = '';
-      t.links.forEach(link => {
-        const a = document.createElement('a');
-        a.className = 'link-card';
-        a.href = link.href;
-        a.target = '_blank';
-        a.innerHTML = `<i class="${link.icon}"></i> ${link.text}`;
-        linksGrid.appendChild(a);
-      });
+<!-- قسم النبذة (المضاف حديثاً) -->
+<div class="section" id="aboutSection">
+  <h2 id="aboutTitle">نبذة</h2>
+  <ul class="about-list" id="aboutList">
+    <li>• الملك صقر | عالم البرمجة والأمن السيبراني</li>
+    <li>• حماية وتأمين الحسابات من الاختراق والتهديدات</li>
+    <li>• برمجة وتطوير | مواقع وتطبيقات</li>
+    <li>• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع</li>
+    <li>• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة</li>
+    <li>• تهكير ألعاب</li>
+    <li>• تحديثات واتساب الملك صقر</li>
+    <li>• شروحات متنوعة</li>
+    <li>• محاربة قضايا الابتزاز</li>
+  </ul>
+</div>
 
-      document.getElementById('langToggle').textContent = lang === 'ar' ? '🇸🇦 AR' : '🇬🇧 EN';
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.documentElement.lang = lang;
-      currentLanguage = lang;
+<div class="section" id="whySection">
+  <h2 id="whyTitle">لماذا تشترك في قناة الملك صقر؟</h2>
+  <p id="whyDesc">إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.</p>
+  <p><strong id="whyStrong">اشترك وابدأ رحلتك التقنية بثقة.</strong></p>
+</div>
 
-      const autoToggle = document.getElementById('autoPlayToggle');
-      if (autoPlayActive) autoToggle.textContent = t.autoToggleOn;
-      else autoToggle.textContent = t.autoToggleOff;
-    }
+<!-- قسم مقالات الملك صقر الجديد -->
+<div class="section" id="articlesSection">
+  <h2 id="articlesMainTitle">📚 مقالات وشروحات الملك صقر</h2>
+  <div class="articles-grid" id="articlesGrid"></div>
+</div>
 
-    function updateTheme(theme) {
-      document.body.classList.toggle('light', theme === 'light');
-      document.getElementById('themeToggle').textContent = theme === 'light' ? '☀' : '☀';
-      currentTheme = theme;
-    }
+<div class="divider"><span id="zikr3">اللهم لك الحمد</span></div>
 
-    // ============================================================
-    // 3. تبديل الصور + التلقائي
-    // ============================================================
-    let autoSpeed = 4000;
-    let autoEnabled = true;
-    let autoPlayActive = true;
-    let autoInterval = setInterval(() => {
+<div class="section skills">
+  <h2 id="skillsTitle">المهارات والخدمات</h2>
+  <ul id="skillsList">
+    <li>🔐 الأمن السيبراني</li>
+    <li>🕵️‍♂️ الاختراق الأخلاقي</li>
+    <li>🌐 تطوير مواقع</li>
+    <li>📱 تطوير تطبيقات</li>
+    <li>🤖 برمجة بوتات</li>
+    <li>💻 Termux</li>
+    <li>🐉 Kali Linux</li>
+    <li>🎥 صناعة محتوى تقني</li>
+    <li>📺 شروحات يوتيوب</li>
+  </ul>
+</div>
+
+<div class="section dev-bio" id="devBioSection">
+  <h2 id="bioTitle">👤 نبذة عن المطور</h2>
+  <p id="bioText"><strong>المطور الملك صقر</strong><br>مطور بوتات تلجرام بكل الانواع<br>ومطور مواقع الويب<br>مطور تطبيقات<br>هكر اخلاقي<br>أ/استاذ الأمن السبراني وشبكات الحاسوب</p>
+  <a href="https://t.me/u_x86" target="_blank" class="telegram-btn" id="telegramAccountBtn"><i class="fab fa-telegram"></i> <span id="telegramBtnText">حسابي على تلجرام</span></a>
+</div>
+
+<!-- ===== مشغل الموسيقى الحقيقي (المضاف حديثاً) ===== -->
+<div class="music-player">
+  <audio id="audioPlayer" src="https://files.catbox.moe/gyx20d.mp3" preload="metadata"></audio>
+  <div class="vinyl-btn" id="playBtn" title="تشغيل / إيقاف الموسيقى">
+    <div class="vinyl-ring"></div>
+    <span class="play-icon" id="playIcon">▶</span>
+  </div>
+  <div class="player-info">
+    <div class="track-name"><span class="music-icon">♪</span> <span id="trackName">الملك صقر</span></div>
+    <div class="eq paused" id="eqBars"><span></span><span></span><span></span><span></span></div>
+    <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
+    <div class="time-labels"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
+  </div>
+</div>
+
+<div class="post-image">
+  <img src="https://files.catbox.moe/x0ioh3.jpg" alt="منشور الملك صقر">
+</div>
+
+<footer id="footerText">© 2026 — جميع الحقوق محفوظة | الملك صقر 👑</footer>
+
+<!-- إشعار التوست -->
+<div id="toastBox" class="toast-notification">تم النسخ بنجاح!</div>
+
+<script>
+/* إشعار التوست الأنيق */
+const toastBox = document.getElementById("toastBox");
+let toastTimer = null;
+function showToast(msg) {
+  toastBox.innerText = msg;
+  toastBox.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastBox.classList.remove("show");
+  }, 2600);
+}
+
+/* تبديل الوضع الليلي والنهاري */
+const btn = document.getElementById("themeToggle");
+const modalThemeBtn = document.getElementById("modalThemeBtn");
+function toggleLightDark() {
+  document.body.classList.toggle("light");
+  const isLight = document.body.classList.contains("light");
+  btn.textContent = isLight ? "☀️" : "🌙";
+}
+btn.onclick = toggleLightDark;
+modalThemeBtn.onclick = toggleLightDark;
+
+/* تبديل الصور التلقائي واليدوي */
+const images = [
+  "https://files.catbox.moe/x0ioh3.jpg",
+  "https://files.catbox.moe/seun9i.jpg",
+  "https://files.catbox.moe/xpczn2.jpg"
+];
+let currentImgIndex = 0;
+const pic = document.getElementById("profilePic");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+nextBtn.onclick = () => {
+  currentImgIndex = (currentImgIndex + 1) % images.length;
+  pic.src = images[currentImgIndex];
+  resetAutoInterval();
+};
+prevBtn.onclick = () => {
+  currentImgIndex = (currentImgIndex - 1 + images.length) % images.length;
+  pic.src = images[currentImgIndex];
+  resetAutoInterval();
+};
+let autoSpeed = 4000;
+let autoEnabled = true;
+let autoPlayActive = true;
+let autoInterval = setInterval(() => {
+  currentImgIndex = (currentImgIndex + 1) % images.length;
+  pic.src = images[currentImgIndex];
+}, autoSpeed);
+
+function resetAutoInterval() {
+  clearInterval(autoInterval);
+  if (autoEnabled && autoPlayActive) {
+    autoInterval = setInterval(() => {
       currentImgIndex = (currentImgIndex + 1) % images.length;
-      profilePic.src = images[currentImgIndex];
+      pic.src = images[currentImgIndex];
     }, autoSpeed);
+  }
+}
 
-    function resetAutoInterval() {
-      clearInterval(autoInterval);
-      if (autoEnabled && autoPlayActive) {
-        autoInterval = setInterval(() => {
-          currentImgIndex = (currentImgIndex + 1) % images.length;
-          profilePic.src = images[currentImgIndex];
-        }, autoSpeed);
+/* نوافذ الإعدادات ونبذة المطور والمقالات */
+const modal = document.getElementById("settingsModal");
+const settingsBtn = document.getElementById("settingsBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+function openModal() { modal.style.display = "flex"; }
+function closeModal() { modal.style.display = "none"; }
+settingsBtn.onclick = openModal;
+closeModalBtn.onclick = closeModal;
+
+const bioModal = document.getElementById("bioModal");
+const messageButton = document.getElementById("messageButton");
+const closeBioModalBtn = document.getElementById("closeBioModalBtn");
+function openBioModal() { bioModal.style.display = "flex"; }
+function closeBioModal() { bioModal.style.display = "none"; }
+messageButton.onclick = openBioModal;
+closeBioModalBtn.onclick = closeBioModal;
+
+const articleModal = document.getElementById("articleModal");
+const closeArticleModalBtn = document.getElementById("closeArticleModalBtn");
+closeArticleModalBtn.onclick = () => { articleModal.style.display = "none"; };
+
+window.onclick = function(e) {
+  if (e.target == bioModal) closeBioModal();
+  if (e.target == modal) closeModal();
+  if (e.target == articleModal) articleModal.style.display = "none";
+};
+
+/* سرعة الماركي */
+const marqueeSpan = document.querySelector("#marquee span");
+document.getElementById("speedSlow").onclick = () => { marqueeSpan.style.animation = "move 30s linear infinite"; };
+document.getElementById("speedNormal").onclick = () => { marqueeSpan.style.animation = "move 15s linear infinite"; };
+document.getElementById("speedFast").onclick = () => { marqueeSpan.style.animation = "move 6s linear infinite"; };
+
+/* التحكم بالتبديل التلقائي للصور */
+const autoPlayToggle = document.getElementById("autoPlayToggle");
+autoPlayToggle.onclick = () => {
+  if (autoPlayActive) {
+    clearInterval(autoInterval);
+    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تفعيل التبديل التلقائي" : "⚜️ Enable Auto Switch ⚜️";
+    autoPlayActive = false;
+  } else {
+    resetAutoInterval();
+    autoPlayToggle.textContent = currentLanguage === 'ar' ? "تعطيل التبديل التلقائي" : "⚜️ Disable Auto Switch ⚜️";
+    autoPlayActive = true;
+  }
+};
+
+/* الترجمات والزخرفة الاحترافية للغتين العربية والإنجليزية + المقالات + النبذة */
+const translations = {
+  ar: {
+    topbarTitle: "👑 الملك صقر",
+    topLangBtnText: "🇸🇦 EN",
+    modalTitle: "الإعدادات",
+    appearanceLabel: "المظهر:",
+    modalThemeBtnText: "تبديل الوضع (داكن/فاتح)",
+    marqueeSpeedLabel: "سرعة الماركي:",
+    autoImageLabel: "تلقائي تبديل الصور:",
+    autoToggleOn: "تعطيل التبديل التلقائي",
+    autoToggleOff: "تفعيل التبديل التلقائي",
+    languageLabel: "اللغة:",
+    langBtn: "🇸🇦 العربية / English",
+    closeModal: "إغلاق",
+    marqueeText: " صلِّ على النبي محمد ﷺ  صلِّ على النبي محمد ﷺ ",
+    heroName: "الملك صقر",
+    squareStatus: "🟢 متاح للتواصل والمشاريع",
+    copyUserText: "نسخ يوزر المطور (@u_x86)",
+    sharePageText: "مشاركة الصفحة",
+    searchPlaceholder: "ابحث عن قناة، بوت، أو مقالة للملك صقر...",
+    zikr1: "اذكر الله",
+    zikr2: "استغفر الله",
+    zikr3: "اللهم لك الحمد",
+    youtube: "قناة يوتيوب",
+    telegramMain: "القناة الأساسية",
+    telegramTutorials: "قناة الشروحات",
+    website: "موقع المطور",
+    backup: "قناة احتياطية",
+    devContact: "معرف المطور",
+    idBot: "ID Bot",
+    hackBot: "بوت اختراق",
+    religiousChannel: "قناة دينية",
+    notice: "🔔 ننصحك بالاشتراك في قناة اليوتيوب وتفعيل زر الجرس لمتابعة كل جديد حول الأمن السيبراني، التقنية، والتطوير.",
+    aboutTitle: "نبذة",
+    aboutList: [
+      "• الملك صقر | عالم البرمجة والأمن السيبراني",
+      "• حماية وتأمين الحسابات من الاختراق والتهديدات",
+      "• برمجة وتطوير | مواقع وتطبيقات",
+      "• صانع بوتات احترافي | تلجرام وواتساب بكل الأنواع",
+      "• تطوير أدوات Python | أدوات وسكريبتات برمجة مخصصة",
+      "• تهكير ألعاب",
+      "• تحديثات واتساب الملك صقر",
+      "• شروحات متنوعة",
+      "• محاربة قضايا الابتزاز"
+    ],
+    whyTitle: "لماذا تشترك في قناة الملك صقر؟",
+    whyDesc: "إذا كنت تطمح لتعلّم التقنية بشكل احترافي، وفهم التوعية الرقمية، والدخول إلى عالم الأمن السيبراني والاختراق الأخلاقي بأسلوب واضح وعملي — فهذه القناة صُممت خصيصًا لك.",
+    whyStrong: "اشترك وابدأ رحلتك التقنية بثقة.",
+    articlesMainTitle: "📚 مقالات وشروحات الملك صقر",
+    readMoreBtn: "📖 قراءة المقال كاملًا",
+    articles: [
+      {
+        badge: "🔐 الأمن السيبراني",
+        title: "دليلك الشامل لحماية حساباتك من الاختراق والاستهداف",
+        summary: "تعرّف على أهم قواعد الأمان الرقمي، التحقق بخطوتين، وكشف الروابط الوهمية والهندسة الاجتماعية بأسلوب الملك صقر.",
+        body: "في عالم التقنية الحديث، تعتبر الهندسة الاجتماعية والروابط المزيفة من أكثر الوسائل استخداماً لاختراق الحسابات.\n\n1. فعّل المصادقة الثنائية (2FA) في تلجرام وجميع حساباتك.\n2. لا تقم أبداً بمشاركة كود التفعيل أو ملفات الجلسة مع أي جهة.\n3. استخدم بوتات الفحص الموثوقة وتابع قناة شروحات الملك صقر لتتعلم كشف الثغرات وحماية بياناتك باحتراف."
+      },
+      {
+        badge: "🤖 برمجة البوتات",
+        title: "احتراف تطوير وبرمجة بوتات التلجرام المتقدمة",
+        summary: "كيف يقوم الملك صقر ببناء بوتات تلجرام ذكية وسريعة لإدارة القنوات، الحماية، والخدمات التلقائية المتكاملة.",
+        body: "تطوير بوتات تلجرام يفتح لك آفاقاً واسعة لأتمتة المهام وإدارة المجتمعات الكبرى.\n\n• نعتمد على لغات قوية مثل Python ومكتبات حديثة مثل Telethon و Pyrogram و Aiogram.\n• يتم ربط البوتات بقواعد بيانات سريعة لضمان استجابة فورية على مدار الساعة.\n• يمكنك طلب برمجة بوتك الخاص مباشرة عبر التواصل مع المطور الملك صقر (@u_x86)."
+      },
+      {
+        badge: "🐉 Kali & Termux",
+        title: "أساسيات الاختراق الأخلاقي وفحص الشبكات عبر Termux و Kali",
+        summary: "مقدمة عملية لطلاب الأمن السيبراني حول أدوات الفحص الأخلاقي واختبار الاختراق من الهاتف والكمبيوتر.",
+        body: "الاختراق الأخلاقي (Ethical Hacking) هو خط الدفاع الأول لحماية الأنظمة والشبكات من الهجمات السيبرانية.\n\n• عبر بيئة Kali Linux وتطبيق Termux على أندرويد، يمكنك تعلم أوامر الشبكات وفحص المنافذ واكتشاف نقاط الضعف.\n• جميع الشروحات العملية متوفرة خطوة بخطوة في قناة الملك صقر التعليمية."
+      },
+      {
+        badge: "🌐 تطوير الويب",
+        title: "تصميم مواقع وتطبيقات عصرية بهوية ملكية وسيبرانية",
+        summary: "أسرار بناء واجهات المستخدم التفاعلية السريعة المتجاوبة مع جميع الشاشات بأحدث تقنيات الويب.",
+        body: "الموقع الإلكتروني الاحترافي هو واجهتك الرقمية أمام العالم.\n\n• نحرص في تصاميم الملك صقر على الدمج بين الفخامة البصرية والسرعة العالية.\n• دعم كامل للغتين العربية والإنجليزية، والوضع الليلي والنهاري، مع حماية متقدمة للواجهات."
       }
-    }
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      currentImgIndex = (currentImgIndex - 1 + images.length) % images.length;
-      profilePic.src = images[currentImgIndex];
-      resetAutoInterval();
-    });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      currentImgIndex = (currentImgIndex + 1) % images.length;
-      profilePic.src = images[currentImgIndex];
-      resetAutoInterval();
-    });
-
-    // ============================================================
-    // 4. الماركي - السرعة
-    // ============================================================
-    const marqueeSpan = document.getElementById('marqueeText');
-    document.getElementById('speedSlow').addEventListener('click', () => {
-      marqueeSpan.style.animationDuration = '30s';
-    });
-    document.getElementById('speedNormal').addEventListener('click', () => {
-      marqueeSpan.style.animationDuration = '15s';
-    });
-    document.getElementById('speedFast').addEventListener('click', () => {
-      marqueeSpan.style.animationDuration = '6s';
-    });
-
-    // ============================================================
-    // 5. التبديل التلقائي للصور - زر
-    // ============================================================
-    const autoToggleBtn = document.getElementById('autoPlayToggle');
-    autoToggleBtn.addEventListener('click', () => {
-      if (autoPlayActive) {
-        clearInterval(autoInterval);
-        autoPlayActive = false;
-        const t = translations[currentLanguage];
-        autoToggleBtn.textContent = t.autoToggleOff;
-      } else {
-        autoPlayActive = true;
-        resetAutoInterval();
-        const t = translations[currentLanguage];
-        autoToggleBtn.textContent = t.autoToggleOn;
+    ],
+    skillsTitle: "المهارات والخدمات",
+    skillsList: ["🔐 الأمن السيبراني","🕵️‍♂️ الاختراق الأخلاقي","🌐 تطوير مواقع","📱 تطوير تطبيقات","🤖 برمجة بوتات","💻 Termux","🐉 Kali Linux","🎥 صناعة محتوى تقني","📺 شروحات يوتيوب"],
+    bioTitle: "👤 نبذة عن المطور",
+    bioText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
+    telegramBtn: "حسابي على تلجرام",
+    footer: "© 2026 — جميع الحقوق محفوظة | الملك صقر 👑",
+    bioModalTitle: "📜 نبذة المطور",
+    bioModalText: "المطور الملك صقر\nمطور بوتات تلجرام بكل الانواع\nومطور مواقع الويب\nمطور تطبيقات\nهكر اخلاقي\nأ/استاذ الأمن السبراني وشبكات الحاسوب",
+    bioTelegramText: "حسابي على تلجرام",
+    trackName: "الملك صقر",
+    rolesList: [
+      "مطور بوتات تلجرام بكل الأنواع 🤖",
+      "مطور مواقع الويب وتطبيقات محترف 🌐",
+      "هكر أخلاقي وخبير أمن سيبراني 🕵️‍♂️",
+      "أ/ أستاذ الأمن السيبراني وشبكات الحاسوب 💻"
+    ],
+    zikrPool: ["اذكر الله", "أستغفر الله", "الحمد لله", "الله أكبر", "سبحان الله وبحمده", "لا إله إلا الله"]
+  },
+  en: {
+    topbarTitle: "⚜️ 👑 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 ⚜️",
+    topLangBtnText: "🇬🇧 AR",
+    modalTitle: "⚜️ Settings & Controls ⚜️",
+    appearanceLabel: "❖ Appearance Mode:",
+    modalThemeBtnText: "⚜️ Toggle (Dark / Light) ⚜️",
+    marqueeSpeedLabel: "❖ Marquee Speed:",
+    autoImageLabel: "❖ Auto Image Switch:",
+    autoToggleOn: "⚜️ Disable Auto Switch ⚜️",
+    autoToggleOff: "⚜️ Enable Auto Switch ⚜️",
+    languageLabel: "❖ Language:",
+    langBtn: "🇬🇧 English ❖ العربية 🇸🇦",
+    closeModal: "✖ Close",
+    marqueeText: " ⚜️ Blessings upon Prophet Muhammad ﷺ ❖ Peace be upon Prophet Muhammad ﷺ ⚜️ ",
+    heroName: "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 👑 ⚜️",
+    squareStatus: "🟢 Available for Contact & Projects",
+    copyUserText: "⚜️ Copy Dev ID (@u_x86) ⚜️",
+    sharePageText: "⚜️ Share Page ⚜️",
+    searchPlaceholder: "🔍 Search channels, bots, or King Saqr articles...",
+    zikr1: "⚜️ Remember Allah ⚜️",
+    zikr2: "⚜️ Astaghfirullah ⚜️",
+    zikr3: "⚜️ Alhamdulillah ⚜️",
+    youtube: "❖ YouTube Channel",
+    telegramMain: "❖ Main Channel",
+    telegramTutorials: "❖ Tutorials Channel",
+    website: "❖ Developer Website",
+    backup: "❖ Backup Channel",
+    devContact: "❖ Dev Contact",
+    idBot: "❖ ID Bot",
+    hackBot: "❖ Hacking Bot",
+    religiousChannel: "❖ Religious Channel",
+    notice: "🔔 ⚜️ Subscribe to our YouTube channel and activate the bell to follow the latest in Cybersecurity, Ethical Hacking, and Modern Tech Development. ⚜️",
+    aboutTitle: "⚜️ About ⚜️",
+    aboutList: [
+      "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 | The World of Programming & Cybersecurity ⚜️",
+      "❖ Protection & Security of Accounts Against Hacking and Threats",
+      "❖ Programming & Development | Websites & Applications",
+      "❖ Professional Bot Creator | Telegram & WhatsApp (All Types)",
+      "❖ Python Tools Development | Custom Scripts & Tools",
+      "❖ Game Hacking",
+      "❖ King Saqr WhatsApp Updates",
+      "❖ Various Tutorials & Guides",
+      "❖ Combating Blackmail & Cyber Extortion Issues"
+    ],
+    whyTitle: "⚜️ Why Subscribe to King Saqr's Channel? ⚜️",
+    whyDesc: "❖ If you aspire to master technology professionally, understand digital security awareness, and enter the world of Cybersecurity & Ethical Hacking in a clear, practical way — this royal channel is crafted specifically for you.",
+    whyStrong: "⚜️ Subscribe now and begin your tech journey with confidence. ⚜️",
+    articlesMainTitle: "📚 ⚜️ King Saqr Articles & Insights ⚜️",
+    readMoreBtn: "📖 Read Full Article ⚜️",
+    articles: [
+      {
+        badge: "🔐 Cybersecurity",
+        title: "⚜️ Ultimate Guide to Protecting Your Accounts from Hacking",
+        summary: "Learn essential digital security rules, Two-Factor Authentication (2FA), and how to detect phishing links and social engineering.",
+        body: "In today's digital landscape, social engineering and phishing links are the most common methods used to compromise accounts.\n\n1. Always enable Two-Factor Authentication (2FA) on Telegram and all your platforms.\n2. Never share verification codes or session files with anyone.\n3. Follow King Saqr's Tutorials Channel to learn advanced vulnerability detection and defensive security."
+      },
+      {
+        badge: "🤖 Bot Development",
+        title: "⚜️ Mastering Advanced Telegram Bots Architecture",
+        summary: "How King Saqr engineers high-speed, intelligent Telegram bots for channel protection, automation, and custom services.",
+        body: "Telegram Bot Development opens limitless possibilities for task automation and managing large digital communities.\n\n• Built with robust frameworks like Python (Telethon, Pyrogram, Aiogram) and fast databases.\n• Engineered for 24/7 uptime, security, and instant response.\n• Contact Developer King Saqr (@u_x86) to order your custom bot."
+      },
+      {
+        badge: "🐉 Kali & Termux",
+        title: "⚜️ Ethical Hacking & Network Auditing with Termux & Kali",
+        summary: "A practical foundation for cybersecurity students on ethical penetration testing tools on mobile and desktop.",
+        body: "Ethical Hacking is the first line of defense in securing computer networks against cyber threats.\n\n• Using Kali Linux and Termux on Android, you can master networking commands, port scanning, and security auditing.\n• Step-by-step practical tutorials are available on King Saqr's official channels."
+      },
+      {
+        badge: "🌐 Web & App Dev",
+        title: "⚜️ Crafting Royal & Cybernetic Web Applications",
+        summary: "Secrets of building responsive, interactive, high-performance user interfaces with modern web technologies.",
+        body: "A professional website is your royal digital identity to the world.\n\n• King Saqr's designs combine visual luxury, interactive particle graphics, and blazing speed.\n• Full bilingual support, adaptive Dark/Light themes, and clean architecture."
       }
-    });
+    ],
+    skillsTitle: "⚜️ Skills & Professional Services ⚜️",
+    skillsList: [
+      "🔐 ❖ Cybersecurity Defense",
+      "🕵️‍♂️ ❖ Ethical Hacking & Auditing",
+      "🌐 ❖ Full-Stack Web Development",
+      "📱 ❖ Mobile App Development",
+      "🤖 ❖ Advanced Telegram Bots",
+      "💻 ❖ Termux Mastery",
+      "🐉 ❖ Kali Linux Systems",
+      "🎥 ❖ Tech Content Creation",
+      "📺 ❖ YouTube Educational Tutorials"
+    ],
+    bioTitle: "👤 ⚜️ About the Developer ⚜️",
+    bioText: "⚜️ Developer King Saqr ⚜️\n❖ Telegram Bots Developer (All Types)\n❖ Professional Web Developer\n❖ Mobile Application Developer\n❖ Certified Ethical Hacker\n❖ Prof. of Cybersecurity & Computer Networks",
+    telegramBtn: "⚜️ My Official Telegram ⚜️",
+    footer: "© 2026 — All Rights Reserved ❖ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 👑",
+    bioModalTitle: "📜 ⚜️ Developer Bio ⚜️",
+    bioModalText: "⚜️ Developer King Saqr ⚜️\n❖ Telegram Bots Developer (All Types)\n❖ Professional Web Developer\n❖ Mobile Application Developer\n❖ Ethical Hacker\n❖ Prof. of Cybersecurity & Computer Networks",
+    bioTelegramText: "⚜️ My Official Telegram ⚜️",
+    trackName: "⚜️ 𝓚𝓲𝓷𝓰 𝓢𝓪𝓺𝓻 ⚜️",
+    rolesList: [
+      "⚜️ Telegram Bots Developer (All Types) 🤖 ⚜️",
+      "⚜️ Professional Web & App Developer 🌐 ⚜️",
+      "⚜️ Ethical Hacker & Cybersecurity Expert 🕵️‍♂️ ⚜️",
+      "⚜️ Prof. of Cybersecurity & Computer Networks 💻 ⚜️"
+    ],
+    zikrPool: [
+      "⚜️ Remember Allah ⚜️",
+      "⚜️ Astaghfirullah ⚜️",
+      "⚜️ Alhamdulillah ⚜️",
+      "⚜️ Allahu Akbar ⚜️",
+      "⚜️ SubhanAllahi wa bihamdihi ⚜️",
+      "⚜️ La ilaha illallah ⚜️"
+    ]
+  }
+};
 
-    // ============================================================
-    // 6. الإعجاب
-    // ============================================================
-    let likes = 8;
-    document.getElementById('likeBtn').addEventListener('click', function() {
-      likes++;
-      document.getElementById('likeCount').textContent = likes;
-      const heart = this.querySelector('.heart');
-      heart.style.transform = 'scale(1.5)';
-      setTimeout(() => heart.style.transform = 'scale(1)', 200);
-    });
+let currentLanguage = 'ar';
 
-    // ============================================================
-    // 7. مشغل الموسيقى الحقيقي (HTML5 Audio)
-    // ============================================================
-    const audio = document.getElementById('audioPlayer');
-    const playBtn = document.getElementById('playBtn');
-    const playIcon = document.getElementById('playIcon');
-    const eqBars = document.getElementById('eqBars');
-    const progressFill = document.getElementById('progressFill');
-    const currentTimeEl = document.getElementById('currentTime');
-    const totalTimeEl = document.getElementById('totalTime');
-    const trackNameEl = document.getElementById('trackName');
+function renderArticles(lang) {
+  const t = translations[lang];
+  const grid = document.getElementById("articlesGrid");
+  grid.innerHTML = "";
+  t.articles.forEach((art) => {
+    const card = document.createElement("div");
+    card.className = "article-card searchable-item";
+    card.innerHTML = `
+      <div>
+        <span class="article-badge">${art.badge}</span>
+        <h3>${art.title}</h3>
+        <p>${art.summary}</p>
+      </div>
+      <button class="read-article-btn">${t.readMoreBtn}</button>
+    `;
+    card.querySelector(".read-article-btn").onclick = () => {
+      document.getElementById("articleModalTitle").innerText = art.title;
+      document.getElementById("articleModalBody").innerText = art.body;
+      articleModal.style.display = "flex";
+    };
+    grid.appendChild(card);
+  });
+}
 
-    let isPlaying = false;
+function updateLanguage(lang) {
+  const t = translations[lang];
+  document.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
 
-    function updatePlayUI() {
-      if (isPlaying) {
-        playIcon.textContent = '⏸';
-        playBtn.classList.add('playing');
-        eqBars.classList.remove('paused');
-      } else {
-        playIcon.textContent = '▶';
-        playBtn.classList.remove('playing');
-        eqBars.classList.add('paused');
-      }
-    }
+  document.getElementById("topbarTitle").innerHTML = t.topbarTitle;
+  document.getElementById("topLangBtn").innerText = t.topLangBtnText;
+  document.getElementById("modalTitle").innerHTML = `<i class="fas fa-sliders-h"></i> ${t.modalTitle}`;
+  document.getElementById("appearanceLabel").innerHTML = `<i class="fas fa-palette"></i> ${t.appearanceLabel}`;
+  document.querySelector(".modalThemeBtnText").innerText = t.modalThemeBtnText;
+  document.getElementById("marqueeSpeedLabel").innerHTML = `<i class="fas fa-tachometer-alt"></i> ${t.marqueeSpeedLabel}`;
+  document.getElementById("autoImageLabel").innerHTML = `<i class="fas fa-image"></i> ${t.autoImageLabel}`;
+  document.getElementById("languageLabel").innerHTML = `<i class="fas fa-language"></i> ${t.languageLabel}`;
+  document.getElementById("langToggleBtn").innerText = t.langBtn;
+  document.getElementById("closeModalBtn").innerText = t.closeModal;
+  document.getElementById("closeBioModalBtn").innerText = t.closeModal;
+  document.getElementById("closeArticleModalBtn").innerText = t.closeModal;
+  document.getElementById("marqueeText").innerText = t.marqueeText;
+  document.getElementById("heroName").innerText = t.heroName;
+  document.getElementById("squareStatusBadge").innerText = t.squareStatus;
+  document.getElementById("copyUserText").innerText = t.copyUserText;
+  document.getElementById("sharePageText").innerText = t.sharePageText;
+  document.getElementById("siteSearchInput").placeholder = t.searchPlaceholder;
+  document.getElementById("dynamicRoleText").innerText = t.rolesList[0];
 
-    // تشغيل / إيقاف
-    playBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (isPlaying) {
-        audio.pause();
-        isPlaying = false;
-        updatePlayUI();
-      } else {
-        audio.play().then(() => {
-          isPlaying = true;
-          updatePlayUI();
-        }).catch(() => {
-          isPlaying = false;
-          updatePlayUI();
-        });
-      }
-    });
+  document.getElementById("zikr1").innerText = t.zikr1;
+  document.getElementById("zikr2").innerText = t.zikr2;
+  document.getElementById("zikr3").innerText = t.zikr3;
 
-    // تحديث الوقت والتقدم
-    audio.addEventListener('loadedmetadata', function() {
-      totalTimeEl.textContent = formatTime(audio.duration);
-    });
+  const linkTexts = document.querySelectorAll(".linkText");
+  linkTexts.forEach(span => {
+    const key = span.getAttribute("data-key");
+    if (t[key]) span.innerText = t[key];
+  });
 
-    audio.addEventListener('timeupdate', function() {
-      if (audio.duration) {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = percent + '%';
-        currentTimeEl.textContent = formatTime(audio.currentTime);
-        totalTimeEl.textContent = formatTime(audio.duration);
-      }
-    });
+  document.getElementById("noticeText").innerText = t.notice;
 
-    audio.addEventListener('ended', function() {
+  /* قسم النبذة الجديد */
+  document.getElementById("aboutTitle").innerText = t.aboutTitle;
+  const aboutListEl = document.getElementById("aboutList");
+  aboutListEl.innerHTML = "";
+  t.aboutList.forEach(item => {
+    const li = document.createElement("li");
+    li.className = "searchable-item";
+    li.innerText = item;
+    aboutListEl.appendChild(li);
+  });
+
+  document.getElementById("whyTitle").innerText = t.whyTitle;
+  document.getElementById("whyDesc").innerText = t.whyDesc;
+  document.getElementById("whyStrong").innerHTML = t.whyStrong;
+  document.getElementById("articlesMainTitle").innerText = t.articlesMainTitle;
+  renderArticles(lang);
+
+  document.getElementById("skillsTitle").innerHTML = t.skillsTitle;
+  const skillsUl = document.getElementById("skillsList");
+  skillsUl.innerHTML = "";
+  t.skillsList.forEach(skill => {
+    const li = document.createElement("li");
+    li.className = "searchable-item";
+    li.innerHTML = skill;
+    skillsUl.appendChild(li);
+  });
+
+  document.getElementById("bioTitle").innerHTML = t.bioTitle;
+  document.getElementById("bioText").innerHTML = t.bioText.replace(/\n/g,"<br>");
+  document.getElementById("telegramBtnText").innerText = t.telegramBtn;
+  document.getElementById("footerText").innerHTML = t.footer;
+  document.getElementById("bioModalTitle").innerHTML = t.bioModalTitle;
+  document.getElementById("bioModalText").innerHTML = t.bioModalText.replace(/\n/g,"<br>");
+  document.getElementById("bioTelegramLink").innerHTML = `<i class="fab fa-telegram"></i> ${t.bioTelegramText}`;
+
+  /* اسم المقطع في مشغل الموسيقى */
+  document.getElementById("trackName").innerText = t.trackName;
+
+  if (autoPlayActive) autoPlayToggle.textContent = t.autoToggleOn;
+  else autoPlayToggle.textContent = t.autoToggleOff;
+}
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+  updateLanguage(currentLanguage);
+  showToast(currentLanguage === 'ar' ? "🇸🇦 تم التبديل إلى اللغة العربية" : "⚜️ Switched to Decorated English 🇬🇧");
+}
+
+document.getElementById("langToggleBtn").onclick = toggleLanguage;
+document.getElementById("topLangBtn").onclick = toggleLanguage;
+updateLanguage('ar');
+
+/* النص المتحرك المتبدل تحت اسم الملك صقر */
+let currentRoleIdx = 0;
+const dynamicRoleEl = document.getElementById("dynamicRoleText");
+setInterval(() => {
+  dynamicRoleEl.style.opacity = "0";
+  dynamicRoleEl.style.transform = "translateY(6px)";
+  setTimeout(() => {
+    const roles = translations[currentLanguage].rolesList;
+    currentRoleIdx = (currentRoleIdx + 1) % roles.length;
+    dynamicRoleEl.innerText = roles[currentRoleIdx];
+    dynamicRoleEl.style.opacity = "1";
+    dynamicRoleEl.style.transform = "translateY(0)";
+  }, 350);
+}, 3200);
+
+/* تبديل الأذكار التلقائي بالتصميم الجديد */
+let zikrStep = 0;
+setInterval(() => {
+  const pool = translations[currentLanguage].zikrPool;
+  zikrStep = (zikrStep + 1) % pool.length;
+  document.getElementById("zikr1").innerText = pool[zikrStep % pool.length];
+  document.getElementById("zikr2").innerText = pool[(zikrStep + 1) % pool.length];
+  document.getElementById("zikr3").innerText = pool[(zikrStep + 2) % pool.length];
+}, 4000);
+
+/* أزرار الشريط العلوي لتغيير الألوان والتبديل التلقائي للألوان */
+const themeOrder = ['gold', 'hacker', 'cyber', 'neon'];
+const themeNamesAr = { gold: '👑 الذهبي الملكي', hacker: '🐉 أخضر هكر', cyber: '💎 سماوي سيبراني', neon: '🔥 نيون' };
+const themeNamesEn = { gold: '👑 Royal Gold', hacker: '🐉 Hacker Green', cyber: '💎 Cyber Cyan', neon: '🔥 Neon Crimson' };
+let currentThemeIndex = 0;
+let autoColorCycleActive = true;
+
+function applyColorTheme(themeName) {
+  document.body.classList.remove('theme-hacker', 'theme-cyber', 'theme-neon');
+  if (themeName === 'hacker') document.body.classList.add('theme-hacker');
+  if (themeName === 'cyber') document.body.classList.add('theme-cyber');
+  if (themeName === 'neon') document.body.classList.add('theme-neon');
+}
+
+document.getElementById("topColorBtn").onclick = () => {
+  currentThemeIndex = (currentThemeIndex + 1) % themeOrder.length;
+  const chosen = themeOrder[currentThemeIndex];
+  applyColorTheme(chosen);
+  showToast(currentLanguage === 'ar' ? `🎨 المظهر: ${themeNamesAr[chosen]}` : `🎨 Theme: ${themeNamesEn[chosen]}`);
+};
+
+const autoColorCycleBtn = document.getElementById("autoColorCycleBtn");
+setInterval(() => {
+  if (autoColorCycleActive) {
+    currentThemeIndex = (currentThemeIndex + 1) % themeOrder.length;
+    applyColorTheme(themeOrder[currentThemeIndex]);
+  }
+}, 5000);
+
+autoColorCycleBtn.onclick = () => {
+  autoColorCycleActive = !autoColorCycleActive;
+  autoColorCycleBtn.classList.toggle("active-btn", autoColorCycleActive);
+  const icon = autoColorCycleBtn.querySelector("i");
+  if (autoColorCycleActive) {
+    icon.classList.add("fa-spin");
+    showToast(currentLanguage === 'ar' ? "🔄 التبديل التلقائي للألوان: مفعل" : "🔄 Auto Color Cycle: ON");
+  } else {
+    icon.classList.remove("fa-spin");
+    showToast(currentLanguage === 'ar' ? "⏸️ التبديل التلقائي للألوان: متوقف" : "⏸️ Auto Color Cycle: OFF");
+  }
+};
+
+/* زر القلوب التفاعلي في الشريط العلوي */
+let heartsTotal = 158;
+const heartLikeBtn = document.getElementById("heartLikeBtn");
+const heartCountEl = document.getElementById("heartCount");
+heartLikeBtn.onclick = () => {
+  heartsTotal++;
+  heartCountEl.innerText = heartsTotal;
+  const heart = document.createElement("span");
+  heart.className = "flying-heart";
+  const emojis = ["❤️", "👑", "🔥", "💚", "✨"];
+  heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+  const rect = heartLikeBtn.getBoundingClientRect();
+  heart.style.left = (rect.left + rect.width / 2 + (Math.random() * 30 - 15)) + "px";
+  heart.style.top = (rect.bottom) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1300);
+};
+
+/* ============================================================
+   مشغل الموسيقى الحقيقي (Vinyl Player)
+   ============================================================ */
+const audio = document.getElementById('audioPlayer');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const eqBars = document.getElementById('eqBars');
+const progressFill = document.getElementById('progressFill');
+const currentTimeEl = document.getElementById('currentTime');
+const totalTimeEl = document.getElementById('totalTime');
+const musicToggleBtn = document.getElementById("musicToggleBtn");
+
+let isPlaying = false;
+
+function updatePlayUI() {
+  if (isPlaying) {
+    playIcon.textContent = '⏸';
+    playBtn.classList.add('playing');
+    eqBars.classList.remove('paused');
+    musicToggleBtn.classList.add('active-btn');
+  } else {
+    playIcon.textContent = '▶';
+    playBtn.classList.remove('playing');
+    eqBars.classList.add('paused');
+    musicToggleBtn.classList.remove('active-btn');
+  }
+}
+
+function toggleMusic() {
+  if (audio.paused) {
+    audio.play().then(() => {
+      isPlaying = true;
+      updatePlayUI();
+      showToast(currentLanguage === 'ar' ? "🎵 تم تشغيل الموسيقى" : "🎵 Music Playing");
+    }).catch(() => {
       isPlaying = false;
       updatePlayUI();
-      audio.currentTime = 0;
-      progressFill.style.width = '0%';
-      currentTimeEl.textContent = '0:00';
+      showToast(currentLanguage === 'ar' ? "⚠️ تعذر تشغيل الموسيقى" : "⚠️ Could not play music");
     });
+  } else {
+    audio.pause();
+    isPlaying = false;
+    updatePlayUI();
+    showToast(currentLanguage === 'ar' ? "🔇 تم إيقاف الموسيقى" : "🔇 Music Stopped");
+  }
+}
 
-    // النقر على شريط التقدم
-    document.getElementById('progressBar').addEventListener('click', function(e) {
-      if (!audio.duration) return;
-      const rect = this.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = x * audio.duration;
-    });
+playBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  toggleMusic();
+});
 
-    function formatTime(sec) {
-      if (isNaN(sec)) return '0:00';
-      const m = Math.floor(sec / 60);
-      const s = Math.floor(sec % 60);
-      return m + ':' + (s < 10 ? '0' : '') + s;
-    }
+musicToggleBtn.addEventListener('click', function() {
+  toggleMusic();
+});
 
-    // ============================================================
-    // 8. مودال الإعدادات
-    // ============================================================
-    const settingsModal = document.getElementById('settingsModal');
-    const settingsBtn = document.getElementById('settingsBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
+audio.addEventListener('loadedmetadata', function() {
+  totalTimeEl.textContent = formatTime(audio.duration);
+});
 
-    function openSettingsModal() { settingsModal.style.display = 'flex'; }
-    function closeSettingsModal() { settingsModal.style.display = 'none'; }
-    settingsBtn.addEventListener('click', openSettingsModal);
-    closeModalBtn.addEventListener('click', closeSettingsModal);
-    window.addEventListener('click', function(e) {
-      if (e.target === settingsModal) closeSettingsModal();
-      if (e.target === bioModal) closeBioModal();
-    });
+audio.addEventListener('timeupdate', function() {
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = percent + '%';
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    totalTimeEl.textContent = formatTime(audio.duration);
+  }
+});
 
-    document.getElementById('modalThemeBtn').addEventListener('click', () => {
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      updateTheme(newTheme);
-    });
+audio.addEventListener('ended', function() {
+  isPlaying = false;
+  updatePlayUI();
+  audio.currentTime = 0;
+  progressFill.style.width = '0%';
+  currentTimeEl.textContent = '0:00';
+});
 
-    // ============================================================
-    // 9. مودال السيرة
-    // ============================================================
-    const bioModal = document.getElementById('bioModal');
-    const messageButton = document.getElementById('messageButton');
-    const closeBioModalBtn = document.getElementById('closeBioModalBtn');
+document.getElementById('progressBar').addEventListener('click', function(e) {
+  if (!audio.duration) return;
+  const rect = this.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = x * audio.duration;
+});
 
-    function openBioModal() { bioModal.style.display = 'flex'; }
-    function closeBioModal() { bioModal.style.display = 'none'; }
-    messageButton.addEventListener('click', openBioModal);
-    closeBioModalBtn.addEventListener('click', closeBioModal);
+function formatTime(sec) {
+  if (isNaN(sec)) return '0:00';
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
 
-    // ============================================================
-    // 10. تبديل الثيم من الهيدر
-    // ============================================================
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      updateTheme(newTheme);
-    });
+/* نسخ يوزر المطور ومشاركة الصفحة */
+function copyTextFallback(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch (e) {}
+  document.body.removeChild(ta);
+}
 
-    // ============================================================
-    // 11. تبديل اللغة
-    // ============================================================
-    function toggleLanguage() {
-      const newLang = currentLanguage === 'ar' ? 'en' : 'ar';
-      updateLanguage(newLang);
-    }
-    document.getElementById('langToggle').addEventListener('click', toggleLanguage);
-    document.getElementById('langToggleBtn').addEventListener('click', toggleLanguage);
+document.getElementById("copyUserBtn").onclick = () => {
+  copyTextFallback("@u_x86");
+  showToast(currentLanguage === 'ar' ? "✅ تم نسخ معرف المطور: @u_x86" : "✅ Copied Developer Username: @u_x86");
+};
 
-    // ============================================================
-    // 12. قطرات الدم
-    // ============================================================
-    (function createDrops() {
-      const container = document.getElementById('top');
-      for (let i = 0; i < 22; i++) {
-        const drop = document.createElement('div');
-        drop.className = 'blood-drop';
-        drop.style.left = (Math.random() * 98 + 1) + '%';
-        drop.style.animationDuration = (3.5 + Math.random() * 3) + 's';
-        drop.style.animationDelay = (Math.random() * 7) + 's';
-        drop.style.height = (2 + Math.random() * 3) + 'px';
-        drop.style.opacity = 0.4 + Math.random() * 0.3;
-        container.appendChild(drop);
+document.getElementById("sharePageBtn").onclick = async () => {
+  const shareData = {
+    title: "👑 الملك صقر | King Saqr",
+    text: currentLanguage === 'ar' ? "الموقع الرسمي للمطور الملك صقر - الأمن السيبراني وتطوير البوتات والمواقع" : "Official Website of Developer King Saqr",
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try { await navigator.share(shareData); } catch (e) {}
+  } else {
+    copyTextFallback(window.location.href);
+    showToast(currentLanguage === 'ar' ? "🔗 تم نسخ رابط الصفحة للمشاركة!" : "🔗 Page Link Copied to Share!");
+  }
+};
+
+/* البحث الفوري عن قناة أو بوت أو مقالة */
+const siteSearchInput = document.getElementById("siteSearchInput");
+const clearSearchBtn = document.getElementById("clearSearchBtn");
+
+function filterContent() {
+  const q = siteSearchInput.value.trim().toLowerCase();
+  clearSearchBtn.style.display = q.length > 0 ? "block" : "none";
+  const items = document.querySelectorAll(".searchable-item");
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    item.style.display = text.includes(q) ? "" : "none";
+  });
+}
+siteSearchInput.addEventListener("input", filterContent);
+clearSearchBtn.onclick = () => {
+  siteSearchInput.value = "";
+  filterContent();
+};
+
+/* الخلفية السيبرانية المتحركة */
+const canvas = document.getElementById("cyberCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < 46; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.8,
+    dy: (Math.random() - 0.5) * 0.8
+  });
+}
+
+function animateCyberBg() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const currentGold = getComputedStyle(document.body).getPropertyValue("--gold").trim() || "#FFD700";
+  for (let i = 0; i < particles.length; i++) {
+    let p = particles[i];
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    ctx.fillStyle = currentGold;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+    for (let j = i + 1; j < particles.length; j++) {
+      let p2 = particles[j];
+      let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+      if (dist < 120) {
+        ctx.strokeStyle = currentGold;
+        ctx.globalAlpha = (1 - dist / 120) * 0.25;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
       }
-    })();
-
-    // ============================================================
-    // 13. التهيئة الأولية
-    // ============================================================
-    updateLanguage('ar');
-    updateTheme('dark');
-    marqueeSpan.style.animationDuration = '15s';
-
-    console.log('🔥 الملك صقر - مشغل موسيقى حقيقي مع رابط عام');
-  </script>
+    }
+  }
+  requestAnimationFrame(animateCyberBg);
+}
+window.onload = function() {
+  animateCyberBg();
+};
+</script>
 </body>
 </html>
